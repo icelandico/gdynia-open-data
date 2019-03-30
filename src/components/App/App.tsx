@@ -1,13 +1,20 @@
-import React, { Component } from 'react'
-import './App.css'
+import * as React from "react"
+import Button from "antd/lib/button"
+import "./App.css"
 
-class App extends Component {
+class App extends React.Component {
+
   render() {
     return (
       <div className="App">
-
-      </div>
-    );
+        <Button
+          href=""
+          type="primary"
+        >
+          POZNAJ DANE
+        </Button>
+      </div> 
+    )
   }
 }
 
