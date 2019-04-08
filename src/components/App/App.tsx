@@ -1,21 +1,26 @@
 import * as React from "react"
-import Button from "antd/lib/button"
-import "./App.css"
+import "./App-styles.ts"
+import { Button } from "semantic-ui-react"
+import withStyles, { WithStyles } from 'react-jss'
+import { AppStyles } from "./App-styles"
+interface AppProps extends WithStyles<typeof AppStyles> {
+  children: React.ReactNode
+}
+class App extends React.Component<AppProps> {
 
-class App extends React.Component {
+  get classes() {
+    return this.props.classes
+  }
 
   render() {
     return (
-      <div className="App">
-        <Button
-          href=""
-          type="primary"
-        >
-          POZNAJ DANE
+      <div className={this.classes.main}>
+        <Button primary>
+          Element
         </Button>
       </div> 
     )
   }
 }
 
-export default App
+export default withStyles(AppStyles)(App)
