@@ -1,13 +1,15 @@
 import * as React from "react"
 import "./App-styles.ts"
+import AppStyles from "./App-styles"
 import { Button } from "rbx"
 import "rbx/index.css"
-import injectSheet, { jss, ThemeProvider } from "react-jss"
+
 class App extends React.Component {
+
 
   render() {
     return (
-      <div>
+      <div className={AppStyles.main}>
         <Button.Group>
           <Button>Button One</Button>
         </Button.Group>
@@ -17,3 +19,5 @@ class App extends React.Component {
 }
 
 export default App
+
+
