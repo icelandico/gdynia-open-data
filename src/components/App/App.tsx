@@ -1,18 +1,20 @@
 import * as React from "react"
 import "./App-styles.ts"
 import AppStyles from "./App-styles"
-import { Button } from "rbx"
+import { Navbar, Notification } from "rbx"
 import "rbx/index.css"
+import classNames from "classnames"
 
 class App extends React.Component {
-
 
   render() {
     return (
       <div className={AppStyles.main}>
-        <Button.Group>
-          <Button>Button One</Button>
-        </Button.Group>
+      <Navbar>
+        <Notification className={AppStyles.center}>
+          Gdynia Open Data
+        </Notification>
+      </Navbar>
       </div> 
     )
   }

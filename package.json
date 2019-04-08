@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/classnames": "^2.2.7",
     "@types/jest": "24.0.11",
     "@types/jss": "^9.5.8",
     "@types/leaflet": "^1.4.3",
@@ -10,6 +11,7 @@
     "@types/react": "16.8.13",
     "@types/react-dom": "16.8.3",
     "@types/react-jss": "^8.6.3",
+    "classnames": "^2.2.6",
     "jss": "^9.8.7",
     "leaflet": "^1.4.0",
     "rbx": "^2.1.0",

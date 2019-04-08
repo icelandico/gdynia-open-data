@@ -7,8 +7,14 @@ const main = style({
   backgroundSize: "cover" 
 })
 
+const center = style({
+  textAlign: "center",
+  margin: "0 auto"
+})
+
 const AppStyles = {
-  main
+  main,
+  center
 }
 
 export default AppStyles
