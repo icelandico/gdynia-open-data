@@ -1,26 +1,19 @@
 import * as React from "react"
 import "./App-styles.ts"
-import { Button } from "semantic-ui-react"
-import withStyles, { WithStyles } from 'react-jss'
-import { AppStyles } from "./App-styles"
-interface AppProps extends WithStyles<typeof AppStyles> {
-  children: React.ReactNode
-}
-class App extends React.Component<AppProps> {
-
-  get classes() {
-    return this.props.classes
-  }
+import { Button } from "rbx"
+import "rbx/index.css"
+import injectSheet, { jss, ThemeProvider } from "react-jss"
+class App extends React.Component {
 
   render() {
     return (
-      <div className={this.classes.main}>
-        <Button primary>
-          Element
-        </Button>
+      <div>
+        <Button.Group>
+          <Button>Button One</Button>
+        </Button.Group>
       </div> 
     )
   }
 }
 
-export default withStyles(AppStyles)(App)
+export default App

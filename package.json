@@ -4,14 +4,17 @@
   "private": true,
   "dependencies": {
     "@types/jest": "24.0.11",
+    "@types/jss": "^9.5.8",
     "@types/leaflet": "^1.4.3",
     "@types/node": "11.12.0",
     "@types/react": "16.8.10",
     "@types/react-dom": "16.8.3",
-    "antd": "^3.15.2",
+    "@types/react-jss": "^8.6.3",
     "leaflet": "^1.4.0",
+    "rbx": "^2.1.0",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
+    "react-jss": "^8.6.1",
     "react-leaflet": "^2.2.1",
     "react-scripts": "2.1.8",
     "typescript": "3.3.4000"
