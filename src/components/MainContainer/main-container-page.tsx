@@ -1,5 +1,6 @@
 import * as React from "react"
 import MainContainerStyles from "./main-container-page-styles"
+import { Column } from "rbx"
 import "rbx/index.css"
 import classNames from "classnames"
 import values from "../../global/values"
@@ -15,10 +16,19 @@ class MainContainer extends React.Component<IMapProps, State> {
 
   render() {
     return (
-      <div>
-        <MapContainer />
-      </div>
+      <Column.Group>
+        <Column size={3}>
+          <div style={{
+            backgroundColor: "chocolate",
+            height: "100%"
+          }}>
 
+          </div>
+        </Column>
+        <Column>
+          <MapContainer />
+        </Column>
+      </Column.Group>
     )
   }
 }
