@@ -1,9 +1,9 @@
 import * as React from "react"
-import MapStyles from "./map-styles"
+import MapStyles from "./main-content-page-styles"
 import "rbx/index.css"
 import classNames from "classnames"
 import { Map, TileLayer, Marker, Popup } from "react-leaflet"
-import values from "../../global/values";
+import values from "../../global/values"
 
 interface IMapProps {
 }
@@ -30,7 +30,7 @@ class MapComponent extends React.Component<IMapProps, MapState> {
           center={position}
           zoom={this.state.zoom}
           className={MapStyles.main}
-          style={{height: "90vh"}}
+          style={{height: "90vh"}} // Workaround for correct map display
         >
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

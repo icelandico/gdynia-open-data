@@ -4,7 +4,7 @@ import AppStyles from "./App-styles"
 import { Navbar, Notification } from "rbx"
 import "rbx/index.css"
 import classNames from "classnames"
-import MapComponent from "../Map/map"
+import MapComponent from "../Map/map-container"
 
 class App extends React.Component {
 

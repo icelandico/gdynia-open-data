@@ -1,5 +1,3 @@
-
-
 interface IValues {
   tileSource: string,
   ext?: string
