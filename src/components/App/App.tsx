@@ -5,17 +5,14 @@ import { Navbar, Notification } from "rbx"
 import "rbx/index.css"
 import classNames from "classnames"
 import MainContainer from "./../MainContainer/main-container-page"
+import NavbarComponent from "../Navbar/navbar"
 class App extends React.Component {
 
   render() {
     return (
       <div className={AppStyles.main}>
-      <Navbar>
-        <Notification className={AppStyles.center}>
-          Gdynia Open Data
-        </Notification>
-      </Navbar>
-      <MainContainer />
+        <NavbarComponent />
+        <MainContainer />
       </div> 
     )
   }
