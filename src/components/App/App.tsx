@@ -4,6 +4,7 @@ import AppStyles from "./App-styles"
 import { Navbar, Notification } from "rbx"
 import "rbx/index.css"
 import classNames from "classnames"
+import MapComponent from "../Map/map"
 
 class App extends React.Component {
 
@@ -15,6 +16,7 @@ class App extends React.Component {
           Gdynia Open Data
         </Notification>
       </Navbar>
+      <MapComponent />
       </div> 
     )
   }
