@@ -3,6 +3,7 @@ import MapStyles from "./map-styles"
 import "rbx/index.css"
 import classNames from "classnames"
 import { Map, TileLayer, Marker, Popup } from "react-leaflet"
+import values from "../../global/values";
 
 interface IMapProps {
 }
@@ -18,7 +19,7 @@ class MapComponent extends React.Component<IMapProps, MapState> {
   state = {
     lat: 54.5,
     long: 18.5,
-    zoom: 13
+    zoom: 12
   }
 
   render() {
@@ -33,8 +34,8 @@ class MapComponent extends React.Component<IMapProps, MapState> {
         >
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}"
-          ext="png"
+          url={values.tileSource}
+          ext={values.ext}
         />
         </Map>
       </div>
