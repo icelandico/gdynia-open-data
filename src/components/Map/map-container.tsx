@@ -33,7 +33,7 @@ class MapContainer extends React.Component<IMapProps, MapState> {
           style={{height: "80vh"}} // Workaround for correct map display
         >
         <TileLayer
-          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          attribution={values.attribution}
           url={values.tileSource}
           ext={values.ext}
         />
