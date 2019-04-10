@@ -9,9 +9,9 @@ const center = style({
   margin: "0 auto"
 })
 
-const MapStyles = {
+const styles = {
   main,
   center
 }
 
-export default MapStyles
+export default styles

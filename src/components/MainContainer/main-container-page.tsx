@@ -18,11 +18,12 @@ class MainContainer extends React.Component<IMapProps, State> {
     return (
       <Column.Group>
         <Column size={3}>
-          <div style={{
-            backgroundColor: "chocolate",
-            height: "100%"
-          }}>
-
+          <div
+            style={{
+              backgroundColor: "cadetblue",
+              height: "100%"
+            }}
+          >
           </div>
         </Column>
         <Column>

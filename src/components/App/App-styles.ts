@@ -12,9 +12,9 @@ const center = style({
   margin: "0 auto"
 })
 
-const AppStyles = {
+const styles = {
   main,
   center
 }
 
-export default AppStyles
+export default styles

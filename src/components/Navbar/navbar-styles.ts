@@ -6,9 +6,8 @@ const center = style({
   margin: "0 auto"
 })
 
-const MenuPanelStyles = {
+const styles = {
   center
 }
 
-const styles = MenuPanelStyles
 export default styles

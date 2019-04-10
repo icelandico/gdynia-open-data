@@ -1,6 +1,6 @@
 import * as React from "react"
 import "./App-styles.ts"
-import AppStyles from "./App-styles"
+import styles from "./App-styles"
 import { Navbar, Notification } from "rbx"
 import "rbx/index.css"
 import classNames from "classnames"
@@ -10,7 +10,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className={AppStyles.main}>
+      <div className={styles.main}>
         <NavbarComponent />
         <MainContainer />
       </div> 
