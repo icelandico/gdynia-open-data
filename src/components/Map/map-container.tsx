@@ -14,7 +14,7 @@ interface MapState {
   zoom: number
 }
 
-class MapComponent extends React.Component<IMapProps, MapState> {
+class MapContainer extends React.Component<IMapProps, MapState> {
 
   state = {
     lat: 54.5,
@@ -44,4 +44,4 @@ class MapComponent extends React.Component<IMapProps, MapState> {
   }
 }
 
-export default MapComponent
+export default MapContainer
