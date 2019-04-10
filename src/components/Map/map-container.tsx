@@ -30,7 +30,7 @@ class MapContainer extends React.Component<IMapProps, MapState> {
           center={position}
           zoom={this.state.zoom}
           className={MapStyles.main}
-          style={{height: "90vh"}} // Workaround for correct map display
+          style={{height: "80vh"}} // Workaround for correct map display
         >
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

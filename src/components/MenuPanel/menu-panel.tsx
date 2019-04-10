@@ -8,11 +8,9 @@ class MenuPanel extends React.Component {
 
   render() {
     return (
-      <Navbar>
-        <Notification className={styles.center}>
-          Gdynia Open Data
-        </Notification>
-      </Navbar>
+      <div>
+        Choose layer
+      </div>
     )
   }
 }
