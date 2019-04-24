@@ -5,12 +5,11 @@ import "rbx/index.css"
 import classNames from "classnames"
 
 class Footer extends React.Component {
-
   render() {
     return (
       <FooterCmp>
         <Content className={styles.center}>
-          <p>Created by icelandico</p>
+          <p>created by michal m.</p>
         </Content>
       </FooterCmp>
     )
@@ -18,5 +17,3 @@ class Footer extends React.Component {
 }
 
 export default Footer
-
-
