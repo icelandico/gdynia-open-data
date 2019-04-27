@@ -4,16 +4,35 @@ import "rbx/index.css"
 import classNames from "classnames"
 import { Map, TileLayer, Marker, Popup } from "react-leaflet"
 import values from "../../global/values"
+import { weatherStations } from "../../api/api"
 
 interface IMapProps {}
 
 interface MapState {
   zoom: number
+  stations: any
+  stn: any
 }
 
 class MapContainer extends React.Component<IMapProps, MapState> {
   state = {
-    zoom: 12
+    zoom: 12,
+    stations: [],
+    stn: [1, 2, 3]
+  }
+
+  getData = async () => {
+    const stations = await weatherStations
+    return stations
+  }
+
+  componentDidMount() {
+    const data = this.getData()
+    data.then(res => {
+      this.setState({
+        stn: res
+      })
+    })
   }
 
   render() {
@@ -31,6 +50,9 @@ class MapContainer extends React.Component<IMapProps, MapState> {
             url={values.tileSource}
             ext={values.ext}
           />
+          {this.state.stations.map(s => {
+            return <Marker position={[54.5, 18.4]} />
+          })}
         </Map>
       </div>
     )
