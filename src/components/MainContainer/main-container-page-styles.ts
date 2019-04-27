@@ -1,17 +1,13 @@
 import { style } from "typestyle"
 
-const main = style({
-  width: "100%"
-})
-
-const center = style({
-  textAlign: "center",
-  margin: "0 auto"
+const menuContainer = style({
+  backgroundColor: "cadetblue",
+  height: "100%",
+  paddingLeft: "2rem"
 })
 
 const styles = {
-  main,
-  center
+  menuContainer
 }
 
 export default styles
