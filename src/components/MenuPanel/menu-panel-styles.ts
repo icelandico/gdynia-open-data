@@ -10,14 +10,9 @@ const menuContent = style({
   marginTop: "1rem"
 })
 
-const menuInput = style({
-  marginRight: "0.75rem"
-})
-
 const styles = {
   menuContainer,
-  menuContent,
-  menuInput
+  menuContent
 }
 
 export default styles

@@ -2,6 +2,7 @@ import * as React from "react"
 import styles from "./menu-panel-styles"
 import "rbx/index.css"
 import classNames from "classnames"
+import MenuInput from "../MenuInput/menu-input"
 
 class MenuPanel extends React.Component {
   render() {
@@ -9,10 +10,7 @@ class MenuPanel extends React.Component {
       <div className={styles.menuContainer}>
         <h2 style={{ textAlign: "center" }}>Wybierz warstwę</h2>
         <div className={styles.menuContent}>
-          <label>
-            <input type="radio" className={styles.menuInput} />
-            Pogoda
-          </label>
+          <MenuInput />
         </div>
       </div>
     )
