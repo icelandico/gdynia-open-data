@@ -10,15 +10,13 @@ interface IMapProps {}
 
 interface MapState {
   zoom: number
-  stations: any
-  stn: any
+  stations: any[]
 }
 
 class MapContainer extends React.Component<IMapProps, MapState> {
   state = {
     zoom: 12,
-    stations: [],
-    stn: [1, 2, 3]
+    stations: []
   }
 
   getData = async () => {
@@ -30,13 +28,14 @@ class MapContainer extends React.Component<IMapProps, MapState> {
     const data = this.getData()
     data.then(res => {
       this.setState({
-        stn: res
+        stations: res.weatherStations
       })
     })
   }
 
   render() {
     const position = values.centerCoordinates
+    const stations = this.state.stations
     return (
       <div>
         <Map
@@ -50,8 +49,14 @@ class MapContainer extends React.Component<IMapProps, MapState> {
             url={values.tileSource}
             ext={values.ext}
           />
-          {this.state.stations.map(s => {
-            return <Marker position={[54.5, 18.4]} />
+          {stations.map(s => {
+            // const id: number = s.id
+            // const location = s.location.coordinates
+            return (
+              <Marker position={[54.5, 18.6]}>
+                <Popup>Station ID</Popup>
+              </Marker>
+            )
           })}
         </Map>
       </div>
