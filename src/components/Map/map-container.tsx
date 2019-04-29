@@ -14,7 +14,7 @@ interface IMapProps {
 
 interface MapState {
   zoom: number
-  stations: any[]
+  stations: IStation[]
 }
 
 class MapContainer extends React.Component<IMapProps, MapState, IStation> {
@@ -57,12 +57,11 @@ class MapContainer extends React.Component<IMapProps, MapState, IStation> {
             url={values.tileSource}
             ext={values.ext}
           />
-          {stations.map((s: any) => {
-            const id: number = s.id
-            const location: [number, number] = s.location.coordinates
+          {stations.map((s: IStation) => {
+            const location = s.location.coordinates
             return (
-              <Marker position={this.convertCoords(location)}>
-                <Popup>Station ID</Popup>
+              <Marker position={this.convertCoords(location)} key={s.id}>
+                <Popup>{s.street}</Popup>
               </Marker>
             )
           })}
