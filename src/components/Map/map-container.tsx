@@ -35,7 +35,7 @@ class MapContainer extends React.Component<IMapProps, MapState> {
 
   render() {
     const position = values.centerCoordinates
-    const stations = this.state.stations
+    const stations: any = this.state.stations
     return (
       <div>
         <Map
@@ -49,11 +49,11 @@ class MapContainer extends React.Component<IMapProps, MapState> {
             url={values.tileSource}
             ext={values.ext}
           />
-          {stations.map(s => {
-            // const id: number = s.id
-            // const location = s.location.coordinates
+          {stations.map((s: any) => {
+            const id: number = s.id
+            const location: [number, number] = s.location.coordinates
             return (
-              <Marker position={[54.5, 18.6]}>
+              <Marker position={location}>
                 <Popup>Station ID</Popup>
               </Marker>
             )
