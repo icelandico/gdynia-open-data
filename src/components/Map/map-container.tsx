@@ -7,6 +7,7 @@ import L from "leaflet"
 import values from "../../global/values"
 import { weatherStations } from "../../api/api"
 import { IStation } from "../../api/api-types"
+import WeatherPopup from "../WeatherPopup/weather-popup"
 
 interface IMapProps {
   station?: IStation
@@ -60,8 +61,8 @@ class MapContainer extends React.Component<IMapProps, MapState, IStation> {
           {stations.map((s: IStation) => {
             const location = s.location.coordinates
             return (
-              <Marker position={this.convertCoords(location)} key={s.id}>
-                <Popup>{s.street}</Popup>
+              <Marker position={this.convertCoords(location)} key={s.id} id={3}>
+                <WeatherPopup street={s.street} />
               </Marker>
             )
           })}
