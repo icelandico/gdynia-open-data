@@ -5,15 +5,18 @@ import classNames from "classnames"
 import { Map, TileLayer, Marker, Popup } from "react-leaflet"
 import values from "../../global/values"
 import { weatherStations } from "../../api/api"
+import { IStation } from "../../api/api-types"
 
-interface IMapProps {}
+interface IMapProps {
+  station?: IStation
+}
 
 interface MapState {
   zoom: number
   stations: any[]
 }
 
-class MapContainer extends React.Component<IMapProps, MapState> {
+class MapContainer extends React.Component<IMapProps, MapState, IStation> {
   state = {
     zoom: 12,
     stations: []
@@ -35,7 +38,7 @@ class MapContainer extends React.Component<IMapProps, MapState> {
 
   render() {
     const position = values.centerCoordinates
-    const stations: any = this.state.stations
+    const stations: IStation[] = this.state.stations
     return (
       <div>
         <Map
