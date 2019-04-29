@@ -3,6 +3,7 @@ import MapStyles from "./../Map/map-container-styles"
 import "rbx/index.css"
 import classNames from "classnames"
 import { Map, TileLayer, Marker, Popup } from "react-leaflet"
+import L from "leaflet"
 import values from "../../global/values"
 import { weatherStations } from "../../api/api"
 import { IStation } from "../../api/api-types"
@@ -36,6 +37,10 @@ class MapContainer extends React.Component<IMapProps, MapState, IStation> {
     })
   }
 
+  convertCoords = (coords: [number, number]) => {
+    return new L.LatLng(coords[1], coords[0])
+  }
+
   render() {
     const position = values.centerCoordinates
     const stations: IStation[] = this.state.stations
@@ -56,7 +61,7 @@ class MapContainer extends React.Component<IMapProps, MapState, IStation> {
             const id: number = s.id
             const location: [number, number] = s.location.coordinates
             return (
-              <Marker position={location}>
+              <Marker position={this.convertCoords(location)}>
                 <Popup>Station ID</Popup>
               </Marker>
             )
