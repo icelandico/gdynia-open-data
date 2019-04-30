@@ -12,6 +12,7 @@ interface IStationProps {
   station?: IStation
   street: string
   id: number
+  airTemperature: number
 }
 
 interface MapState {}
@@ -25,7 +26,8 @@ class WeatherPopup extends React.Component<IStationProps, MapState, IStation> {
         <Popup>
           <p>{this.props.id}</p>
 
-          {this.props.street}
+          <p>Lokalizacja: {this.props.street}</p>
+          <p>Temperatura: {this.props.airTemperature}</p>
         </Popup>
       </>
     )

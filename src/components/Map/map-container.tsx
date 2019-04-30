@@ -38,7 +38,6 @@ class MapContainer extends React.Component<IMapProps, MapState, IStation> {
       )
       return { ...item, ...(matched[0] as Object) }
     })
-    console.log(wData)
     return wData
   }
 
@@ -75,7 +74,11 @@ class MapContainer extends React.Component<IMapProps, MapState, IStation> {
             const location = s.location.coordinates
             return (
               <Marker position={this.convertCoords(location)} key={s.id} id={3}>
-                <WeatherPopup id={s.id} street={s.street} />
+                <WeatherPopup
+                  id={s.weatherStationId}
+                  street={s.street}
+                  airTemperature={s.airTemperature}
+                />
               </Marker>
             )
           })}

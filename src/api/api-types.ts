@@ -9,4 +9,6 @@ export interface IStation {
   street: string
   location: location
   lastUpdate: string
+  weatherStationId: number
+  airTemperature: number
 }
