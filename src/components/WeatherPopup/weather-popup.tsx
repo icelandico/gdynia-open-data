@@ -11,6 +11,7 @@ import { IStation } from "../../api/api-types"
 interface IStationProps {
   station?: IStation
   street: string
+  id: number
 }
 
 interface MapState {}
@@ -21,7 +22,11 @@ class WeatherPopup extends React.Component<IStationProps, MapState, IStation> {
   render() {
     return (
       <>
-        <Popup>{this.props.street}</Popup>
+        <Popup>
+          <p>{this.props.id}</p>
+
+          {this.props.street}
+        </Popup>
       </>
     )
   }

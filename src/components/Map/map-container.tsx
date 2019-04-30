@@ -5,7 +5,7 @@ import classNames from "classnames"
 import { Map, TileLayer, Marker, Popup } from "react-leaflet"
 import L from "leaflet"
 import values from "../../global/values"
-import { weatherStations } from "../../api/api"
+import { weatherStations, weatherStationsData } from "../../api/api"
 import { IStation } from "../../api/api-types"
 import WeatherPopup from "../WeatherPopup/weather-popup"
 
@@ -26,14 +26,27 @@ class MapContainer extends React.Component<IMapProps, MapState, IStation> {
 
   getData = async () => {
     const stations = await weatherStations
-    return stations
+    const stationsData = await weatherStationsData
+    return this.concatData(stations, stationsData)
+  }
+
+  concatData = (stations: any, stationsData: []) => {
+    const wStations = stations.weatherStations
+    const wData = wStations.map((item: any) => {
+      const matched = stationsData.filter(
+        (s: any) => s.weatherStationId === item.id
+      )
+      return { ...item, ...(matched[0] as Object) }
+    })
+    console.log(wData)
+    return wData
   }
 
   componentDidMount() {
     const data = this.getData()
     data.then(res => {
       this.setState({
-        stations: res.weatherStations
+        stations: res
       })
     })
   }
@@ -62,7 +75,7 @@ class MapContainer extends React.Component<IMapProps, MapState, IStation> {
             const location = s.location.coordinates
             return (
               <Marker position={this.convertCoords(location)} key={s.id} id={3}>
-                <WeatherPopup street={s.street} />
+                <WeatherPopup id={s.id} street={s.street} />
               </Marker>
             )
           })}
