@@ -2,36 +2,32 @@ import * as React from "react"
 import styles from "./../WeatherPopup/weather-popup-styles"
 import "rbx/index.css"
 import classNames from "classnames"
-import { Map, TileLayer, Marker, Popup } from "react-leaflet"
-import L from "leaflet"
-import values from "../../global/values"
-import { weatherStations } from "../../api/api"
+import { Popup } from "react-leaflet"
 import { IStation } from "../../api/api-types"
 
 interface IStationProps {
-  station?: IStation
-  street: string
-  id: number
-  airTemperature: number
+	station?: IStation
+	street: string
+	id: number
+	airTemperature: number
 }
 
 interface MapState {}
 
 class WeatherPopup extends React.Component<IStationProps, MapState, IStation> {
-  state = {}
+	state = {}
 
-  render() {
-    return (
-      <>
-        <Popup>
-          <p>{this.props.id}</p>
-
-          <p>Lokalizacja: {this.props.street}</p>
-          <p>Temperatura: {this.props.airTemperature}</p>
-        </Popup>
-      </>
-    )
-  }
+	render() {
+		return (
+			<>
+				<Popup>
+					<p>Identyfikator stacji: {this.props.id || "Brak danych"}</p>
+					<p>Lokalizacja: {this.props.street || "Brak danych"}</p>
+					<p>Temperatura: {this.props.airTemperature || "Brak danych"}</p>
+				</Popup>
+			</>
+		)
+	}
 }
 
 export default WeatherPopup
