@@ -12,9 +12,11 @@ class MenuInput extends React.Component<any, Istate> {
 		chosen: null
 	}
 
-	handleChange = (val: string) => {
+	handleChange = (val: any) => {
+		const value = val.target.value
+		console.log(value)
 		this.setState({
-			chosen: val
+			chosen: value
 		})
 	}
 
@@ -27,7 +29,7 @@ class MenuInput extends React.Component<any, Istate> {
 						type="radio"
 						className={styles.menuInput}
 						value="none"
-						onChange={() => this.handleChange("none")}
+						onChange={this.handleChange}
 					/>
 					Brak warstw
 				</label>
@@ -36,10 +38,21 @@ class MenuInput extends React.Component<any, Istate> {
 						name="chosen-layer"
 						type="radio"
 						className={styles.menuInput}
-						onChange={() => this.handleChange("weather")}
-						checked
+						value="weather"
+						onChange={this.handleChange}
+						defaultChecked
 					/>
 					Pogoda
+				</label>
+				<label>
+					<input
+						name="chosen-layer"
+						type="radio"
+						className={styles.menuInput}
+						value="traffic"
+						onChange={this.handleChange}
+					/>
+					Dane o ruchu
 				</label>
 			</React.Fragment>
 		)
