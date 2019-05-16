@@ -2,6 +2,8 @@ import * as React from "react"
 import styles from "./menu-input-styles"
 import "rbx/index.css"
 import classNames from "classnames"
+import { useStore } from "laco-react"
+import { LayerStore, CounterStore, increment } from "../../store/app-store"
 
 interface Istate {
 	chosen: string | null
@@ -21,6 +23,7 @@ class MenuInput extends React.Component<any, Istate> {
 	}
 
 	render() {
+		// const counterState = useStore(CounterStore)
 		return (
 			<React.Fragment>
 				<label>

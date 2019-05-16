@@ -33,9 +33,7 @@ class MapContainer extends React.Component<IMapProps, MapState, IStation> {
   concatData = (stations: any, stationsData: []) => {
     const wStations = stations.weatherStations
     const wData = wStations.map((item: any) => {
-      const matched = stationsData.filter(
-        (s: any) => s.weatherStationId === item.id
-      )
+      const matched = stationsData.filter((s: any) => s.weatherStationId === item.id)
       return { ...item, ...(matched[0] as Object) }
     })
     return wData
@@ -54,9 +52,20 @@ class MapContainer extends React.Component<IMapProps, MapState, IStation> {
     return new L.LatLng(coords[1], coords[0])
   }
 
+  renderWeatherStations = () => {
+    const stations: IStation[] = this.state.stations
+    return (stations.map((s: IStation) => {
+      const location = s.location.coordinates
+      return (
+        <Marker position={this.convertCoords(location)} key={s.id} id={3}>
+          <WeatherPopup id={s.weatherStationId} street={s.street} airTemperature={s.airTemperature} />
+        </Marker>
+      )
+    }))
+  }
+
   render() {
     const position = values.centerCoordinates
-    const stations: IStation[] = this.state.stations
     return (
       <div>
         <Map
@@ -70,18 +79,7 @@ class MapContainer extends React.Component<IMapProps, MapState, IStation> {
             url={values.tileSource}
             ext={values.ext}
           />
-          {stations.map((s: IStation) => {
-            const location = s.location.coordinates
-            return (
-              <Marker position={this.convertCoords(location)} key={s.id} id={3}>
-                <WeatherPopup
-                  id={s.weatherStationId}
-                  street={s.street}
-                  airTemperature={s.airTemperature}
-                />
-              </Marker>
-            )
-          })}
+          {this.renderWeatherStations()}
         </Map>
       </div>
     )
