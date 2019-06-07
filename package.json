@@ -15,8 +15,6 @@
     "@types/react-leaflet": "^2.2.1",
     "classnames": "^2.2.6",
     "jss": "^9.8.7",
-    "laco": "^1.2.1",
-    "laco-react": "^1.1.0",
     "leaflet": "^1.4.0",
     "rbx": "^2.1.0",
     "react": "^16.8.6",
