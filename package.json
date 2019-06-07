@@ -14,6 +14,7 @@
     "@types/react-jss": "^8.6.3",
     "@types/react-leaflet": "^2.2.1",
     "classnames": "^2.2.6",
+    "effector": "^19.1.0",
     "jss": "^9.8.7",
     "leaflet": "^1.4.0",
     "rbx": "^2.1.0",
