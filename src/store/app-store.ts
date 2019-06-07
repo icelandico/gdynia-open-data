@@ -1,8 +1,7 @@
-import { Store } from "laco"
+import { createStore, createEvent } from "effector"
 
-export const LayerStore = new Store({ layer: "none" })
-export const CounterStore = new Store({ count: 5 }, "CounterStore")
+const changedLayer = createEvent("Layer changed")
 
-export const changeLayer = (layer: string) => LayerStore.set((state: string) => ({ layer }))
+const activeLayer = createStore("")
 
-export const increment = () => CounterStore.set((state: any) => ({ count: state.count + 1 }), "Increment")
+activeLayer.on(changedLayer, (state, layer) => layer)
