@@ -1,65 +1,56 @@
 import * as React from "react"
 import styles from "./menu-input-styles"
 import "rbx/index.css"
-import classNames from "classnames"
-import { LayerStore } from "../../store/app-store"
-import { Layer } from "leaflet"
+import { useStore } from "effector-react"
+import { activeLayer, changeLayer } from "../../store/app-store"
 
-interface Istate {
-  chosen: string | null
-}
+export const MenuInput = () => {
 
-class MenuInput extends React.Component<any, Istate> {
-  state = {
-    chosen: null
+  const switchLayer = (layer: any) => changeLayer(layer)
+
+  const handleChange = (event: any) => {
+    const val = event.target.value
+    switchLayer(val)
   }
 
-  handleChange = (val: any) => {
-    const value = val.target.value
-    console.log(value)
-    this.setState({
-      chosen: value
-    })
-  }
+  const layer = useStore(activeLayer)
 
-  render() {
-
-    return (
-      <React.Fragment>
-        <label>
-          <input
-            name="chosen-layer"
-            type="radio"
-            className={styles.menuInput}
-            value="none"
-            onChange={this.handleChange}
-          />
-          Brak warstw
+  return (
+    <React.Fragment>
+      <p>{layer}</p>
+      <label>
+        <input
+          name="chosen-layer"
+          type="radio"
+          className={styles.menuInput}
+          value="none"
+          onChange={handleChange}
+        />
+        Brak warstw
 				</label>
-        <label>
-          <input
-            name="chosen-layer"
-            type="radio"
-            className={styles.menuInput}
-            value="weather"
-            onChange={this.handleChange}
-            defaultChecked
-          />
-          Pogoda
+      <label>
+        <input
+          name="chosen-layer"
+          type="radio"
+          className={styles.menuInput}
+          value="weather"
+          onChange={handleChange}
+          defaultChecked
+        />
+        Pogoda
 				</label>
-        <label>
-          <input
-            name="chosen-layer"
-            type="radio"
-            className={styles.menuInput}
-            value="traffic"
-            onChange={this.handleChange}
-          />
-          Dane o ruchu
+      <label>
+        <input
+          name="chosen-layer"
+          type="radio"
+          className={styles.menuInput}
+          value="traffic"
+          onChange={handleChange}
+        />
+        Dane o ruchu
 				</label>
-      </React.Fragment>
-    )
-  }
+    </React.Fragment>
+  )
 }
 
 export default MenuInput

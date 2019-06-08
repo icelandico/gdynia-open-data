@@ -1,7 +1,5 @@
 import { createStore, createEvent } from "effector"
 
-const changedLayer = createEvent("Layer changed")
-
-const activeLayer = createStore("")
-
-activeLayer.on(changedLayer, (state, layer) => layer)
+export const changeLayer = createEvent("switch")
+export const activeLayer = createStore("none")
+  .on(changeLayer, (state, layer) => layer)
