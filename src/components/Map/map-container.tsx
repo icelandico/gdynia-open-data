@@ -5,24 +5,18 @@ import "rbx/index.css"
 import classNames from "classnames"
 import { useStore } from "effector-react"
 import { activeLayer } from "../../store/app-store"
-import { Map, TileLayer, Marker, Popup } from "react-leaflet"
+import { Map, TileLayer, Marker } from "react-leaflet"
 import L from "leaflet"
 import values from "../../global/values"
 import { weatherStations, weatherStationsData } from "../../api/api"
 import { IStation } from "../../api/api-types"
 import WeatherPopup from "../Layers/Weather/WeatherPopup/weather-popup"
 
-interface IMapProps {
-  station?: IStation
-  mapZoom?: number
-  stations?: IStation[]
-}
-
-const MapContainer: React.FC<IMapProps> = () => {
+const MapContainer: React.FC = (IMap) => {
 
   const layer = useStore(activeLayer)
-  const [mapZoom, getZoom] = useState(12)
-  const [stations, getStations] = useState([])
+  const [mapZoom] = useState<number>(12)
+  const [stations, getStations] = useState<[]>([])
 
   useEffect(() => {
     const data = getData()
@@ -45,15 +39,6 @@ const MapContainer: React.FC<IMapProps> = () => {
     })
     return wData
   }
-
-  // componentDidMount() {
-  //   const data = getData()
-  //   data.then(res => {
-  //     this.setState({
-  //       stations: res
-  //     })
-  //   })
-  // }
 
   const convertCoords = (coords: [number, number]) => {
     return new L.LatLng(coords[1], coords[0])
