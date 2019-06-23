@@ -7,7 +7,7 @@ import L from "leaflet"
 import values from "../../global/values"
 import { weatherStations, weatherStationsData } from "../../api/api"
 import { IStation } from "../../api/api-types"
-import WeatherPopup from "../WeatherPopup/weather-popup"
+import WeatherPopup from "../Layers/Weather/WeatherPopup/weather-popup"
 
 interface IMapProps {
   station?: IStation
