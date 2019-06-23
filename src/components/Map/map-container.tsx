@@ -11,56 +11,66 @@ import values from "../../global/values"
 import { weatherStations, weatherStationsData } from "../../api/api"
 import { IStation } from "../../api/api-types"
 import WeatherPopup from "../Layers/Weather/WeatherPopup/weather-popup"
+import WeatherMarkers from "../Layers/Weather/WeatherMarkers/weather-markers"
 
-const MapContainer: React.FC = (IMap) => {
+const MapContainer: React.FC = () => {
 
   const layer = useStore(activeLayer)
   const [mapZoom] = useState<number>(12)
-  const [stations, getStations] = useState<[]>([])
+  // const [stations, getStations] = useState<[]>([])
 
-  useEffect(() => {
-    const data = getData()
-    data.then(res => {
-      getStations(res)
-    })
-  }, [])
+  // useEffect(() => {
+  //   const data = getData()
+  //   data.then(res => {
+  //     getStations(res)
+  //   })
+  // }, [])
 
-  const getData = async () => {
-    const stations = await weatherStations
-    const stationsData = await weatherStationsData
-    return concatData(stations, stationsData)
-  }
+  // const getData = async () => {
+  //   const stations = await weatherStations
+  //   const stationsData = await weatherStationsData
+  //   return concatData(stations, stationsData)
+  // }
 
-  const concatData = (stations: any, stationsData: []) => {
-    const wStations = stations.weatherStations
-    const wData = wStations.map((item: any) => {
-      const matched = stationsData.filter((s: any) => s.weatherStationId === item.id)
-      return { ...item, ...(matched[0] as Object) }
-    })
-    return wData
-  }
+  // const concatData = (stations: any, stationsData: []) => {
+  //   const wStations = stations.weatherStations
+  //   const wData = wStations.map((item: any) => {
+  //     const matched = stationsData.filter((s: any) => s.weatherStationId === item.id)
+  //     return { ...item, ...(matched[0] as Object) }
+  //   })
+  //   return wData
+  // }
 
-  const convertCoords = (coords: [number, number]) => {
-    return new L.LatLng(coords[1], coords[0])
-  }
+  // const convertCoords = (coords: [number, number]) => {
+  //   return new L.LatLng(coords[1], coords[0])
+  // }
 
-  const renderWeatherStations = () => {
-    const stationList: IStation[] = stations
-    return (stationList.map((s: IStation) => {
-      const location = s.location.coordinates
-      return (
-        <Marker position={convertCoords(location)} key={s.id} id={3}>
-          <WeatherPopup id={s.weatherStationId} street={s.street} airTemperature={s.airTemperature} />
-        </Marker>
-      )
-    }))
+  // const renderWeatherStations = () => {
+  //   const stationList: IStation[] = stations
+  //   return (stationList.map((s: IStation) => {
+  //     const location = s.location.coordinates
+  //     return (
+  //       <Marker position={convertCoords(location)} key={s.id} id={3}>
+  //         <WeatherPopup id={s.weatherStationId} street={s.street} airTemperature={s.airTemperature} />
+  //       </Marker>
+  //     )
+  //   }))
+  // }
+
+  const renderLayer = () => {
+    const selectedLayer = layer
+    switch (selectedLayer) {
+      case "weather":
+        return <WeatherMarkers />
+      default:
+        alert("Empty layer!")
+    }
   }
 
   const position = values.centerCoordinates
 
   return (
     <div>
-      <p>{layer}</p>
       <Map
         center={position}
         zoom={mapZoom}
@@ -72,11 +82,10 @@ const MapContainer: React.FC = (IMap) => {
           url={values.tileSource}
           ext={values.ext}
         />
-        {renderWeatherStations()}
+        {renderLayer()}
       </Map>
     </div>
   )
 }
-
 
 export default MapContainer
