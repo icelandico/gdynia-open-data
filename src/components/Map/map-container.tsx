@@ -1,67 +1,23 @@
 import * as React from "react"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import MapStyles from "./../Map/map-container-styles"
 import "rbx/index.css"
-import classNames from "classnames"
 import { useStore } from "effector-react"
 import { activeLayer } from "../../store/app-store"
-import { Map, TileLayer, Marker } from "react-leaflet"
-import L from "leaflet"
+import { Map, TileLayer } from "react-leaflet"
 import values from "../../global/values"
-import { weatherStations, weatherStationsData } from "../../api/api"
-import { IStation } from "../../api/api-types"
-import WeatherPopup from "../Layers/Weather/WeatherPopup/weather-popup"
-import WeatherMarkers from "../Layers/Weather/WeatherMarkers/weather-markers"
+import WeatherLayer from "../Layers/Weather/weather-layer"
 
 const MapContainer: React.FC = () => {
 
   const layer = useStore(activeLayer)
   const [mapZoom] = useState<number>(12)
-  // const [stations, getStations] = useState<[]>([])
-
-  // useEffect(() => {
-  //   const data = getData()
-  //   data.then(res => {
-  //     getStations(res)
-  //   })
-  // }, [])
-
-  // const getData = async () => {
-  //   const stations = await weatherStations
-  //   const stationsData = await weatherStationsData
-  //   return concatData(stations, stationsData)
-  // }
-
-  // const concatData = (stations: any, stationsData: []) => {
-  //   const wStations = stations.weatherStations
-  //   const wData = wStations.map((item: any) => {
-  //     const matched = stationsData.filter((s: any) => s.weatherStationId === item.id)
-  //     return { ...item, ...(matched[0] as Object) }
-  //   })
-  //   return wData
-  // }
-
-  // const convertCoords = (coords: [number, number]) => {
-  //   return new L.LatLng(coords[1], coords[0])
-  // }
-
-  // const renderWeatherStations = () => {
-  //   const stationList: IStation[] = stations
-  //   return (stationList.map((s: IStation) => {
-  //     const location = s.location.coordinates
-  //     return (
-  //       <Marker position={convertCoords(location)} key={s.id} id={3}>
-  //         <WeatherPopup id={s.weatherStationId} street={s.street} airTemperature={s.airTemperature} />
-  //       </Marker>
-  //     )
-  //   }))
-  // }
 
   const renderLayer = () => {
     const selectedLayer = layer
     switch (selectedLayer) {
       case "weather":
-        return <WeatherMarkers />
+        return <WeatherLayer />
       default:
         alert("Empty layer!")
     }

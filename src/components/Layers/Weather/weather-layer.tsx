@@ -1,15 +1,13 @@
 import * as React from "react"
 import { useState, useEffect } from "react"
 import "rbx/index.css"
-import { useStore } from "effector-react"
-import { activeLayer } from "../../../../store/app-store"
 import { Marker } from "react-leaflet"
 import L from "leaflet"
-import { weatherStations, weatherStationsData } from "../../../../api/api"
-import { IStation } from "../../../../api/api-types"
-import WeatherPopup from "../WeatherPopup/weather-popup"
+import { weatherStations, weatherStationsData } from "../../../api/api"
+import { IStation } from "../../../api/api-types"
+import WeatherPopup from "./WeatherPopup/weather-popup"
 
-const WeatherMarkers: React.FC = () => {
+const WeatherLayer: React.FC = () => {
 
   const [stations, getStations] = useState<[]>([])
 
@@ -61,4 +59,4 @@ const WeatherMarkers: React.FC = () => {
 }
 
 
-export default WeatherMarkers
+export default WeatherLayer
