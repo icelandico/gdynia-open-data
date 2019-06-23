@@ -19,7 +19,7 @@ const MapContainer: React.FC = () => {
       case "weather":
         return <WeatherLayer />
       default:
-        alert("Empty layer!")
+        console.log("No layer chosen")
     }
   }
 

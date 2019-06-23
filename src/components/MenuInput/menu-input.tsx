@@ -25,6 +25,7 @@ export const MenuInput = () => {
           className={styles.menuInput}
           value="none"
           onChange={handleChange}
+          defaultChecked
         />
         Brak warstw
 				</label>
@@ -35,7 +36,6 @@ export const MenuInput = () => {
           className={styles.menuInput}
           value="weather"
           onChange={handleChange}
-          defaultChecked
         />
         Pogoda
 				</label>
