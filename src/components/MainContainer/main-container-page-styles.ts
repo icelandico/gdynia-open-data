@@ -6,8 +6,19 @@ const menuContainer = style({
   paddingLeft: "2rem"
 })
 
+const rowContainer = style({
+  margin: "0",
+  minHeight: "80%"
+})
+
+const column = style({
+  padding: "0"
+})
+
 const styles = {
-  menuContainer
+  menuContainer,
+  rowContainer,
+  column
 }
 
 export default styles

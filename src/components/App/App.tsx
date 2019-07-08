@@ -13,7 +13,7 @@ class App extends React.Component {
       <div className={styles.main}>
         <NavbarComponent />
         <MainContainer />
-        <Footer />
+        {/* <Footer /> */}
       </div>
     )
   }

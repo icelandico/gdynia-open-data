@@ -9,7 +9,7 @@ class Footer extends React.Component {
     return (
       <FooterCmp>
         <Content className={styles.center}>
-          <p>created by michal m.</p>
+          <p>created by </p>
         </Content>
       </FooterCmp>
     )

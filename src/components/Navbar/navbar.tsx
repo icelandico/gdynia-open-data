@@ -10,7 +10,7 @@ class NavbarComponent extends React.Component {
     return (
       <Navbar>
         <Notification className={styles.center}>
-          Gdynia Open Data
+          Gdynia Open Data Viewer
         </Notification>
       </Navbar>
     )
