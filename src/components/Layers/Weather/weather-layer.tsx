@@ -6,6 +6,7 @@ import L from "leaflet"
 import { weatherStations, weatherStationsData } from "../../../api/api"
 import { IStation } from "../../../api/api-types"
 import WeatherPopup from "./WeatherPopup/weather-popup"
+import {MapMarker} from "./../../../global/values"
 
 const WeatherLayer: React.FC = () => {
 
@@ -28,7 +29,7 @@ const WeatherLayer: React.FC = () => {
     const wStations = stations.weatherStations
     const wData = wStations.map((item: any) => {
       const matched = stationsData.filter((s: any) => s.weatherStationId === item.id)
-      return { ...item, ...(matched[0] as Object) }
+      return { ...item, ...(matched[0], Object) }
     })
     return wData
   }
@@ -42,7 +43,7 @@ const WeatherLayer: React.FC = () => {
     return (stationList.map((s: IStation) => {
       const location = s.location.coordinates
       return (
-        <Marker position={convertCoords(location)} key={s.id} id={3}>
+        <Marker position={convertCoords(location)} key={s.id} id={3} icon={MapMarker}>
           <WeatherPopup id={s.weatherStationId} street={s.street} airTemperature={s.airTemperature} />
         </Marker>
       )
