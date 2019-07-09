@@ -8,7 +8,7 @@ import MenuPanel from "../MenuPanel/menu-panel"
 const MainContainer: React.FC = () => {
   return (
     <Column.Group className={styles.rowContainer}>
-      <Column size={3} className={styles.column}>
+      <Column size={2} className={styles.column}>
         <MenuPanel />
       </Column>
       <Column className={styles.column}>

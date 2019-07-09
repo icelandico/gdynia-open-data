@@ -1,7 +1,7 @@
 import { style } from "typestyle"
 
 const menuContainer = style({
-	backgroundColor: "cadetblue",
+	backgroundColor: "#ccc",
 	height: "100%",
 	padding: "1rem 2rem"
 })
