@@ -33,7 +33,7 @@ const WeatherLayer: React.FC = () => {
     })
     return wData
   }
-
+  
   const convertCoords = (coords: [number, number]) => {
     return new L.LatLng(coords[1], coords[0])
   }

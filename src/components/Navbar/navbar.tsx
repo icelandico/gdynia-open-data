@@ -4,18 +4,15 @@ import { Navbar, Notification } from "rbx"
 import "rbx/index.css"
 import classNames from "classnames"
 
-class NavbarComponent extends React.Component {
-
-  render() {
+const NavbarComponent: React.FC = () => {
     return (
-      <Navbar>
+      <div>
         <Notification className={styles.center}>
           Gdynia Open Data Viewer
         </Notification>
-      </Navbar>
+      </div>
     )
   }
-}
 
 export default NavbarComponent
 

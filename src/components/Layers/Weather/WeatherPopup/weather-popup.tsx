@@ -7,27 +7,21 @@ import { IStation } from "../../../../api/api-types"
 
 interface IStationProps {
   station?: IStation
-  street: string
   id: number
+  street: string
   airTemperature: number
 }
 
-interface MapState { }
-
-class WeatherPopup extends React.Component<IStationProps, MapState, IStation> {
-  state = {}
-
-  render() {
+const WeatherPopup: React.FC<IStationProps> = (props) => {
     return (
       <>
         <Popup>
-          <p>Identyfikator stacji: {this.props.id || "Brak danych"}</p>
-          <p>Lokalizacja: {this.props.street || "Brak danych"}</p>
-          <p>Temperatura: {this.props.airTemperature || "Brak danych"}</p>
+          <p>Identyfikator stacji: {props.id || "Brak danych"}</p>
+          <p>Lokalizacja: {props.street || "Brak danych"}</p>
+          <p>Temperatura: {props.airTemperature || "Brak danych"}</p>
         </Popup>
       </>
     )
   }
-}
 
 export default WeatherPopup
