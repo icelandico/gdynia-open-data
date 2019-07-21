@@ -1,10 +1,9 @@
 import * as React from "react"
-import styles from "./menu-input-styles"
 import "rbx/index.css"
 import { useStore } from "effector-react"
 import { activeLayer, changeLayer } from "../../store/app-store"
-import { style } from "typestyle"
-import "./menu-styles.css"
+// import "./menu-styles.css"
+import styles from "./menu-input-styles"
 
 const MenuInput = () => {
   const switchLayer = (layer: any) => changeLayer(layer)
@@ -22,35 +21,35 @@ const MenuInput = () => {
       <input
         name="chosen-layer"
         type="radio"
-        className="menuInput"
+        className={styles.menuInput}
         value="none"
         onChange={handleChange}
         defaultChecked
         id="none"
       />
-      <label htmlFor="none" className="menuLabel">
+      <label htmlFor="none" className={styles.menuLabel}>
         Brak warstw
       </label>
       <input
         name="chosen-layer"
         type="radio"
-        className="menuInput"
+        className={styles.menuInput}
         value="weather"
         onChange={handleChange}
         id="weather"
       />
-      <label htmlFor="weather" className="menuLabel">
+      <label htmlFor="weather" className={styles.menuLabel}>
         Pogoda
       </label>
       <input
         name="chosen-layer"
         type="radio"
-        className="menuInput"
+        className={styles.menuInput}
         value="traffic"
         onChange={handleChange}
         id="traffic"
       />
-      <label htmlFor="traffic" className="menuLabel">
+      <label htmlFor="traffic" className={styles.menuLabel}>
         Dane o ruchu
       </label>
     </React.Fragment>

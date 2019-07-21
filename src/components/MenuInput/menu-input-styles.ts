@@ -4,31 +4,43 @@ const menuLabel = style({
   cursor: "pointer",
   display: "block",
   position: "relative",
+  margin: "5px 0",
   $nest: {
-    "&:after": {
-      content: "",
-      backgroundColor: "#333",
-      width: "20px",
-      height: "20px",
-      transition: "all 0.5s ease-out",
+    "&:before": {
+      content: "''",
+      width: "30px",
+      height: "30px",
+      transition: "all 0.3s ease- out",
       display: "inline-block",
-      border: "2px solid #FF8C00"
+      border: "5px solid #4d4d4dff",
+      verticalAlign: "middle",
+      borderRadius: "50%",
+      marginRight: "10px",
+      position: "relative"
+    },
+    "&:hover::before": {
+      background: "#4d4d4dff"
     }
   }
 })
 
 const menuInput = style({
-  marginRight: "0.75rem",
+  opacity: 0,
+  position: "absolute",
   $nest: {
-    "&:checked": {
-      content: "",
+    [`&:checked + .${menuLabel}:after`]: {
+      content: "''",
       position: "absolute",
       left: "6px",
-      top: "11px",
-      background: "white",
-      width: "3px",
-      height: "3px",
-      transform: "rotate(45deg)"
+      top: "6px",
+      background: "#fff",
+      width: "18px",
+      height: "18px",
+      borderRadius: "50%",
+      margin: "auto"
+    },
+    [`&:checked + .${menuLabel}:before`]: {
+      background: "#4d4d4dff"
     }
   }
 })
