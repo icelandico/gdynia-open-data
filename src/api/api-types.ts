@@ -11,4 +11,5 @@ export interface IStation {
   lastUpdate: string
   weatherStationId: number
   airTemperature: number
+  surfaceTemperature: number
 }

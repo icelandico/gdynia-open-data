@@ -53,6 +53,7 @@ const WeatherLayer: React.FC = () => {
             id={s.id}
             street={s.street}
             airTemperature={s.airTemperature}
+            surfaceTemperature={s.surfaceTemperature}
           />
         </Marker>
       )

@@ -52,6 +52,17 @@ const MenuInput = () => {
       <label htmlFor="traffic" className={styles.menuLabel}>
         Dane o ruchu
       </label>
+      <input
+        name="chosen-layer"
+        type="radio"
+        className={styles.menuInput}
+        value="parkings"
+        onChange={handleChange}
+        id="parkings"
+      />
+      <label htmlFor="parkings" className={styles.menuLabel}>
+        Parkingi
+      </label>
     </React.Fragment>
   )
 }
