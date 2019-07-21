@@ -13,9 +13,11 @@
     "@types/react-dom": "16.8.3",
     "@types/react-jss": "^8.6.3",
     "@types/react-leaflet": "^2.2.1",
+    "babel-eslint": "^9.0.0",
     "classnames": "^2.2.6",
     "effector": "^19.1.0",
     "effector-react": "^19.0.0",
+    "eslint": "^5.12.0",
     "jss": "^9.8.7",
     "leaflet": "^1.4.0",
     "rbx": "^2.1.0",
@@ -42,5 +44,15 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "devDependencies": {}
+  "devDependencies": {
+    "@typescript-eslint/parser": "^1.12.0",
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.2",
+    "prettier": "^1.18.2"
+  }
 }
