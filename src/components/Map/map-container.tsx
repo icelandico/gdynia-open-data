@@ -9,7 +9,6 @@ import values from "../../global/values"
 import WeatherLayer from "../Layers/Weather/weather-layer"
 
 const MapContainer: React.FC = () => {
-
   const layer = useStore(activeLayer)
   const [mapZoom] = useState<number>(12)
 
@@ -22,7 +21,6 @@ const MapContainer: React.FC = () => {
         console.log("No layer chosen")
     }
   }
-
   const position = values.centerCoordinates
 
   return (

@@ -12,16 +12,16 @@ interface IStationProps {
   airTemperature: number
 }
 
-const WeatherPopup: React.FC<IStationProps> = (props) => {
-    return (
-      <>
-        <Popup>
-          <p>Identyfikator stacji: {props.id || "Brak danych"}</p>
-          <p>Lokalizacja: {props.street || "Brak danych"}</p>
-          <p>Temperatura: {props.airTemperature || "Brak danych"}</p>
-        </Popup>
-      </>
-    )
-  }
+const WeatherPopup: React.FC<IStationProps> = props => {
+  return (
+    <>
+      <Popup>
+        <p>Identyfikator stacji: {props.id || "Brak danych"}</p>
+        <p>Lokalizacja: {props.street || "Brak danych"}</p>
+        <p>Temperatura: {props.airTemperature || "Brak danych"}</p>
+      </Popup>
+    </>
+  )
+}
 
 export default WeatherPopup

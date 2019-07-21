@@ -7,7 +7,6 @@ import L from "leaflet"
 // import { IStation } from "../../../api/api-types"
 
 const ParkingPlacesLayer: React.FC = () => {
-
   const [stations, getStations] = useState<[]>([])
 
   // useEffect(() => {
@@ -26,7 +25,9 @@ const ParkingPlacesLayer: React.FC = () => {
   const concatData = (stations: any, stationsData: []) => {
     const wStations = stations.weatherStations
     const wData = wStations.map((item: any) => {
-      const matched = stationsData.filter((s: any) => s.weatherStationId === item.id)
+      const matched = stationsData.filter(
+        (s: any) => s.weatherStationId === item.id
+      )
       return { ...item, ...(matched[0] as Object) }
     })
     return wData
@@ -36,7 +37,7 @@ const ParkingPlacesLayer: React.FC = () => {
     return new L.LatLng(coords[1], coords[0])
   }
 
-  const renderWeatherStations = () => {
+  const renderParkingPlaces = () => {
     // const stationList: IStation[] = stations
     // return (stationList.map((s: IStation) => {
     //   const location = s.location.coordinates
@@ -48,14 +49,7 @@ const ParkingPlacesLayer: React.FC = () => {
     // }))
   }
 
-  return (
-    <>
-      {
-        renderWeatherStations()
-      }
-    </>
-  )
+  return <>{renderParkingPlaces()}</>
 }
-
 
 export default ParkingPlacesLayer

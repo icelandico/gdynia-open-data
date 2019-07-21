@@ -6,10 +6,9 @@ import L from "leaflet"
 import { weatherStations, weatherStationsData } from "../../../api/api"
 import { IStation } from "../../../api/api-types"
 import WeatherPopup from "./WeatherPopup/weather-popup"
-import {MapMarker} from "./../../../global/values"
+import { MapMarker } from "./../../../global/values"
 
 const WeatherLayer: React.FC = () => {
-
   const [stations, getStations] = useState<[]>([])
 
   useEffect(() => {
@@ -28,36 +27,39 @@ const WeatherLayer: React.FC = () => {
   const concatData = (stations: any, stationsData: []) => {
     const wStations = stations.weatherStations
     const wData = wStations.map((item: any) => {
-      const matched = stationsData.filter((s: any) => s.weatherStationId === item.id)
-      return { ...item, ...(matched[0], Object) }
+      const matched = stationsData.filter(
+        (s: any) => s.weatherStationId === item.id
+      )
+      return Object.assign({}, item, matched[0])
     })
     return wData
   }
-  
+
   const convertCoords = (coords: [number, number]) => {
     return new L.LatLng(coords[1], coords[0])
   }
-
   const renderWeatherStations = () => {
     const stationList: IStation[] = stations
-    return (stationList.map((s: IStation) => {
+    return stationList.map((s: IStation) => {
       const location = s.location.coordinates
       return (
-        <Marker position={convertCoords(location)} key={s.id} id={3} icon={MapMarker}>
-          <WeatherPopup id={s.weatherStationId} street={s.street} airTemperature={s.airTemperature} />
+        <Marker
+          position={convertCoords(location)}
+          key={s.id}
+          id={3}
+          icon={MapMarker}
+        >
+          <WeatherPopup
+            id={s.id}
+            street={s.street}
+            airTemperature={s.airTemperature}
+          />
         </Marker>
       )
-    }))
+    })
   }
 
-  return (
-    <>
-      {
-        renderWeatherStations()
-      }
-    </>
-  )
+  return <>{renderWeatherStations()}</>
 }
-
 
 export default WeatherLayer
