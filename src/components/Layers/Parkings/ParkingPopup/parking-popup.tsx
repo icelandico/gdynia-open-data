@@ -19,10 +19,10 @@ const ParkingPopup: React.FC<IParkingProps> = props => {
   return (
     <>
       <Popup>
-        <p>Adres: {address}</p>
-        <p>Ogółem miejsc: {capacity}</p>
-        <p>Wolnych miejsc: {freePlaces}</p>
-        <p>Ostatnia aktualizacja: {update}</p>
+        <p>Adres: {address || "Brak danych"} </p>
+        <p>Ogółem miejsc: {capacity || "Brak danych"}</p>
+        <p>Wolnych miejsc: {freePlaces || "Brak danych"}</p>
+        <p>Ostatnia aktualizacja: {update || "Brak danych"}</p>
       </Popup>
     </>
   )
