@@ -14,7 +14,7 @@ export const weatherStations = getWeatherStations(weatheStationsRequest)
 
 // Weather stations detailed data
 
-const weatheStationsDataRequest = "http://api.zdiz.gdynia.pl/ri/rest/weather_stations_data"
+const weatherStationsDataRequest = "http://api.zdiz.gdynia.pl/ri/rest/weather_stations_data"
 
 const getWeatherStationsData = async (request: RequestInfo): Promise<any> => {
   const res = await fetch(`${proxyUrl}${request}`)
@@ -22,7 +22,7 @@ const getWeatherStationsData = async (request: RequestInfo): Promise<any> => {
   return json
 }
 
-export const weatherStationsData = getWeatherStationsData(weatheStationsDataRequest)
+export const weatherStationsData = getWeatherStationsData(weatherStationsDataRequest)
 
 // Parking places location
 
