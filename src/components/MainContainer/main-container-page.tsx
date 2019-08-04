@@ -7,14 +7,14 @@ import MenuPanel from "../MenuPanel/menu-panel"
 
 const MainContainer: React.FC = () => {
   return (
-    <Column.Group className={styles.rowContainer}>
-      <Column size={2} className={styles.column}>
+    <div className={styles.rowContainer}>
+      <div className={styles.column}>
         <MenuPanel />
-      </Column>
-      <Column className={styles.column}>
+      </div>
+      <div className={`${styles.column}, ${styles.mapContainer}`}>
         <MapContainer />
-      </Column>
-    </Column.Group>
+      </div>
+    </div>
   )
 }
 

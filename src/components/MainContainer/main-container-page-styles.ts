@@ -7,18 +7,26 @@ const menuContainer = style({
 })
 
 const rowContainer = style({
+  display: "flex",
   margin: "0",
   minHeight: "80%"
 })
 
 const column = style({
-  padding: "0"
+  padding: "0",
+  width: "100%",
+  flex: 1
+})
+
+const mapContainer = style({
+  flex: 4
 })
 
 const styles = {
   menuContainer,
   rowContainer,
-  column
+  column,
+  mapContainer
 }
 
 export default styles
