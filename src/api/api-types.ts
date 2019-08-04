@@ -21,5 +21,7 @@ export interface IParking {
   parkingId: number
   capacity: number
   freePlaces: number
-  update: string
+  insertTime: string
+  location: Location
+  address: string
 }
