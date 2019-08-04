@@ -50,10 +50,11 @@ const WeatherLayer: React.FC = () => {
           icon={MapMarker}
         >
           <WeatherPopup
-            id={s.id}
+            id={s.weatherStationId}
             street={s.street}
             airTemperature={s.airTemperature}
             surfaceTemperature={s.surfaceTemperature}
+            windDirection={s.windDirection}
           />
         </Marker>
       )

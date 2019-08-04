@@ -12,4 +12,5 @@ export interface IStation {
   weatherStationId: number
   airTemperature: number
   surfaceTemperature: number
+  windDirection: number
 }

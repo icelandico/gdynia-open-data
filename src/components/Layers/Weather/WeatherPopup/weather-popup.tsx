@@ -11,6 +11,7 @@ interface IStationProps {
   street: string
   airTemperature: number
   surfaceTemperature: number
+  windDirection: number
 }
 
 const WeatherPopup: React.FC<IStationProps> = props => {
@@ -22,6 +23,9 @@ const WeatherPopup: React.FC<IStationProps> = props => {
         <p>Temperatura powietrza: {props.airTemperature || "Brak danych"}</p>
         <p>
           Temperatura powierzchni: {props.surfaceTemperature || "Brak danych"}
+        </p>
+        <p>
+          Kierunek wiatru: {props.windDirection || "Brak danych"}
         </p>
       </Popup>
     </>
