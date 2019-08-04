@@ -3,7 +3,10 @@ import { useState, useEffect } from "react"
 import "rbx/index.css"
 import { Marker } from "react-leaflet"
 import L from "leaflet"
+import { IParking } from "../../../api/api-types"
 import { parkingPlaces, parkingPlacesData } from "../../../api/api"
+import { ParkingMarker } from "../../../global/values"
+
 // import { IStation } from "../../../api/api-types"
 
 const ParkingPlacesLayer: React.FC = () => {
@@ -38,17 +41,18 @@ const ParkingPlacesLayer: React.FC = () => {
 
   const renderParkingPlaces = () => {
     const parkingsList: IParking[] = parkings
-    return stationList.map((s: IStation) => {
-      const location = s.location.coordinates
-      return (
-        <Marker position={convertCoords(location)} key={s.id} id={3}>
-          <WeatherPopup
-            id={s.weatherStationId}
-            street={s.street}
-            airTemperature={s.airTemperature}
-          />
-        </Marker>
-      )
+    return parkingsList.map((s: IParking) => {
+      console.log(parkingsList)
+      // const location = s.location.coordinates
+      // return (
+      //   <Marker position={convertCoords(location)} key={s.id} id={3} icon={ParkingMarker}>
+      //     <ParkingPopup
+      //       id={s.weatherStationId}
+      //       street={s.street}
+      //       airTemperature={s.airTemperature}
+      //     />
+      //   </Marker>
+      // )
     })
   }
 
