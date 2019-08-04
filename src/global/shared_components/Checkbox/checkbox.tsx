@@ -3,10 +3,11 @@ import "rbx/index.css"
 
 const Checkbox: React.FC = () => {
   return (
-    <label>
-      <input>
-      </input>
-    </label>
+    <>
+      <label>
+        <input />
+      </label>
+    </>
   )
 }
 

@@ -3,7 +3,9 @@ import { style } from "typestyle"
 const main = style({
   height: "100vh",
   backgroundSize: "cover",
-  fontFamily: `Anton, sans-serif`
+  fontFamily: `Anton, sans-serif`,
+  display: "flex",
+  flexDirection: "column"
 })
 
 const center = style({
