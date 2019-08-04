@@ -1,6 +1,5 @@
 import * as React from "react"
 import "rbx/index.css"
-import { useStore } from "effector-react"
 import { activeLayer, changeLayer } from "../../store/app-store"
 // import "./menu-styles.css"
 import styles from "./menu-input-styles"
@@ -12,8 +11,6 @@ const MenuInput = () => {
     const val = event.target.value
     switchLayer(val)
   }
-
-  const layer = useStore(activeLayer)
 
   return (
     <React.Fragment>

@@ -12,7 +12,7 @@ const menuLabel = style({
       height: "30px",
       transition: "all 0.3s ease- out",
       display: "inline-block",
-      border: "5px solid #4d4d4dff",
+      border: "3px solid #4d4d4dff",
       verticalAlign: "middle",
       borderRadius: "50%",
       marginRight: "10px",

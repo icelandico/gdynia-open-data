@@ -32,7 +32,7 @@ const MapContainer: React.FC = () => {
         center={position}
         zoom={mapZoom}
         className={MapStyles.main}
-        style={{ height: "80vh" }} // Workaround for correct map display
+        style={{ height: "85vh" }} // Workaround for correct map display
       >
         <TileLayer attribution={values.attribution} url={values.tileSource} ext={values.ext} />
         {renderLayer()}
