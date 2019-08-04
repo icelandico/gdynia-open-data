@@ -17,7 +17,6 @@ const MenuInput = () => {
 
   return (
     <React.Fragment>
-      <p>{layer}</p>
       <input
         name="chosen-layer"
         type="radio"
@@ -45,23 +44,23 @@ const MenuInput = () => {
         name="chosen-layer"
         type="radio"
         className={styles.menuInput}
-        value="traffic"
-        onChange={handleChange}
-        id="traffic"
-      />
-      <label htmlFor="traffic" className={styles.menuLabel}>
-        Dane o ruchu
-      </label>
-      <input
-        name="chosen-layer"
-        type="radio"
-        className={styles.menuInput}
         value="parkings"
         onChange={handleChange}
         id="parkings"
       />
       <label htmlFor="parkings" className={styles.menuLabel}>
         Parkingi
+      </label>
+      <input
+        name="chosen-layer"
+        type="radio"
+        className={styles.menuInput}
+        value="traffic"
+        onChange={handleChange}
+        id="traffic"
+      />
+      <label htmlFor="traffic" className={styles.menuLabel}>
+        Dane o ruchu
       </label>
     </React.Fragment>
   )

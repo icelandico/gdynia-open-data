@@ -11,7 +11,7 @@ const App: React.FC = () => {
     <div className={styles.main}>
       <NavbarComponent />
       <MainContainer />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }

@@ -2,7 +2,7 @@ import { style } from "typestyle"
 
 const center = style({
   textAlign: "center",
-  margin: "0 auto",
+  margin: "1em auto",
   background: "none"
 })
 
