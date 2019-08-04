@@ -1,4 +1,3 @@
-
 import { style } from "typestyle"
 
 const center = style({
