@@ -2,7 +2,7 @@ import { style } from "typestyle"
 
 const arrow = style({
   width: "25px",
-  margin: "0"
+  marginLeft: "10px"
 })
 
 const styles = {

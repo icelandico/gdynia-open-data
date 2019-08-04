@@ -1,8 +1,8 @@
 import * as React from "react"
-import styles from "./weather-popup-styles"
 import "rbx/index.css"
 import classNames from "classnames"
 import { Popup } from "react-leaflet"
+import styles from "./weather-popup-styles"
 import { IStation } from "../../../../api/api-types"
 import arrow from "../../../../static/img/navigation.svg"
 import WindArrow from "./WindArrow/windarrow"
@@ -17,17 +17,24 @@ interface IStationProps {
 }
 
 const WeatherPopup: React.FC<IStationProps> = props => {
+  const {
+    id,
+    street,
+    airTemperature,
+    surfaceTemperature,
+    windDirection
+  } = props
+
   return (
     <>
       <Popup>
-        <p>Identyfikator stacji: {props.id || "Brak danych"}</p>
-        <p>Lokalizacja: {props.street || "Brak danych"}</p>
-        <p>Temperatura powietrza: {props.airTemperature || "Brak danych"}</p>
+        <p>Identyfikator stacji: {id || "Brak danych"}</p>
+        <p>Lokalizacja: {street || "Brak danych"}</p>
+        <p>Temperatura powietrza: {airTemperature || "Brak danych"}</p>
+        <p>Temperatura powierzchni: {surfaceTemperature || "Brak danych"}</p>
         <p>
-          Temperatura powierzchni: {props.surfaceTemperature || "Brak danych"}
-        </p>
-        <p>
-          Kierunek wiatru: {<WindArrow direction={props.windDirection} /> || "Brak danych"}
+          Kierunek wiatru:
+          {<WindArrow direction={windDirection} /> || "Brak danych"}
         </p>
       </Popup>
     </>
