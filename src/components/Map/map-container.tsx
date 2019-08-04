@@ -1,12 +1,13 @@
 import * as React from "react"
 import { useState } from "react"
-import MapStyles from "./../Map/map-container-styles"
-import "rbx/index.css"
 import { useStore } from "effector-react"
-import { activeLayer } from "../../store/app-store"
 import { Map, TileLayer } from "react-leaflet"
+import MapStyles from "./map-container-styles"
+import "rbx/index.css"
+import { activeLayer } from "../../store/app-store"
 import values from "../../global/values"
 import WeatherLayer from "../Layers/Weather/weather-layer"
+import ParkingsLayer from "../Layers/Parkings/parkings-layer"
 
 const MapContainer: React.FC = () => {
   const layer = useStore(activeLayer)
@@ -17,6 +18,8 @@ const MapContainer: React.FC = () => {
     switch (selectedLayer) {
       case "weather":
         return <WeatherLayer />
+      case "parkings":
+        return <ParkingsLayer />
       default:
         console.log("No layer chosen")
     }
@@ -31,11 +34,7 @@ const MapContainer: React.FC = () => {
         className={MapStyles.main}
         style={{ height: "80vh" }} // Workaround for correct map display
       >
-        <TileLayer
-          attribution={values.attribution}
-          url={values.tileSource}
-          ext={values.ext}
-        />
+        <TileLayer attribution={values.attribution} url={values.tileSource} ext={values.ext} />
         {renderLayer()}
       </Map>
     </div>
