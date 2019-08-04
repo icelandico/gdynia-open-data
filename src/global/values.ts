@@ -13,6 +13,13 @@ export const MapMarker = new L.Icon({
   popupAnchor: [3, -25]
 })
 
+export const ParkingMarker = new L.Icon({
+  iconUrl: require("../static/img/parking-marker.svg"),
+  iconSize: [30, 45],
+  iconAnchor: [12, 36],
+  popupAnchor: [3, -25]
+})
+
 const values: IValues = {
   tileSource:
     "https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png",
