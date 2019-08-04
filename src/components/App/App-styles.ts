@@ -1,9 +1,9 @@
-
 import { style } from "typestyle"
 
 const main = style({
   height: "100vh",
-  backgroundSize: "cover"
+  backgroundSize: "cover",
+  fontFamily: `Anton, sans-serif`
 })
 
 const center = style({
