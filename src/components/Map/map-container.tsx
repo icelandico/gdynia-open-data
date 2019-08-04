@@ -11,7 +11,7 @@ import ParkingsLayer from "../Layers/Parkings/parkings-layer"
 
 const MapContainer: React.FC = () => {
   const layer = useStore(activeLayer)
-  const [mapZoom] = useState<number>(12)
+  const [mapZoom] = useState<number>(13)
 
   const renderLayer = () => {
     const selectedLayer = layer
