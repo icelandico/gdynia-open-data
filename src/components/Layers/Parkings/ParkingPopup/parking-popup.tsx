@@ -1,5 +1,4 @@
 import * as React from "react"
-import "rbx/index.css"
 import classNames from "classnames"
 import { Popup } from "react-leaflet"
 import styles from "./parking-popup-styles"
@@ -16,13 +15,16 @@ interface IParkingProps {
 
 const ParkingPopup: React.FC<IParkingProps> = props => {
   const { address, capacity, freePlaces, update } = props
+
+  const valueDisplay = (val: any) => (val !== undefined ? val : "Brak danych")
+
   return (
     <>
       <Popup>
-        <p>Adres: {address || "Brak danych"} </p>
-        <p>Ogółem miejsc: {capacity || "Brak danych"}</p>
-        <p>Wolnych miejsc: {freePlaces || "Brak danych"}</p>
-        <p>Ostatnia aktualizacja: {update || "Brak danych"}</p>
+        <p>Adres: {valueDisplay(address)} </p>
+        <p>Ogółem miejsc: {valueDisplay(capacity)}</p>
+        <p>Wolnych miejsc: {valueDisplay(freePlaces)}</p>
+        <p>Ostatnia aktualizacja: {valueDisplay(update)}</p>
       </Popup>
     </>
   )
