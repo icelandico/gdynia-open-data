@@ -5,8 +5,9 @@ import { Marker } from "react-leaflet"
 import L from "leaflet"
 import { weatherStations, weatherStationsData } from "../../../api/api"
 import { IStation } from "../../../api/api-types"
-import WeatherPopup from "./WeatherPopup/weather-popup"
+// import WeatherPopup from "./WeatherPopup/weather-popup"
 import { MapMarker } from "../../../global/values"
+import WeatherPopup from "./WeatherPopup/weather-popup"
 
 const WeatherLayer: React.FC = () => {
   const [stations, getStations] = useState<[]>([])
