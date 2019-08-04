@@ -4,6 +4,8 @@ import "rbx/index.css"
 import classNames from "classnames"
 import { Popup } from "react-leaflet"
 import { IStation } from "../../../../api/api-types"
+import arrow from "../../../../static/img/navigation.svg"
+import WindArrow from "./WindArrow/windarrow"
 
 interface IStationProps {
   station?: IStation
@@ -25,7 +27,7 @@ const WeatherPopup: React.FC<IStationProps> = props => {
           Temperatura powierzchni: {props.surfaceTemperature || "Brak danych"}
         </p>
         <p>
-          Kierunek wiatru: {props.windDirection || "Brak danych"}
+          Kierunek wiatru: {<WindArrow direction={props.windDirection} /> || "Brak danych"}
         </p>
       </Popup>
     </>
