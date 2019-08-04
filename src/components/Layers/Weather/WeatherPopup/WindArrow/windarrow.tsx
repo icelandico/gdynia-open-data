@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/interface-name-prefix */
 import * as React from "react"
 import arrow from "../../../../../static/img/navigation.svg"
 import styles from "./windarrow-styles"

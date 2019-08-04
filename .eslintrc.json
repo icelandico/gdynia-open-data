@@ -21,6 +21,7 @@
   ],
   "rules": {
     "react/jsx-one-expression-per-line": "off",
+    "@typescript-eslint/interface-name-prefix": "off",
     /**
      * @description rules of eslint official
      */
