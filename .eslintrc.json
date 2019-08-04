@@ -5,10 +5,13 @@
     "tsconfigRootDir": "."
   },
   "env": {
-    "browser": true,
-    "jest/globals": true
+    "browser": true
   },
-  "plugins": ["@typescript-eslint", "react-hooks", "prettier"],
+  "plugins": [
+    "@typescript-eslint",
+    "react-hooks",
+    "prettier"
+  ],
   "extends": [
     "airbnb",
     "plugin:@typescript-eslint/recommended",
@@ -49,7 +52,10 @@
     "react/jsx-filename-extension": [
       "warn",
       {
-        "extensions": [".jsx", ".tsx"]
+        "extensions": [
+          ".jsx",
+          ".tsx"
+        ]
       }
     ], // also want to use with ".tsx"
     "react/prop-types": "off", // Is this incompatible with TS props type?
@@ -63,8 +69,10 @@
     "prettier/prettier": [
       "error",
       {
-        "singleQuote": true,
-        "semi": false
+        "singleQuote": false,
+        "semi": false,
+        "trailingComma": "none",
+        "bracketSpacing": true
       }
     ]
   }
