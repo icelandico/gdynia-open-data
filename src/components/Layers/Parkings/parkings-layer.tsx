@@ -6,10 +6,9 @@ import L from "leaflet"
 import { IParking } from "../../../api/api-types"
 import { parkingPlaces, parkingPlacesData } from "../../../api/api"
 import { ParkingMarker } from "../../../global/values"
+import ParkingPopup from "./ParkingPopup/parking-popup"
 
-// import { IStation } from "../../../api/api-types"
-
-const ParkingPlacesLayer: React.FC = () => {
+const ParkingsLayer: React.FC = () => {
   const [parkings, getParkings] = useState<[]>([])
 
   useEffect(() => {
@@ -42,21 +41,22 @@ const ParkingPlacesLayer: React.FC = () => {
   const renderParkingPlaces = () => {
     const parkingsList: IParking[] = parkings
     return parkingsList.map((s: IParking) => {
-      console.log(parkingsList)
-      // const location = s.location.coordinates
-      // return (
-      //   <Marker position={convertCoords(location)} key={s.id} id={3} icon={ParkingMarker}>
-      //     <ParkingPopup
-      //       id={s.weatherStationId}
-      //       street={s.street}
-      //       airTemperature={s.airTemperature}
-      //     />
-      //   </Marker>
-      // )
+      const location = s.location.coordinates
+      return (
+        <Marker position={convertCoords(location)} key={s.id} id={3} icon={ParkingMarker}>
+          <ParkingPopup
+            id={s.id}
+            address={s.address}
+            capacity={s.capacity}
+            freePlaces={s.freePlaces}
+            update={s.insertTime}
+          />
+        </Marker>
+      )
     })
   }
 
   return <>{renderParkingPlaces()}</>
 }
 
-export default ParkingPlacesLayer
+export default ParkingsLayer
