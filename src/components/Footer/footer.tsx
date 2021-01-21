@@ -1,13 +1,18 @@
 import * as React from "react"
-import "rbx/index.css"
-import classNames from "classnames"
 import styles from "./footer-styles"
 
 const Footer: React.FC = () => {
   return (
     <footer>
       <div className={styles.center}>
-        <p>created by </p>
+        <a
+          href="https://github.com/icelandico"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.socialLink}
+        >
+          Created by M.M
+        </a>
       </div>
     </footer>
   )

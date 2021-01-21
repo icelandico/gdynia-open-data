@@ -1,7 +1,5 @@
 import * as React from "react"
-import classNames from "classnames"
 import { Popup } from "react-leaflet"
-import styles from "./parking-popup-styles"
 import { IParking } from "../../../../api/api-types"
 
 interface IParkingProps {

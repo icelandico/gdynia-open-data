@@ -1,6 +1,5 @@
 import * as React from "react"
 import { useState, useEffect } from "react"
-import "rbx/index.css"
 import { Marker } from "react-leaflet"
 import L from "leaflet"
 import { IParking } from "../../../api/api-types"

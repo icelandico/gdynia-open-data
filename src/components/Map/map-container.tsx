@@ -3,7 +3,6 @@ import { useState } from "react"
 import { useStore } from "effector-react"
 import { Map, TileLayer } from "react-leaflet"
 import MapStyles from "./map-container-styles"
-import "rbx/index.css"
 import { activeLayer } from "../../store/app-store"
 import values from "../../global/values"
 import WeatherLayer from "../Layers/Weather/weather-layer"
@@ -14,8 +13,7 @@ const MapContainer: React.FC = () => {
   const [mapZoom] = useState<number>(13)
 
   const renderLayer = () => {
-    const selectedLayer = layer
-    switch (selectedLayer) {
+    switch (layer) {
       case "weather":
         return <WeatherLayer />
       case "parkings":
@@ -32,7 +30,7 @@ const MapContainer: React.FC = () => {
         center={position}
         zoom={mapZoom}
         className={MapStyles.main}
-        style={{ height: "85vh" }} // Workaround for correct map display
+        style={{ height: "85vh" }}
       >
         <TileLayer attribution={values.attribution} url={values.tileSource} ext={values.ext} />
         {renderLayer()}

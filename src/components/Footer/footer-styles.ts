@@ -1,4 +1,3 @@
-
 import { style } from "typestyle"
 
 const center = style({
@@ -6,8 +5,11 @@ const center = style({
   margin: "0 auto"
 })
 
+const socialLink = style({})
+
 const styles = {
-  center
+  center,
+  socialLink
 }
 
 export default styles
