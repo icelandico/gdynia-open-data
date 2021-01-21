@@ -1,7 +1,5 @@
 import * as React from "react"
-import classNames from "classnames"
 import styles from "./menu-panel-styles"
-import "rbx/index.css"
 import MenuInput from "../MenuInput/menu-input"
 
 const MenuPanel: React.FC = () => {

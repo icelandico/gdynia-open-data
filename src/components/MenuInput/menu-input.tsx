@@ -1,7 +1,6 @@
 import * as React from "react"
 import "rbx/index.css"
 import { activeLayer, changeLayer } from "../../store/app-store"
-// import "./menu-styles.css"
 import styles from "./menu-input-styles"
 
 const MenuInput = () => {
