@@ -12,7 +12,7 @@ const MenuInput: FunctionComponent = () => {
 
   return (
     <>
-    <label className={styles.menuLabel}>
+    <label className="checkbox__label">
         Brak warstw
         <input
         name="chosen-layer"

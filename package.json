@@ -18,6 +18,7 @@
     "effector-react": "^19.0.0",
     "jss": "^9.8.7",
     "leaflet": "^1.7.1",
+    "node-sass": "^5.0.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-jss": "^8.6.1",
