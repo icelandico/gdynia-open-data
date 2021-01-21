@@ -5,6 +5,7 @@ const Checkbox: React.FC = () => {
     <>
       <label>
         <input />
+        <span></span>
       </label>
     </>
   )

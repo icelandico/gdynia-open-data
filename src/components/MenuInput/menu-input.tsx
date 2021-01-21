@@ -1,8 +1,8 @@
-import * as React from "react"
-import { activeLayer, changeLayer } from "../../store/app-store"
+import React, { FunctionComponent } from "react"
+import { changeLayer } from "../../store/app-store"
 import styles from "./menu-input-styles"
 
-const MenuInput = () => {
+const MenuInput: FunctionComponent = () => {
   const switchLayer = (layer: any) => changeLayer(layer)
 
   const handleChange = (event: any) => {
@@ -11,8 +11,10 @@ const MenuInput = () => {
   }
 
   return (
-    <React.Fragment>
-      <input
+    <>
+    <label className={styles.menuLabel}>
+        Brak warstw
+        <input
         name="chosen-layer"
         type="radio"
         className={styles.menuInput}
@@ -21,9 +23,8 @@ const MenuInput = () => {
         defaultChecked
         id="none"
       />
-      <label htmlFor="none" className={styles.menuLabel}>
-        Brak warstw
-      </label>
+      <span className={styles.menuCheckmark}></span>
+    </label>
       <input
         name="chosen-layer"
         type="radio"
@@ -57,7 +58,7 @@ const MenuInput = () => {
       <label htmlFor="traffic" className={styles.menuLabel}>
         Dane o ruchu
       </label>
-    </React.Fragment>
+    </>
   )
 }
 
