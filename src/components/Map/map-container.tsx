@@ -1,40 +1,44 @@
-import * as React from "react"
-import {useState} from "react"
-import {useStore} from "effector-react"
-import {Map, TileLayer} from "react-leaflet"
-import MapStyles from "./map-container-styles"
-import {activeLayer} from "../../store/app-store"
-import values from "../../global/values"
-import WeatherLayer from "../Layers/Weather/weather-layer"
-import ParkingsLayer from "../Layers/Parkings/parkings-layer"
+import React from "react";
+import { useState } from "react";
+import { useStore } from "effector-react";
+import { Map, TileLayer } from "react-leaflet";
+import MapStyles from "./map-container-styles";
+import { activeLayer } from "../../store/app-store";
+import values from "../../global/values";
+import WeatherLayer from "../Layers/Weather/weather-layer";
+import ParkingsLayer from "../Layers/Parkings/parkings-layer";
 
 const MapContainer: React.FC = () => {
-  const layer = useStore(activeLayer)
-  const [mapZoom] = useState<number>(13)
+  const layer = useStore(activeLayer);
+  const [mapZoom] = useState<number>(12);
 
   const renderLayer = () => {
     switch (layer) {
       case "weather":
-        return <WeatherLayer/>
+        return <WeatherLayer />;
       case "parkings":
-        return <ParkingsLayer/>
+        return <ParkingsLayer />;
       default:
-        console.log("No layer chosen")
+        console.log("No layer chosen");
     }
-  }
-  const position = values.centerCoordinates
+  };
+  const position = values.centerCoordinates;
 
   return (
     <Map
       center={position}
       zoom={mapZoom}
       className={MapStyles.main}
-      style={{height: "85vh"}}
+      style={{ height: "100vh" }}
     >
-      <TileLayer attribution={values.attribution} url={values.tileSource} ext={values.ext}/>
+      <TileLayer
+        attribution={values.attribution}
+        url={values.tileSource}
+        ext={values.ext}
+      />
       {renderLayer()}
     </Map>
-  )
-}
+  );
+};
 
-export default MapContainer
+export default MapContainer;
