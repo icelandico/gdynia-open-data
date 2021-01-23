@@ -1,6 +1,7 @@
-import React, { FunctionComponent } from "react"
-import { changeLayer } from "../../store/app-store"
+import React, {FunctionComponent} from "react"
+import {changeLayer} from "../../store/app-store"
 import "./menu-input.scss";
+import Checkbox from "../../global/shared_components/Checkbox/checkbox";
 
 const MenuInput: FunctionComponent = () => {
   const switchLayer = (layer: any) => changeLayer(layer)
@@ -12,19 +13,9 @@ const MenuInput: FunctionComponent = () => {
 
   return (
     <>
-    <label className="checkbox__label">
-        Brak warstw
-        <input
-        name="chosen-layer"
-        type="radio"
-        className="checkbox__input"
-        value="none"
-        onChange={handleChange}
-        defaultChecked
-        id="none"
+      <Checkbox
+        text="Brak warstw" id="none" handleChange={() => handleChange} value="none" name="chosen-layer"
       />
-      <span className="checkbox__indicator"></span>
-    </label>
       {/*<input*/}
       {/*  name="chosen-layer"*/}
       {/*  type="radio"*/}
