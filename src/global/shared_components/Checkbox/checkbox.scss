@@ -2,9 +2,11 @@
   border-radius: 50%;
   cursor: pointer;
   display: block;
-  padding-left: 2.5rem;
+  padding-left: 3.5rem;
   position: relative;
   top: 0.25rem;
+  font-size: 1.4rem;
+  margin-bottom: 2.5rem;
 
   &:hover .checkbox__input ~ .checkbox__indicator {
     border-color: black;
