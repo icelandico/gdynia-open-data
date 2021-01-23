@@ -1,12 +1,12 @@
 import * as React from "react"
-import styles from "./menu-panel-styles"
+import "./menu-panel.scss"
 import MenuInput from "../MenuInput/menu-input"
 
 const MenuPanel: React.FC = () => {
   return (
-    <div className={styles.menuContainer}>
-      <h2 style={{ textAlign: "center" }}>Wybierz warstwę</h2>
-      <div className={styles.menuContent}>
+    <div className="menu__container">
+      <p>Wybierz warstwę</p>
+      <div className="menu__content">
         <MenuInput />
       </div>
     </div>
