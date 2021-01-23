@@ -20,9 +20,9 @@ const MapContainer: React.FC = () => {
       case "parkings":
         return <ParkingsLayer />;
       case "traffic":
-        return <RoadSegmentsLayer />
+        return <RoadSegmentsLayer />;
       default:
-        console.log("No layer chosen");
+        return <></>;
     }
   };
   const position = values.centerCoordinates;

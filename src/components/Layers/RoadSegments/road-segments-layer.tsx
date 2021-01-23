@@ -37,15 +37,15 @@ const RoadSegmentsLayer: React.FC<any> = () => {
 
   const intensityColors = (intensity: number) => {
     if (intensity < 500) {
-      return "#27ae60";
+      return "#1b700b";
     } else if (intensity < 1000) {
-      return "#16a085";
+      return "#6bbe2a";
     } else if (intensity < 2000) {
-      return "#d35400";
+      return "#dd7f48";
     } else if (intensity < 3000) {
-      return "#c0392b";
+      return "#942c23";
     } else {
-      return "yellow";
+      return "#b71540";
     }
   };
 

@@ -13,7 +13,6 @@ interface CheckboxProps {
 const Checkbox: React.FC<CheckboxProps> = ({text, handleChange, id, value, name, initialChecked}) => {
 
   const handleInputChange = (val: string) => {
-    console.log('value', val)
     handleChange(val)
   }
 
