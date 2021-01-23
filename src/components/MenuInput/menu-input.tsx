@@ -1,54 +1,45 @@
 import React, {FunctionComponent} from "react"
-import {changeLayer} from "../../store/app-store"
+import { changeLayer } from "../../store/app-store"
 import "./menu-input.scss";
 import Checkbox from "../../global/shared_components/Checkbox/checkbox";
 
 const MenuInput: FunctionComponent = () => {
   const switchLayer = (layer: any) => changeLayer(layer)
 
-  const handleChange = (event: any) => {
-    const val = event.target.value
-    switchLayer(val)
+  const switchHandler = (value: string) => {
+    switchLayer(value)
   }
 
   return (
     <>
       <Checkbox
-        text="Brak warstw" id="none" handleChange={() => handleChange} value="none" name="chosen-layer"
+        text="Brak warstw"
+        id="none" handleChange={switchHandler}
+        value="none"
+        name="chosen-layer"
+        initialChecked={true}
       />
-      {/*<input*/}
-      {/*  name="chosen-layer"*/}
-      {/*  type="radio"*/}
-      {/*  className={styles.menuInput}*/}
-      {/*  value="weather"*/}
-      {/*  onChange={handleChange}*/}
-      {/*  id="weather"*/}
-      {/*/>*/}
-      {/*<label htmlFor="weather" className={styles.menuLabel}>*/}
-      {/*  Pogoda*/}
-      {/*</label>*/}
-      {/*<input*/}
-      {/*  name="chosen-layer"*/}
-      {/*  type="radio"*/}
-      {/*  className={styles.menuInput}*/}
-      {/*  value="parkings"*/}
-      {/*  onChange={handleChange}*/}
-      {/*  id="parkings"*/}
-      {/*/>*/}
-      {/*<label htmlFor="parkings" className={styles.menuLabel}>*/}
-      {/*  Parkingi*/}
-      {/*</label>*/}
-      {/*<input*/}
-      {/*  name="chosen-layer"*/}
-      {/*  type="radio"*/}
-      {/*  className={styles.menuInput}*/}
-      {/*  value="traffic"*/}
-      {/*  onChange={handleChange}*/}
-      {/*  id="traffic"*/}
-      {/*/>*/}
-      {/*<label htmlFor="traffic" className={styles.menuLabel}>*/}
-      {/*  Dane o ruchu*/}
-      {/*</label>*/}
+      <Checkbox
+        text="Dane pogodowe"
+        id="weather"
+        handleChange={switchHandler}
+        value="weather"
+        name="chosen-layer"
+      />
+      <Checkbox
+        text="Miejsca parkingowe"
+        id="parkings"
+        handleChange={switchHandler}
+        value="parkings"
+        name="chosen-layer"
+      />
+      <Checkbox
+        text="Dane o ruchu"
+        id="traffic"
+        handleChange={switchHandler}
+        value="traffic"
+        name="chosen-layer"
+      />
     </>
   )
 }

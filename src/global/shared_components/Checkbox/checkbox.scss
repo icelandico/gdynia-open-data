@@ -6,7 +6,7 @@
   position: relative;
   top: 0.25rem;
 
-&:hover .checkbox__input ~ .checkbox__indicator {
+  &:hover .checkbox__input ~ .checkbox__indicator {
     border-color: black;
   }
 }
@@ -16,17 +16,17 @@
   position: absolute;
   z-index: -1;
 
-&:focus ~ .checkbox__indicator {
+  &:focus ~ .checkbox__indicator {
     border-color: black;
   }
 
-&:checked ~ .checkbox__indicator {
-  &::after {
+  &:checked ~ .checkbox__indicator {
+    &::after {
       display: block;
     }
   }
 
-&:disabled ~ .checkbox__indicator {
+  &:disabled ~ .checkbox__indicator {
     opacity: 0.6;
     pointer-events: none;
   }
@@ -42,7 +42,7 @@
   top: 0;
   width: 24px;
 
-&::after {
+  &::after {
     background-color: mediumseagreen;
     border-radius: 50%;
     content: "";
@@ -54,4 +54,5 @@
     width: 16px;
   }
 }
+
 
