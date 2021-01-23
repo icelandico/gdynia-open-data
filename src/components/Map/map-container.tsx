@@ -2,11 +2,11 @@ import React from "react";
 import { useState } from "react";
 import { useStore } from "effector-react";
 import { Map, TileLayer } from "react-leaflet";
-import MapStyles from "./map-container-styles";
 import { activeLayer } from "../../store/app-store";
 import values from "../../global/values";
 import WeatherLayer from "../Layers/Weather/weather-layer";
 import ParkingsLayer from "../Layers/Parkings/parkings-layer";
+import "./map-container.scss";
 
 const MapContainer: React.FC = () => {
   const layer = useStore(activeLayer);
@@ -25,19 +25,21 @@ const MapContainer: React.FC = () => {
   const position = values.centerCoordinates;
 
   return (
-    <Map
-      center={position}
-      zoom={mapZoom}
-      className={MapStyles.main}
-      style={{ height: "100vh" }}
-    >
-      <TileLayer
-        attribution={values.attribution}
-        url={values.tileSource}
-        ext={values.ext}
-      />
-      {renderLayer()}
-    </Map>
+    <div className="map__container">
+      <Map
+        center={position}
+        zoom={mapZoom}
+        className="map"
+        style={{ height: "100vh" }}
+      >
+        <TileLayer
+          attribution={values.attribution}
+          url={values.tileSource}
+          ext={values.ext}
+        />
+        {renderLayer()}
+      </Map>
+    </div>
   );
 };
 

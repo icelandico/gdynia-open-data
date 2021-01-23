@@ -3,7 +3,7 @@ import { changeLayer } from "../../store/app-store"
 import "./menu-input.scss";
 import Checkbox from "../../global/shared_components/Checkbox/checkbox";
 
-const MenuInput: FunctionComponent = () => {
+const MenuInputs: FunctionComponent = () => {
   const switchLayer = (layer: any) => changeLayer(layer)
 
   const switchHandler = (value: string) => {
@@ -44,4 +44,4 @@ const MenuInput: FunctionComponent = () => {
   )
 }
 
-export default MenuInput
+export default MenuInputs

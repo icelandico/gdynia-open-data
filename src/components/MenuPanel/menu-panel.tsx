@@ -1,6 +1,6 @@
 import * as React from "react"
 import "./menu-panel.scss"
-import MenuInput from "../MenuInput/menu-input"
+import MenuInputs from "../MenuInput/menu-inputs"
 import Header from "../Header/header";
 
 const MenuPanel: React.FC = () => {
@@ -9,7 +9,7 @@ const MenuPanel: React.FC = () => {
       <Header />
       <h2 className="menu__header">Wybierz warstwę</h2>
       <div className="menu__content">
-        <MenuInput />
+        <MenuInputs />
       </div>
     </div>
   )
