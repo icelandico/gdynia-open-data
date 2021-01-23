@@ -1,3 +1,6 @@
+import { roads } from "./roads";
+import { roadsData } from "./roadsData";
+
 const proxyUrl = "https://cors-anywhere.herokuapp.com/"
 
 // Weather stations location
@@ -47,3 +50,27 @@ const getParkingPlacesData = async (request: RequestInfo): Promise<any> => {
 }
 
 export const parkingPlacesData = getParkingPlacesData(parkingPlacesDataRequest)
+
+// Road segments
+
+const roadSegmentsRequest = "http://api.zdiz.gdynia.pl/ri/rest/road_segments"
+
+const getRoadSegments = async (request: RequestInfo): Promise<any> => {
+  // const res = await fetch(`${proxyUrl}${request}`)
+  // return await res.json()
+  return roads
+}
+
+export const roadSegments = getRoadSegments(roadSegmentsRequest)
+
+// Road segments Data
+
+const roadSegmentsDataRequest = "http://api.zdiz.gdynia.pl/ri/rest/traffic_intensities?segmentId=00111"
+
+const getRoadSegmentsData = async (request: RequestInfo): Promise<any> => {
+  // const res = await fetch(`${proxyUrl}${request}`)
+  // return await res.json()
+  return roadsData
+}
+
+export const roadSegmentsData = getRoadSegmentsData(roadSegmentsDataRequest)

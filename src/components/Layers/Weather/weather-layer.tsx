@@ -26,11 +26,10 @@ const WeatherLayer: React.FC = () => {
 
   const concatData = (stations: any, stationsData: []) => {
     const wStations = stations.weatherStations
-    const wData = wStations.map((item: any) => {
+    return wStations.map((item: any) => {
       const matched = stationsData.filter((s: any) => s.weatherStationId === item.id)
       return Object.assign({}, item, matched[0])
     })
-    return wData
   }
 
   const convertCoords = (coords: [number, number]) => {
