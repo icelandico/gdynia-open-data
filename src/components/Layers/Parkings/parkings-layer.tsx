@@ -5,7 +5,7 @@ import L from "leaflet"
 import { IParking } from "../../../api/api-types"
 import { parkingPlaces, parkingPlacesData } from "../../../api/api"
 import { ParkingMarker } from "../../../global/values"
-import ParkingPopup from "./ParkingPopup/parking-popup"
+import ParkingPopup from "./parking-popup";
 
 const ParkingsLayer: React.FC = () => {
   const [parkings, getParkings] = useState<[]>([])

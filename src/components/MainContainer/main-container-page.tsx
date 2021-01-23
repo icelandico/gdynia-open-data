@@ -1,7 +1,7 @@
-import React from "react"
-import "./main-container.scss"
-import MapContainer from "../Map/map-container"
-import MenuPanel from "../MenuPanel/menu-panel"
+import React from "react";
+import "./main-container.scss";
+import MapContainer from "../Map/map-container";
+import MenuPanel from "../MenuPanel/menu-panel";
 
 const MainContainer: React.FC = () => {
   return (
@@ -9,7 +9,7 @@ const MainContainer: React.FC = () => {
       <MenuPanel />
       <MapContainer />
     </div>
-  )
-}
+  );
+};
 
-export default MainContainer
+export default MainContainer;

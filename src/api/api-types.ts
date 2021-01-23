@@ -17,7 +17,7 @@ export interface IStation {
 }
 
 export interface IParking {
-  id: number
+  id: numberstyles.ts
   parkingId: number
   capacity: number
   freePlaces: number
