@@ -4,7 +4,7 @@ import MainContainer from "../MainContainer/main-container-page"
 
 const App: React.FC = () => {
   return (
-    <div className="main__container">
+    <div className="app__container">
       <MainContainer />
     </div>
   )

@@ -1,0 +1,15 @@
+.main__container {
+  position: relative;
+}
+
+.row__container {
+  display: flex;
+  margin: 0;
+  min-height: 80%;
+}
+
+.column {
+  padding: 0;
+  width: 100%;
+  flex: 1
+}

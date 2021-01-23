@@ -1,7 +1,11 @@
 .menu__container {
-  background-color: #ccc;
-  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #d4d4d4;
   padding: 1rem 2rem;
+  z-index: 500;
+  box-shadow: 1px 3px 0 #282828;
 }
 
 .menu__header {
