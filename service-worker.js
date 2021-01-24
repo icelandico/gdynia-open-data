@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/gdynia-open-data/precache-manifest.b578bdd398a33b09d567505a9a85ea31.js"
+  "/gdynia-open-data/precache-manifest.7815be9885f18d5a1ae33ac6992adeb3.js"
 );
 
 workbox.clientsClaim();
