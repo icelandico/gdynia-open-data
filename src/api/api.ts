@@ -1,6 +1,3 @@
-import { roads } from "./roads";
-import { roadsData } from "./roadsData";
-
 const proxyUrl = "https://cors-anywhere.herokuapp.com/"
 
 const setRequestUrl = (type: string): string => {
