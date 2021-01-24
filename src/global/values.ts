@@ -22,7 +22,7 @@ export const ParkingMarker = new L.Icon({
 })
 
 const values: IValues = {
-  tileSource: "https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png",
+  tileSource: "https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.png",
   ext: "png",
   attribution: `&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors`,
   centerCoordinates: [54.5, 18.47]
