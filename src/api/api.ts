@@ -56,9 +56,8 @@ export const parkingPlacesData = getParkingPlacesData(parkingPlacesDataRequest)
 const roadSegmentsRequest = "http://api.zdiz.gdynia.pl/ri/rest/road_segments"
 
 const getRoadSegments = async (request: RequestInfo): Promise<any> => {
-  // const res = await fetch(`${proxyUrl}${request}`)
-  // return await res.json()
-  return roads
+  const res = await fetch(`${proxyUrl}${request}`)
+  return await res.json()
 }
 
 export const roadSegments = getRoadSegments(roadSegmentsRequest)
@@ -68,9 +67,8 @@ export const roadSegments = getRoadSegments(roadSegmentsRequest)
 const roadSegmentsDataRequest = "http://api.zdiz.gdynia.pl/ri/rest/traffic_intensities?segmentId=00111"
 
 const getRoadSegmentsData = async (request: RequestInfo): Promise<any> => {
-  // const res = await fetch(`${proxyUrl}${request}`)
-  // return await res.json()
-  return roadsData
+  const res = await fetch(`${proxyUrl}${request}`)
+  return await res.json()
 }
 
 export const roadSegmentsData = getRoadSegmentsData(roadSegmentsDataRequest)

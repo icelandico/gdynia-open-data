@@ -55,6 +55,7 @@ const RoadSegmentsLayer: React.FC<any> = () => {
       const coords = s.geometry.coordinates;
       return (
         <Polyline
+          key={s.id}
           positions={convertCoords(coords)}
           color={intensityColors(s.intensity)}
         />
