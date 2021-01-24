@@ -23,3 +23,8 @@ code {
   height: 100%;
   width: 100%;
 }
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+  color: #fff;
+  background-color: #797676;
+}

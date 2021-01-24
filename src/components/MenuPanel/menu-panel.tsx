@@ -4,10 +4,15 @@ import Header from "../Header/header";
 import Checkbox from "../../global/shared_components/Checkbox/checkbox";
 import {changeLayer} from "../../store/app-store";
 
-const MenuPanel: React.FC = () => {
+interface IMenuPanel {
+  handleLayerChange: Function
+}
+
+const MenuPanel: React.FC<IMenuPanel> = ({ handleLayerChange }) => {
   const switchLayer = (layer: any) => changeLayer(layer)
 
   const switchHandler = (value: string) => {
+    handleLayerChange(value)
     switchLayer(value)
   }
 

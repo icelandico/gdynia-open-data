@@ -1,20 +1,21 @@
 import React from "react";
 import { useState } from "react";
-import { useStore } from "effector-react";
 import { Map, TileLayer } from "react-leaflet";
-import { activeLayer } from "../../store/app-store";
 import values from "../../global/values";
 import WeatherLayer from "../Layers/Weather/weather-layer";
 import ParkingsLayer from "../Layers/Parkings/parkings-layer";
 import "./map-container.scss";
 import RoadSegmentsLayer from "../Layers/RoadSegments/road-segments-layer";
 
-const MapContainer: React.FC = () => {
-  const layer = useStore(activeLayer);
+interface IMapContainer {
+  activeLayer: string;
+}
+
+const MapContainer: React.FC<IMapContainer> = ( { activeLayer }) => {
   const [mapZoom] = useState<number>(12);
 
   const renderLayer = () => {
-    switch (layer) {
+    switch (activeLayer) {
       case "weather":
         return <WeatherLayer />;
       case "parkings":
