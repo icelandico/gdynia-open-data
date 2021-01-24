@@ -1,6 +1,6 @@
 {
   "name": "gdynia-data",
-  "homepage": ".",
+  "homepage": "https://icelandico.github.io/gdynia-open-data ",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -12,6 +12,7 @@
     "@types/react-dom": "16.8.3",
     "@types/react-leaflet": "^2.5.2",
     "babel-eslint": "^9.0.0",
+    "gh-pages": "^3.1.0",
     "leaflet": "^1.7.1",
     "node-sass": "^4.14.1",
     "react": "^16.14.0",
@@ -24,7 +25,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
