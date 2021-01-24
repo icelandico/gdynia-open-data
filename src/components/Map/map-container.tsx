@@ -8,6 +8,7 @@ import WeatherLayer from "../Layers/Weather/weather-layer";
 import ParkingsLayer from "../Layers/Parkings/parkings-layer";
 import "./map-container.scss";
 import RoadSegmentsLayer from "../Layers/RoadSegments/road-segments-layer";
+import Loader from "../Loader/loader";
 
 const MapContainer: React.FC = () => {
   const layer = useStore(activeLayer);

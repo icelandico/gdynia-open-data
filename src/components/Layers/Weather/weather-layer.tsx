@@ -6,6 +6,7 @@ import { requestData } from "../../../api/api"
 import { IStation } from "../../../api/api-types"
 import { MapMarker } from "../../../global/values"
 import WeatherPopup from "./WeatherPopup/weather-popup"
+import Loader from "../../Loader/loader";
 
 const WeatherLayer: React.FC = () => {
   const [stations, getStations] = useState<[]>([])
@@ -52,7 +53,7 @@ const WeatherLayer: React.FC = () => {
     })
   }
 
-  return <>{renderWeatherStations()}</>
+  return <>{stations.length ? renderWeatherStations() : <Loader />}</>
 }
 
 export default WeatherLayer

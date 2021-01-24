@@ -6,6 +6,7 @@ import { IParking } from "../../../api/api-types";
 import { requestData } from "../../../api/api";
 import { ParkingMarker } from "../../../global/values";
 import ParkingPopup from "./parking-popup";
+import Loader from "../../Loader/loader";
 
 const ParkingsLayer: React.FC = () => {
   const [parkings, getParkings] = useState<[]>([]);
@@ -58,7 +59,7 @@ const ParkingsLayer: React.FC = () => {
     });
   };
 
-  return <>{renderParkingPlaces()}</>;
+  return <>{parkings.length ? renderParkingPlaces() : <Loader />}</>;
 };
 
 export default ParkingsLayer;

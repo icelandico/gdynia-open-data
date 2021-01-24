@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import L from "leaflet";
 import { Polyline } from "react-leaflet";
 import { requestData } from "../../../api/api";
+import Loader from "../../Loader/loader";
 
 const RoadSegmentsLayer: React.FC<any> = () => {
   const [roads, setRoads] = useState<[]>([]);
@@ -63,7 +64,7 @@ const RoadSegmentsLayer: React.FC<any> = () => {
     });
   };
 
-  return <>{renderRoadsSegments()}</>;
+  return <>{roads.length ? renderRoadsSegments() : <Loader />}</>;
 };
 
 export default RoadSegmentsLayer;

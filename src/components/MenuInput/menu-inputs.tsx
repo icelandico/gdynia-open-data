@@ -16,7 +16,7 @@ const MenuInputs: FunctionComponent = () => {
         text="Brak warstw"
         id="none"
         handleChange={switchHandler}
-        value="none"
+        value=""
         name="chosen-layer"
         initialChecked={true}
       />
