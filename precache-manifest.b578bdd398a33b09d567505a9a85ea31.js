@@ -28,7 +28,7 @@ self.__precacheManifest = [
     "url": "/gdynia-open-data/static/media/parking-marker.63ef69d0.svg"
   },
   {
-    "revision": "5126b2b5fa38721b281ccfdec0327889",
+    "revision": "791c5cc0be8fa913f2eb29b5cf6ba39f",
     "url": "/gdynia-open-data/index.html"
   }
 ];
