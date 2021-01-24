@@ -2,9 +2,8 @@ import * as React from "react"
 import { useState, useEffect } from "react"
 import { Marker } from "react-leaflet"
 import L from "leaflet"
-import { weatherStations, weatherStationsData } from "../../../api/api"
+import { requestData } from "../../../api/api"
 import { IStation } from "../../../api/api-types"
-// import WeatherPopup from "./WeatherPopup/weather-popup"
 import { MapMarker } from "../../../global/values"
 import WeatherPopup from "./WeatherPopup/weather-popup"
 
@@ -19,8 +18,8 @@ const WeatherLayer: React.FC = () => {
   }, [])
 
   const getData = async () => {
-    const stations = await weatherStations
-    const stationsData = await weatherStationsData
+    const stations = await requestData("weatherStations")
+    const stationsData = await requestData("weatherStationsData")
     return concatData(stations, stationsData)
   }
 

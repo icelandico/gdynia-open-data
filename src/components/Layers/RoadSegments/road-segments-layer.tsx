@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import L from "leaflet";
 import { Polyline } from "react-leaflet";
-import { roadSegments, roadSegmentsData } from "../../../api/api";
+import { requestData } from "../../../api/api";
 
 const RoadSegmentsLayer: React.FC<any> = () => {
   const [roads, setRoads] = useState<[]>([]);
@@ -15,8 +15,8 @@ const RoadSegmentsLayer: React.FC<any> = () => {
   }, []);
 
   const getData = async () => {
-    const roads = await roadSegments;
-    const roadsData = await roadSegmentsData;
+    const roads = await requestData("roads")
+    const roadsData = await requestData("roadsData");
     return concatData(roads["road_segments"], roadsData);
   };
 

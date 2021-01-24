@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Marker } from "react-leaflet";
 import L from "leaflet";
 import { IParking } from "../../../api/api-types";
-import { parkingPlaces, parkingPlacesData } from "../../../api/api";
+import { requestData } from "../../../api/api";
 import { ParkingMarker } from "../../../global/values";
 import ParkingPopup from "./parking-popup";
 
@@ -18,8 +18,8 @@ const ParkingsLayer: React.FC = () => {
   }, []);
 
   const getData = async () => {
-    const parkings = await parkingPlaces;
-    const parkingsData = await parkingPlacesData;
+    const parkings = await requestData("parkings");
+    const parkingsData = await requestData("parkingsData");
     return concatData(parkings, parkingsData);
   };
 
