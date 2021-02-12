@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "09fbc10b1789ad51458b",
+    "revision": "67b6754ad30f4e3b88fc",
     "url": "/gdynia-open-data/static/css/main.3c6e47f6.chunk.css"
   },
   {
-    "revision": "09fbc10b1789ad51458b",
-    "url": "/gdynia-open-data/static/js/main.1ca97877.chunk.js"
+    "revision": "67b6754ad30f4e3b88fc",
+    "url": "/gdynia-open-data/static/js/main.2b70db8f.chunk.js"
   },
   {
     "revision": "d71037d03cbff5d84d29",
@@ -28,7 +28,7 @@ self.__precacheManifest = [
     "url": "/gdynia-open-data/static/media/parking-marker.63ef69d0.svg"
   },
   {
-    "revision": "e6709f1d0bb555f0056f5426fbcc1c07",
+    "revision": "8fa11a598ffb79f53a130f21eb1c2e50",
     "url": "/gdynia-open-data/index.html"
   }
 ];
