@@ -4,3 +4,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Project shows and visualizes various data provided by City of Gdynia.
 
+[Link to app](https://icelandico.github.io/gdynia-open-data)
+
