@@ -1,4 +1,4 @@
-const proxyUrl = "https://cors-anywhere.herokuapp.com/"
+const proxyUrl = "https://api.allorigins.win/raw?url="
 
 const setRequestUrl = (type: string): string => {
   switch(type) {
