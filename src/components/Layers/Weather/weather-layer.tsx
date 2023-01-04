@@ -1,12 +1,12 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { Marker } from "react-leaflet";
-import L from "leaflet";
 import { requestData } from "../../../api/api";
 import { MapMarker } from "../../../global/values";
 import WeatherPopup from "./WeatherPopup/weather-popup";
 import Loader from "../../Loader/loader";
 import { IWeatherStation, IWeatherStationData, WeatherStation } from "../../../types/api";
+import { convertCoords } from "../../../utils/coords";
 
 const concatData = (weatherStations: IWeatherStation[], stationsData: IWeatherStationData[]) => {
   return weatherStations.map(item => {
@@ -29,9 +29,6 @@ const WeatherLayer: React.FC = () => {
     data.then(res => getStations(res));
   }, []);
 
-  const convertCoords = (coords: [number, number]) => {
-    return new L.LatLng(coords[1], coords[0]);
-  };
   const renderWeatherStations = () => {
     return stations.map(weatherStation => {
       const location = weatherStation.location.coordinates;

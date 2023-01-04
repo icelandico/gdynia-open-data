@@ -1,12 +1,12 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { Marker } from "react-leaflet";
-import L from "leaflet";
 import { requestData } from "../../../api/api";
 import { ParkingMarker } from "../../../global/values";
 import ParkingPopup from "./parking-popup";
 import Loader from "../../Loader/loader";
 import { IParking, IParkingData, Parking } from "../../../types/api";
+import { convertCoords } from "../../../utils/coords";
 
 const concatData = (parkings: IParking[], parkingsData: IParkingData[]) => {
   return parkings.map(parking => {
@@ -28,10 +28,6 @@ const ParkingsLayer: React.FC = () => {
     const data = getData();
     data.then(res => setParkings(res));
   }, []);
-
-  const convertCoords = (coords: [number, number]) => {
-    return new L.LatLng(coords[1], coords[0]);
-  };
 
   const renderParkingPlaces = () => {
     return parkings.map(parking => {
