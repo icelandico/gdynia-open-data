@@ -1,20 +1,16 @@
 import React from "react";
 import { Popup } from "react-leaflet";
-import { IParking } from "../../../api/api-types";
 
 interface IParkingProps {
-  parking?: IParking;
-  id: number;
   address: string;
   capacity: number;
   freePlaces: number;
   update: string;
 }
 
-const ParkingPopup: React.FC<IParkingProps> = props => {
-  const { address, capacity, freePlaces, update } = props;
-
-  const valueDisplay = (val: any) => (val !== undefined ? val : "Brak danych");
+const ParkingPopup: React.FC<IParkingProps> = ({ address, capacity, freePlaces, update }) => {
+  const valueDisplay = (val: string | number | undefined) =>
+    val !== undefined ? val : "Brak danych";
 
   return (
     <>

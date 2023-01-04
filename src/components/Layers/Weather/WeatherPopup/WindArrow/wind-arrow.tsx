@@ -6,8 +6,7 @@ interface IArrowProps {
   direction: number;
 }
 
-const WindArrow: React.FC<IArrowProps> = props => {
-  const { direction } = props;
+const WindArrow: React.FC<IArrowProps> = ({ direction }) => {
   return (
     <img
       alt="wind-indicator"

@@ -2,52 +2,47 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 import { Marker } from "react-leaflet";
 import L from "leaflet";
-import { IParking } from "../../../api/api-types";
 import { requestData } from "../../../api/api";
 import { ParkingMarker } from "../../../global/values";
 import ParkingPopup from "./parking-popup";
 import Loader from "../../Loader/loader";
+import { IParking, IParkingData, Parking } from "../../../types/api";
+
+const concatData = (parkings: IParking[], parkingsData: IParkingData[]) => {
+  return parkings.map(parking => {
+    const matched = parkingsData.filter(s => s.parkingId === parking.id);
+    return Object.assign({}, parking, matched[0]);
+  });
+};
 
 const ParkingsLayer: React.FC = () => {
-  const [parkings, getParkings] = useState<[]>([]);
+  const [parkings, setParkings] = useState<Parking[]>([]);
+
+  const getData = async () => {
+    const parkingsResponse = await requestData("parkings");
+    const parkingsData = await requestData("parkingsData");
+    return concatData(parkingsResponse.parkings, parkingsData);
+  };
 
   useEffect(() => {
     const data = getData();
-    data.then(res => {
-      getParkings(res);
-    });
+    data.then(res => setParkings(res));
   }, []);
-
-  const getData = async () => {
-    const parkings = await requestData("parkings");
-    const parkingsData = await requestData("parkingsData");
-    return concatData(parkings, parkingsData);
-  };
-
-  const concatData = (parkings: any, parkingsData: []) => {
-    const wStations = parkings.parkings;
-    return wStations.map((item: any) => {
-      const matched = parkingsData.filter((s: any) => s.parkingId === item.id);
-      return { ...item, ...(matched[0] as Record<string, any>) };
-    });
-  };
 
   const convertCoords = (coords: [number, number]) => {
     return new L.LatLng(coords[1], coords[0]);
   };
 
   const renderParkingPlaces = () => {
-    const parkingsList: IParking[] = parkings;
-    return parkingsList.map((s: IParking) => {
-      const location = s.location.coordinates;
+    return parkings.map(parking => {
+      const location = parking.location.coordinates;
       return (
-        <Marker position={convertCoords(location)} key={s.id} icon={ParkingMarker}>
+        <Marker position={convertCoords(location)} key={parking.id} icon={ParkingMarker}>
           <ParkingPopup
-            id={s.id}
-            address={s.address}
-            capacity={s.capacity}
-            freePlaces={s.freePlaces}
-            update={s.insertTime}
+            address={parking.address}
+            capacity={parking.capacity}
+            freePlaces={parking.freePlaces}
+            update={parking.insertTime}
           />
         </Marker>
       );

@@ -3,30 +3,7 @@ import L from "leaflet";
 import { Polyline } from "react-leaflet";
 import { requestData } from "../../../api/api";
 import Loader from "../../Loader/loader";
-
-interface IRoadSegment {
-  id: number;
-  geometry: {
-    type: string;
-    crs: {
-      type: string;
-      properties: {
-        name: string;
-      };
-    };
-    coordinates: number[][];
-    lastUpdate: string;
-  };
-}
-
-interface IRoadSegmentData {
-  eventId: number;
-  roadSegmentId: number;
-  intensity: number;
-  measureTime: string;
-}
-
-type SegmentData = IRoadSegmentData & IRoadSegment;
+import { IRoadSegment, IRoadSegmentData, SegmentData } from "../../../types/api";
 
 const concatData = (segments: IRoadSegment[], roadsData: IRoadSegmentData[]) => {
   return roadsData.map(roadData => {
