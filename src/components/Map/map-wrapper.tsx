@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { Map, Polygon, TileLayer } from "react-leaflet";
+import { MapContainer, Polygon, TileLayer } from "react-leaflet";
 import values from "../../global/values";
 import WeatherLayer from "../Layers/Weather/weather-layer";
 import ParkingsLayer from "../Layers/Parkings/parkings-layer";
@@ -13,7 +13,7 @@ interface IMapContainer {
   activeLayer: string;
 }
 
-const MapContainer: React.FC<IMapContainer> = ({ activeLayer }) => {
+const MapWrapper: React.FC<IMapContainer> = ({ activeLayer }) => {
   const [cityBoundaries, setBoundaries] = useState<number[][]>([])
   const [mapZoom] = useState<number>(12);
 
@@ -44,7 +44,7 @@ const MapContainer: React.FC<IMapContainer> = ({ activeLayer }) => {
 
   return (
     <div className="map__container">
-      <Map
+      <MapContainer
         center={position}
         zoom={mapZoom}
         className="map"
@@ -53,13 +53,12 @@ const MapContainer: React.FC<IMapContainer> = ({ activeLayer }) => {
         <TileLayer
           attribution={values.attribution}
           url={values.tileSource}
-          ext={values.ext}
         />
         <Polygon positions={convertCoords(cityBoundaries)} color="#797676" fillColor="transparent" />
         {renderLayer()}
-      </Map>
+      </MapContainer>
     </div>
   );
 };
 
-export default MapContainer;
+export default MapWrapper;

@@ -44,7 +44,6 @@ const ParkingsLayer: React.FC = () => {
         <Marker
           position={convertCoords(location)}
           key={s.id}
-          id={3}
           icon={ParkingMarker}
         >
           <ParkingPopup

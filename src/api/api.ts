@@ -1,7 +1,7 @@
-const proxyUrl = "https://api.allorigins.win/raw?url="
+const proxyUrl = "https://api.allorigins.win/raw?url=";
 
 const setRequestUrl = (type: string): string => {
-  switch(type) {
+  switch (type) {
     case "weatherStations":
       return "http://api.zdiz.gdynia.pl/ri/rest/weather_stations";
     case "weatherStationsData":
@@ -17,9 +17,9 @@ const setRequestUrl = (type: string): string => {
     default:
       return "";
   }
-}
+};
 
 export const requestData = async (requestType: string): Promise<any> => {
-  const res = await fetch(`${proxyUrl}${setRequestUrl(requestType)}`)
-  return await res.json()
-}
+  const res = await fetch(`${proxyUrl}${setRequestUrl(requestType)}`);
+  return await res.json();
+};

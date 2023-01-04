@@ -40,7 +40,7 @@ const WeatherLayer: React.FC = () => {
     return stationList.map((s: IStation) => {
       const location = s.location.coordinates
       return (
-        <Marker position={convertCoords(location)} key={s.id} id={3} icon={MapMarker}>
+        <Marker position={convertCoords(location)} key={s.id} icon={MapMarker}>
           <WeatherPopup
             id={s.weatherStationId}
             street={s.street}
