@@ -23,15 +23,7 @@
     "react/jsx-one-expression-per-line": "off",
     "@typescript-eslint/interface-name-prefix": "off",
     "react/jsx-filename-extension": "off",
-    "@typescript-eslint/no-use-before-define": "off",
     "import/prefer-default-export": "off", // Allow single Named-export
-    "no-unused-expressions": [
-      "warn",
-      {
-        "allowShortCircuit": true,
-        "allowTernary": true
-      }
-    ],
     "import/extensions": [
       "error",
       "ignorePackages",
@@ -49,7 +41,7 @@
         "singleQuote": false,
         "semi": true,
         "trailingComma": "none",
-        "bracketSpacing": false,
+        "bracketSpacing": true,
         "endOfLine": "auto",
         "printWidth": 100
       }

@@ -1,64 +1,82 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import L from "leaflet";
 import { Polyline } from "react-leaflet";
 import { requestData } from "../../../api/api";
 import Loader from "../../Loader/loader";
 
-const RoadSegmentsLayer: React.FC<any> = () => {
-  const [roads, setRoads] = useState<[]>([]);
+interface IRoadSegment {
+  id: number;
+  geometry: {
+    type: string;
+    crs: {
+      type: string;
+      properties: {
+        name: string;
+      };
+    };
+    coordinates: number[][];
+    lastUpdate: string;
+  };
+}
+
+interface IRoadSegmentData {
+  eventId: number;
+  roadSegmentId: number;
+  intensity: number;
+  measureTime: string;
+}
+
+type SegmentData = IRoadSegmentData & IRoadSegment;
+
+const concatData = (segments: IRoadSegment[], roadsData: IRoadSegmentData[]) => {
+  return roadsData.map(roadData => {
+    const matched = segments.filter(roadSegment => roadSegment.id === roadData.roadSegmentId);
+    return Object.assign({}, roadData, matched[0]);
+  });
+};
+
+const RoadSegmentsLayer: React.FC = () => {
+  const [roads, setRoads] = useState<SegmentData[]>([]);
+
+  const getData = async () => {
+    const allSegments = await requestData("roads");
+    const segmentsData = await requestData("segmentsData");
+    return concatData(allSegments.road_segments, segmentsData);
+  };
 
   useEffect(() => {
     const data = getData();
-    data.then((res: any) => {
-      setRoads(res);
-    });
+    data.then(res => setRoads(res));
   }, []);
 
-  const getData = async () => {
-    const roads = await requestData("roads")
-    const roadsData = await requestData("roadsData");
-    return concatData(roads["road_segments"], roadsData);
-  };
-
-  const concatData = (roads: [], roadsData: []) => {
-    return roadsData.map(roadData => {
-      const matched = roads.filter(
-        (roadSegment: any) => roadSegment.id === roadData["roadSegmentId"]
-      );
-      return Object.assign({}, roadData, matched[0]);
-    });
-  };
-
   const convertCoords = (coords: number[][]) => {
-    return coords.map(
-      (coordSet: number[]) => new L.LatLng(coordSet[1], coordSet[0])
-    );
+    return coords.map((coordSet: number[]) => new L.LatLng(coordSet[1], coordSet[0]));
   };
 
   const intensityColors = (intensity: number) => {
     if (intensity < 500) {
       return "#1b700b";
-    } else if (intensity < 1000) {
-      return "#6bbe2a";
-    } else if (intensity < 2000) {
-      return "#dd7f48";
-    } else if (intensity < 3000) {
-      return "#942c23";
-    } else {
-      return "#b71540";
     }
+    if (intensity < 1000) {
+      return "#6bbe2a";
+    }
+    if (intensity < 2000) {
+      return "#dd7f48";
+    }
+    if (intensity < 3000) {
+      return "#942c23";
+    }
+    return "#b71540";
   };
 
-  const renderRoadsSegments = (): JSX.Element => {
-    const roadsList: any = roads;
-    return roadsList.map((s: any) => {
-      const coords = s.geometry.coordinates;
+  const renderRoadsSegments = () => {
+    return roads.map(segment => {
+      const coords = segment.geometry.coordinates;
       return (
         <Polyline
-          key={s.id}
+          key={segment.id}
           positions={convertCoords(coords)}
-          color={intensityColors(s.intensity)}
+          color={intensityColors(segment.intensity)}
         />
       );
     });

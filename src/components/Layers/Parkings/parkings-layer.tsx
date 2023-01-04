@@ -41,11 +41,7 @@ const ParkingsLayer: React.FC = () => {
     return parkingsList.map((s: IParking) => {
       const location = s.location.coordinates;
       return (
-        <Marker
-          position={convertCoords(location)}
-          key={s.id}
-          icon={ParkingMarker}
-        >
+        <Marker position={convertCoords(location)} key={s.id} icon={ParkingMarker}>
           <ParkingPopup
             id={s.id}
             address={s.address}

@@ -12,8 +12,8 @@ const setRequestUrl = (type: string): string => {
       return "http://api.zdiz.gdynia.pl/ri/rest/parking_places";
     case "roads":
       return "http://api.zdiz.gdynia.pl/ri/rest/road_segments";
-    case "roadsData":
-      return "http://api.zdiz.gdynia.pl/ri/rest/traffic_intensities?segmentId=00111";
+    case "segmentsData":
+      return "http://api.zdiz.gdynia.pl/ri/rest/traffic_intensities?segmentId=69713";
     default:
       return "";
   }
@@ -21,5 +21,5 @@ const setRequestUrl = (type: string): string => {
 
 export const requestData = async (requestType: string): Promise<any> => {
   const res = await fetch(`${proxyUrl}${setRequestUrl(requestType)}`);
-  return await res.json();
+  return res.json();
 };
