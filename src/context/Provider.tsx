@@ -5,7 +5,10 @@ import {
   WeatherStation,
   SegmentData,
   IRoadSegment,
-  IRoadSegmentData
+  IRoadSegmentData,
+  Parking,
+  IParking,
+  IParkingData
 } from "../types/api";
 import { requestData } from "../api/api";
 
@@ -13,16 +16,20 @@ type APIContextType = {
   isLoading: boolean;
   weatherData: WeatherStation[];
   roadData: SegmentData[];
+  parkingsData: Parking[];
   getWeatherData: () => void;
   getRoadData: () => void;
+  getParkingsData: () => void;
 };
 
 const initialContext = {
   isLoading: false,
   weatherData: [],
   roadData: [],
+  parkingsData: [],
   getWeatherData: () => null,
-  getRoadData: () => null
+  getRoadData: () => null,
+  getParkingsData: () => null
 };
 
 export const APIContext = createContext<APIContextType>(initialContext);
@@ -41,9 +48,17 @@ const concatRoadData = (segments: IRoadSegment[], roadsData: IRoadSegmentData[])
   });
 };
 
+const concatParkingData = (parkings: IParking[], parkingsData: IParkingData[]) => {
+  return parkings.map(parking => {
+    const matched = parkingsData.filter(s => s.parkingId === parking.id);
+    return Object.assign({}, parking, matched[0]);
+  });
+};
+
 export const APIProvider: React.FC<any> = ({ children }) => {
   const [weatherData, setWeatherData] = useState<WeatherStation[]>([]);
   const [roadData, setRoadData] = useState<SegmentData[]>([]);
+  const [parkingsData, setParkingsData] = useState<Parking[]>([]);
   const [isLoading, setLoading] = useState(false);
 
   const getWeatherData = async () => {
@@ -76,8 +91,33 @@ export const APIProvider: React.FC<any> = ({ children }) => {
     });
   };
 
+  const getParkingsData = async () => {
+    setLoading(true);
+
+    const getAsyncData = async () => {
+      const parkingsResponse = await requestData("parkings");
+      const parkingCollectionData = await requestData("parkingsData");
+      return concatParkingData(parkingsResponse.parkings, parkingCollectionData);
+    };
+
+    getAsyncData().then(d => {
+      setParkingsData(d);
+      setLoading(false);
+    });
+  };
+
   return (
-    <APIContext.Provider value={{ isLoading, weatherData, getWeatherData, roadData, getRoadData }}>
+    <APIContext.Provider
+      value={{
+        isLoading,
+        weatherData,
+        getWeatherData,
+        roadData,
+        getRoadData,
+        parkingsData,
+        getParkingsData
+      }}
+    >
       {children}
     </APIContext.Provider>
   );
