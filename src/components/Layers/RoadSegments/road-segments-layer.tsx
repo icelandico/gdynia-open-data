@@ -1,29 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import L from "leaflet";
 import { Polyline } from "react-leaflet";
-import { requestData } from "../../../api/api";
 import Loader from "../../Loader/loader";
-import { IRoadSegment, IRoadSegmentData, SegmentData } from "../../../types/api";
-
-const concatData = (segments: IRoadSegment[], roadsData: IRoadSegmentData[]) => {
-  return roadsData.map(roadData => {
-    const matched = segments.filter(roadSegment => roadSegment.id === roadData.roadSegmentId);
-    return Object.assign({}, roadData, matched[0]);
-  });
-};
+import { useAPI } from "../../../context/useAPI";
 
 const RoadSegmentsLayer: React.FC = () => {
-  const [roads, setRoads] = useState<SegmentData[]>([]);
-
-  const getData = async () => {
-    const allSegments = await requestData("roads");
-    const segmentsData = await requestData("segmentsData");
-    return concatData(allSegments.road_segments, segmentsData);
-  };
+  const { isLoading, roadData, getRoadData } = useAPI();
 
   useEffect(() => {
-    const data = getData();
-    data.then(res => setRoads(res));
+    getRoadData();
   }, []);
 
   const convertCoords = (coords: number[][]) => {
@@ -47,7 +32,7 @@ const RoadSegmentsLayer: React.FC = () => {
   };
 
   const renderRoadsSegments = () => {
-    return roads.map(segment => {
+    return roadData.map(segment => {
       const coords = segment.geometry.coordinates;
       return (
         <Polyline
@@ -59,7 +44,7 @@ const RoadSegmentsLayer: React.FC = () => {
     });
   };
 
-  return <>{roads.length ? renderRoadsSegments() : <Loader />}</>;
+  return <>{!isLoading ? renderRoadsSegments() : <Loader />}</>;
 };
 
 export default RoadSegmentsLayer;
