@@ -1,36 +1,21 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Marker } from "react-leaflet";
-import { requestData } from "../../../api/api";
 import { MapMarker } from "../../../global/values";
 import WeatherPopup from "./WeatherPopup/weather-popup";
 import Loader from "../../Loader/loader";
-import { IWeatherStation, IWeatherStationData, WeatherStation } from "../../../types/api";
 import { convertCoords } from "../../../utils/coords";
-
-const concatData = (weatherStations: IWeatherStation[], stationsData: IWeatherStationData[]) => {
-  return weatherStations.map(item => {
-    const matched = stationsData.filter(s => s.weatherStationId === item.id);
-    return Object.assign({}, item, matched[0]);
-  });
-};
+import { useAPI } from "../../../context/useAPI";
 
 const WeatherLayer: React.FC = () => {
-  const [stations, getStations] = useState<WeatherStation[]>([]);
-
-  const getData = async () => {
-    const stationsResponse = await requestData("weatherStations");
-    const stationsData = await requestData("weatherStationsData");
-    return concatData(stationsResponse.weatherStations, stationsData);
-  };
+  const { isLoading, weatherData, getWeatherData } = useAPI();
 
   useEffect(() => {
-    const data = getData();
-    data.then(res => getStations(res));
+    getWeatherData();
   }, []);
 
   const renderWeatherStations = () => {
-    return stations.map(weatherStation => {
+    return weatherData.map(weatherStation => {
       const location = weatherStation.location.coordinates;
       return (
         <Marker position={convertCoords(location)} key={weatherStation.id} icon={MapMarker}>
@@ -46,7 +31,7 @@ const WeatherLayer: React.FC = () => {
     });
   };
 
-  return <>{stations.length ? renderWeatherStations() : <Loader />}</>;
+  return <>{!isLoading ? renderWeatherStations() : <Loader />}</>;
 };
 
 export default WeatherLayer;
