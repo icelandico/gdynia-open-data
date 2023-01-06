@@ -5,15 +5,15 @@ import MenuPanel from "../MenuPanel/menu-panel";
 import InfoTab from "../InfoTab/info-tab";
 
 const MainContainer: React.FC = () => {
-  const [activeLayer, setLayer] = useState("")
+  const [activeLayer, setLayer] = useState("");
 
   const switchLayer = (layer: string) => {
-    setLayer(layer)
-  }
+    setLayer(layer);
+  };
 
   return (
     <div className="main__container">
-      <MenuPanel handleLayerChange={switchLayer}/>
+      <MenuPanel handleLayerChange={switchLayer} />
       <MapWrapper activeLayer={activeLayer} />
       <InfoTab />
     </div>

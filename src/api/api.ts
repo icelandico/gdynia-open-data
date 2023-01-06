@@ -14,6 +14,8 @@ const setRequestUrl = (type: string): string => {
       return "http://api.zdiz.gdynia.pl/ri/rest/road_segments";
     case "segmentsData":
       return "http://api.zdiz.gdynia.pl/ri/rest/traffic_intensities?segmentId=69713";
+    case "airQualityStations":
+      return "https://api.um.gdynia.pl/weather/air";
     default:
       return "";
   }

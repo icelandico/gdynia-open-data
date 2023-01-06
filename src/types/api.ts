@@ -79,3 +79,28 @@ export interface IParkingData {
 }
 
 export type Parking = IParking & IParkingData;
+
+export interface IAirQualityStation {
+  type: number;
+  address: string;
+  station: string;
+  "PM25.val": number;
+  "PM25.time": number;
+  "PM10.val": number;
+  "PM10.time": number;
+  state: string;
+  color: string;
+  color_day: string;
+  percent: number;
+  carriage: boolean;
+  run: boolean;
+  rover: boolean;
+}
+
+export interface IAirStationCoordinates {
+  address: string;
+  station: string;
+  coordinates: [number, number];
+}
+
+export type AirQualityStation = IAirQualityStation & IAirStationCoordinates;

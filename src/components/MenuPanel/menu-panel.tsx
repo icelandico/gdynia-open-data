@@ -1,17 +1,16 @@
-import React from "react"
-import "./menu-panel.scss"
+import React from "react";
+import "./menu-panel.scss";
 import Header from "../Header/header";
 import Checkbox from "../../global/shared_components/Checkbox/checkbox";
 
 interface IMenuPanel {
-  handleLayerChange: Function
+  handleLayerChange: (layer: string) => void;
 }
 
 const MenuPanel: React.FC<IMenuPanel> = ({ handleLayerChange }) => {
-
   const switchHandler = (value: string) => {
-    handleLayerChange(value)
-  }
+    handleLayerChange(value);
+  };
 
   return (
     <div className="menu__container">
@@ -24,7 +23,7 @@ const MenuPanel: React.FC<IMenuPanel> = ({ handleLayerChange }) => {
           handleChange={switchHandler}
           value=""
           name="chosen-layer"
-          initialChecked={true}
+          initialChecked
         />
         <Checkbox
           text="Dane pogodowe"
@@ -47,9 +46,16 @@ const MenuPanel: React.FC<IMenuPanel> = ({ handleLayerChange }) => {
           value="traffic"
           name="chosen-layer"
         />
+        <Checkbox
+          text="Jakość powietrza"
+          id="airQuality"
+          handleChange={switchHandler}
+          value="airQuality"
+          name="chosen-layer"
+        />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default MenuPanel
+export default MenuPanel;
