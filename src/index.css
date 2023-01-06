@@ -28,3 +28,8 @@ code {
   color: #fff;
   background-color: #797676;
 }
+
+.leaflet-div-icon {
+  background: none;
+  border: none;
+}
