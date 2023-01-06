@@ -1,15 +1,12 @@
-import React from "react"
+import React from "react";
 import "./loader.scss";
 
-interface LoaderProps { }
-
-const Loader: React.FC<LoaderProps> = () => {
-
+const Loader: React.FC = () => {
   return (
     <div className="loader__container">
-      <div className="loader__spinner"></div>
+      <div className="loader__spinner" />
     </div>
-  )
-}
+  );
+};
 
-export default Loader
+export default Loader;

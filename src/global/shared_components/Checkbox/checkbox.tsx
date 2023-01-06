@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 import "./checkbox.scss";
 
 interface CheckboxProps {
@@ -6,15 +6,21 @@ interface CheckboxProps {
   id: string;
   value: string;
   name: string;
-  handleChange: Function;
+  handleChange: (val: string) => void;
   initialChecked?: boolean;
 }
 
-const Checkbox: React.FC<CheckboxProps> = ({text, handleChange, id, value, name, initialChecked}) => {
-
+const Checkbox: React.FC<CheckboxProps> = ({
+  text,
+  handleChange,
+  id,
+  value,
+  name,
+  initialChecked = false
+}) => {
   const handleInputChange = (val: string) => {
-    handleChange(val)
-  }
+    handleChange(val);
+  };
 
   return (
     <label className="checkbox__label">
@@ -28,9 +34,9 @@ const Checkbox: React.FC<CheckboxProps> = ({text, handleChange, id, value, name,
         defaultChecked={initialChecked}
         id={id}
       />
-      <span className="checkbox__indicator"></span>
+      <span className="checkbox__indicator" />
     </label>
-  )
-}
+  );
+};
 
-export default Checkbox
+export default Checkbox;
