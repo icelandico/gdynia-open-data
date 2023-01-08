@@ -53,6 +53,13 @@ const MenuPanel: React.FC<IMenuPanel> = ({ handleLayerChange }) => {
           value="airQuality"
           name="chosen-layer"
         />
+        <Checkbox
+          text="Przystanki komunikacji miejskiej"
+          id="transportStops"
+          handleChange={switchHandler}
+          value="transportStops"
+          name="chosen-layer"
+        />
       </div>
     </div>
   );

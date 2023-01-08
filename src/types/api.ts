@@ -9,6 +9,17 @@ type Location = {
   coordinates: [number, number];
 };
 
+export enum APICalls {
+  WEATHER_STATIONS = "weatherStations",
+  WEATHER_STATIONS_DATA = "weatherStationsData",
+  PARKINGS = "parkings",
+  PARKINGS_DATA = "parkingsData",
+  ROADS = "roads",
+  ROADS_DATA = "roadsData",
+  AIR_QUALITY_STATIONS = "airQualityStations",
+  TRANSPORT_STOPS = "transportStops"
+}
+
 export interface IRoadSegment {
   id: number;
   geometry: {
@@ -47,7 +58,7 @@ export interface IWeatherStationData {
   airTemperature: number;
   surfaceTemperature: number;
   foundationTemperature: number;
-  chemicalConcentration:number;
+  chemicalConcentration: number;
   visibility: number;
   strenghtWind: number;
   windDirection: number;
@@ -104,3 +115,19 @@ export interface IAirStationCoordinates {
 }
 
 export type AirQualityStation = IAirQualityStation & IAirStationCoordinates;
+
+export interface ITransportStops {
+  stopId: number;
+  stopCode: string;
+  stopName: string;
+  stopDesc: string;
+  stopLat: string;
+  stopLon: string;
+  zoneId: string;
+  stopURL: null;
+  locationType: null;
+  parentStation: null;
+  stopTimezone: string;
+  wheelchairBoarding: null;
+  ticketZoneBorder: null;
+}

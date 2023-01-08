@@ -8,6 +8,7 @@ import "./map-container.scss";
 import RoadSegmentsLayer from "../Layers/RoadSegments/road-segments-layer";
 import boundaries from "../../geojson/boundaries.json";
 import AirQualityLayer from "../Layers/AirQuality/air-quality-layer";
+import TransportStops from "../Layers/TransportStops/transportStops";
 
 interface IMapContainer {
   activeLayer: string;
@@ -36,6 +37,8 @@ const MapWrapper: React.FC<IMapContainer> = ({ activeLayer }) => {
         return <RoadSegmentsLayer />;
       case "airQuality":
         return <AirQualityLayer />;
+      case "transportStops":
+        return <TransportStops />;
       default:
         return <></>;
     }

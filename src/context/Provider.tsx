@@ -1,11 +1,11 @@
 import React, { createContext, useState } from "react";
-import { WeatherStation, SegmentData, Parking, AirQualityStation } from "../types/api";
+import {AirQualityStation, APICalls, ITransportStops, Parking, SegmentData, WeatherStation} from "../types/api";
 import { requestData } from "../api/api";
 import {
+  concatAirQualityData,
   concatParkingData,
   concatRoadData,
-  concatWeatherData,
-  concatAirQualityData
+  concatWeatherData
 } from "../utils/concatData";
 import { AIR_QUALITY_STATIONS } from "../constants/airQualityStations";
 
@@ -15,10 +15,12 @@ type APIContextType = {
   roadData: SegmentData[];
   parkingsData: Parking[];
   airQualityData: AirQualityStation[];
+  transportStops: ITransportStops[];
   getWeatherData: () => void;
   getRoadData: () => void;
   getParkingsData: () => void;
   getAirQualityData: () => void;
+  getTransportStops: () => void;
 };
 
 const initialContext = {
@@ -27,10 +29,12 @@ const initialContext = {
   roadData: [],
   parkingsData: [],
   airQualityData: [],
+  transportStops: [],
   getWeatherData: () => null,
   getRoadData: () => null,
   getParkingsData: () => null,
-  getAirQualityData: () => null
+  getAirQualityData: () => null,
+  getTransportStops: () => null
 };
 
 export const APIContext = createContext<APIContextType>(initialContext);
@@ -40,14 +44,15 @@ export const APIProvider: React.FC<any> = ({ children }) => {
   const [roadData, setRoadData] = useState<SegmentData[]>([]);
   const [parkingsData, setParkingsData] = useState<Parking[]>([]);
   const [airQualityData, setAirQualityData] = useState<AirQualityStation[]>([]);
+  const [transportStops, setTransportStops] = useState<ITransportStops[]>([]);
   const [isLoading, setLoading] = useState(false);
 
   const getWeatherData = async () => {
     setLoading(true);
 
     const getAsyncData = async () => {
-      const stationsResponse = await requestData("weatherStations");
-      const stationsData = await requestData("weatherStationsData");
+      const stationsResponse = await requestData(APICalls.WEATHER_STATIONS);
+      const stationsData = await requestData(APICalls.WEATHER_STATIONS_DATA);
       return concatWeatherData(stationsResponse.weatherStations, stationsData);
     };
 
@@ -61,8 +66,8 @@ export const APIProvider: React.FC<any> = ({ children }) => {
     setLoading(true);
 
     const getAsyncData = async () => {
-      const allSegments = await requestData("roads");
-      const segmentsData = await requestData("segmentsData");
+      const allSegments = await requestData(APICalls.ROADS);
+      const segmentsData = await requestData(APICalls.ROADS_DATA);
       return concatRoadData(allSegments.road_segments, segmentsData);
     };
 
@@ -76,8 +81,8 @@ export const APIProvider: React.FC<any> = ({ children }) => {
     setLoading(true);
 
     const getAsyncData = async () => {
-      const parkingsResponse = await requestData("parkings");
-      const parkingCollectionData = await requestData("parkingsData");
+      const parkingsResponse = await requestData(APICalls.PARKINGS);
+      const parkingCollectionData = await requestData(APICalls.PARKINGS_DATA);
       return concatParkingData(parkingsResponse.parkings, parkingCollectionData);
     };
 
@@ -91,12 +96,25 @@ export const APIProvider: React.FC<any> = ({ children }) => {
     setLoading(true);
 
     const getAsyncData = async () => {
-      const airQualityStationsResponse = await requestData("airQualityStations");
+      const airQualityStationsResponse = await requestData(APICalls.AIR_QUALITY_STATIONS);
       return concatAirQualityData(airQualityStationsResponse.stations, AIR_QUALITY_STATIONS);
     };
 
     getAsyncData().then(d => {
       setAirQualityData(d);
+      setLoading(false);
+    });
+  };
+
+  const getTransportStops = async () => {
+    setLoading(true);
+
+    const getAsyncData = async () => {
+      return requestData(APICalls.TRANSPORT_STOPS);
+    };
+
+    getAsyncData().then(d => {
+      setTransportStops(d);
       setLoading(false);
     });
   };
@@ -112,7 +130,9 @@ export const APIProvider: React.FC<any> = ({ children }) => {
         parkingsData,
         getParkingsData,
         airQualityData,
-        getAirQualityData
+        getAirQualityData,
+        transportStops,
+        getTransportStops
       }}
     >
       {children}
