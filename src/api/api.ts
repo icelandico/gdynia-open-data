@@ -2,7 +2,7 @@ import { APICalls } from "../types/api";
 
 const proxyUrl = "https://api.allorigins.win/raw?url=";
 
-const setRequestUrl = (type: string): string => {
+const setRequestUrl = (type: string, param?: string): string => {
   switch (type) {
     case APICalls.WEATHER_STATIONS:
       return "http://api.zdiz.gdynia.pl/ri/rest/weather_stations";
@@ -20,12 +20,14 @@ const setRequestUrl = (type: string): string => {
       return "https://api.um.gdynia.pl/weather/air";
     case APICalls.TRANSPORT_STOPS:
       return "http://api.zdiz.gdynia.pl/pt/stops";
+    case APICalls.TRANSPORT_STOPS_DELAY:
+      return `http://api.zdiz.gdynia.pl/pt/delays?stopId=${param}`;
     default:
       return "";
   }
 };
 
-export const requestData = async (requestType: string): Promise<any> => {
-  const res = await fetch(`${proxyUrl}${setRequestUrl(requestType)}`);
+export const requestData = async (requestType: string, param?: string): Promise<any> => {
+  const res = await fetch(`${proxyUrl}${setRequestUrl(requestType, param)}`);
   return res.json();
 };

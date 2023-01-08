@@ -17,7 +17,8 @@ export enum APICalls {
   ROADS = "roads",
   ROADS_DATA = "roadsData",
   AIR_QUALITY_STATIONS = "airQualityStations",
-  TRANSPORT_STOPS = "transportStops"
+  TRANSPORT_STOPS = "transportStops",
+  TRANSPORT_STOPS_DELAY = "transportStopsDelay"
 }
 
 export interface IRoadSegment {
@@ -130,4 +131,19 @@ export interface ITransportStops {
   stopTimezone: string;
   wheelchairBoarding: null;
   ticketZoneBorder: null;
+}
+
+export interface IStopDelay {
+  id: string;
+  delayInSeconds: number;
+  estimatedTime: string;
+  headsign: string;
+  routeId: number;
+  tripId: number;
+  status: string;
+  theoreticalTime: string;
+  timestamp: string;
+  trip: number;
+  vehicleCode: number;
+  vehicleId: number;
 }

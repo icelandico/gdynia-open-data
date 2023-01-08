@@ -1,5 +1,13 @@
 import React, { createContext, useState } from "react";
-import {AirQualityStation, APICalls, ITransportStops, Parking, SegmentData, WeatherStation} from "../types/api";
+import {
+  AirQualityStation,
+  APICalls,
+  IStopDelay,
+  ITransportStops,
+  Parking,
+  SegmentData,
+  WeatherStation
+} from "../types/api";
 import { requestData } from "../api/api";
 import {
   concatAirQualityData,
@@ -16,11 +24,13 @@ type APIContextType = {
   parkingsData: Parking[];
   airQualityData: AirQualityStation[];
   transportStops: ITransportStops[];
+  transportStopDelay: IStopDelay[];
   getWeatherData: () => void;
   getRoadData: () => void;
   getParkingsData: () => void;
   getAirQualityData: () => void;
   getTransportStops: () => void;
+  getTransportStopDelay: (stopId: string) => void;
 };
 
 const initialContext = {
@@ -30,11 +40,13 @@ const initialContext = {
   parkingsData: [],
   airQualityData: [],
   transportStops: [],
+  transportStopDelay: [],
   getWeatherData: () => null,
   getRoadData: () => null,
   getParkingsData: () => null,
   getAirQualityData: () => null,
-  getTransportStops: () => null
+  getTransportStops: () => null,
+  getTransportStopDelay: () => null
 };
 
 export const APIContext = createContext<APIContextType>(initialContext);
@@ -45,6 +57,7 @@ export const APIProvider: React.FC<any> = ({ children }) => {
   const [parkingsData, setParkingsData] = useState<Parking[]>([]);
   const [airQualityData, setAirQualityData] = useState<AirQualityStation[]>([]);
   const [transportStops, setTransportStops] = useState<ITransportStops[]>([]);
+  const [transportStopDelay, setTransportStopDelay] = useState<IStopDelay[]>([]);
   const [isLoading, setLoading] = useState(false);
 
   const getWeatherData = async () => {
@@ -119,6 +132,18 @@ export const APIProvider: React.FC<any> = ({ children }) => {
     });
   };
 
+  const getTransportStopDelay = async (stopId: string) => {
+    setLoading(true);
+    const getAsyncData = async () => {
+      return requestData(APICalls.TRANSPORT_STOPS_DELAY, stopId);
+    };
+
+    getAsyncData().then(d => {
+      setTimeout(() => setTransportStopDelay(d.delay), 3000);
+      setLoading(false);
+    });
+  };
+
   return (
     <APIContext.Provider
       value={{
@@ -132,7 +157,9 @@ export const APIProvider: React.FC<any> = ({ children }) => {
         airQualityData,
         getAirQualityData,
         transportStops,
-        getTransportStops
+        getTransportStops,
+        getTransportStopDelay,
+        transportStopDelay
       }}
     >
       {children}
