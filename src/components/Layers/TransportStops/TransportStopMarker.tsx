@@ -6,6 +6,7 @@ import DotIndicator from "./DotIndicator";
 import Loader from "../../Loader/loader";
 import { ITransportStops } from "../../../types/api";
 import { useAPI } from "../../../context/useAPI";
+import { getLineNumber } from "../../../utils/busLine";
 
 interface ITransportStopMarkerProps {
   stopData: ITransportStops;
@@ -48,7 +49,7 @@ const TransportStopMarker: React.FC<ITransportStopMarkerProps> = ({ stopData, lo
             {transportStopDelay.map(row => {
               return (
                 <div style={{ marginBottom: "7px" }} key={`${row.id}-${row.vehicleId}`}>
-                  <span>Linia: {row.routeId}, </span>
+                  <span>Linia: {getLineNumber(row.routeId)}, </span>
                   <span>Czas przyjazdu: {row.estimatedTime}</span>
                 </div>
               );
