@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useCallback } from "react";
 import {
   AirQualityStation,
   APICalls,
@@ -31,6 +31,7 @@ type APIContextType = {
   getAirQualityData: () => void;
   getTransportStops: () => void;
   getTransportStopDelay: (stopId: string) => void;
+  resetTransportStopDelay: () => void;
 };
 
 const initialContext = {
@@ -46,7 +47,8 @@ const initialContext = {
   getParkingsData: () => null,
   getAirQualityData: () => null,
   getTransportStops: () => null,
-  getTransportStopDelay: () => null
+  getTransportStopDelay: () => null,
+  resetTransportStopDelay: () => null
 };
 
 export const APIContext = createContext<APIContextType>(initialContext);
@@ -119,7 +121,7 @@ export const APIProvider: React.FC<any> = ({ children }) => {
     });
   };
 
-  const getTransportStops = async () => {
+  const getTransportStops = useCallback(async () => {
     setLoading(true);
 
     const getAsyncData = async () => {
@@ -130,19 +132,21 @@ export const APIProvider: React.FC<any> = ({ children }) => {
       setTransportStops(d);
       setLoading(false);
     });
-  };
+  }, []);
 
-  const getTransportStopDelay = async (stopId: string) => {
+  const getTransportStopDelay = useCallback(async (stopId: string) => {
     setLoading(true);
     const getAsyncData = async () => {
       return requestData(APICalls.TRANSPORT_STOPS_DELAY, stopId);
     };
 
     getAsyncData().then(d => {
-      setTimeout(() => setTransportStopDelay(d.delay), 3000);
+      setTransportStopDelay(d.delay);
       setLoading(false);
     });
-  };
+  }, []);
+
+  const resetTransportStopDelay = () => setTransportStopDelay([]);
 
   return (
     <APIContext.Provider
@@ -159,7 +163,8 @@ export const APIProvider: React.FC<any> = ({ children }) => {
         transportStops,
         getTransportStops,
         getTransportStopDelay,
-        transportStopDelay
+        transportStopDelay,
+        resetTransportStopDelay
       }}
     >
       {children}
