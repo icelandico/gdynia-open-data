@@ -84,6 +84,7 @@ export const APIProvider: React.FC<any> = ({ children }) => {
   };
 
   const getRoadData = async () => {
+    if (roadData.length) return;
     setLoading(true);
 
     const getAsyncData = async () => {
@@ -143,7 +144,9 @@ export const APIProvider: React.FC<any> = ({ children }) => {
   }, []);
 
   const getTransportStopsData = useCallback(async () => {
-    if (transportLines.length && transportStops.length) return;
+    if (transportLines.length && transportStops.length) {
+      return;
+    }
     setLoading(true);
 
     const getAsyncData = () => {
