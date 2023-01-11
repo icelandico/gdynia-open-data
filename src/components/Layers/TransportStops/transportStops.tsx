@@ -4,10 +4,11 @@ import TransportStopMarker from "./TransportStopMarker";
 import Loader from "../../Loader/loader";
 
 const TransportStops: React.FC = () => {
-  const { isLoading, transportStops, getTransportStops } = useAPI();
+  const { isLoading, transportStops, getTransportStops, getTransportLines } = useAPI();
 
   useEffect(() => {
     getTransportStops();
+    getTransportLines();
   }, []);
 
   if (isLoading && transportStops.length === 0) {

@@ -1,10 +1,6 @@
-export const getLineNumber = (busLine: number) => {
-  const stringNum = busLine.toString();
+import { ITransportLine } from "../types/api";
 
-  if (stringNum.slice(0, 3) === "100") {
-    return parseInt(stringNum.slice(-2), 10);
-  }
-  if (stringNum.slice(0, 2) === "10") {
-    return parseInt(stringNum.slice(-3), 10);
-  }
+export const getLineNumber = (collection: ITransportLine[], routeId: number) => {
+  const foundRoute = collection.find(route => route.routeId === routeId);
+  return foundRoute?.routeShortName;
 };

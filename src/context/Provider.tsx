@@ -3,6 +3,7 @@ import {
   AirQualityStation,
   APICalls,
   IStopDelay,
+  ITransportLine,
   ITransportStops,
   Parking,
   SegmentData,
@@ -25,6 +26,7 @@ type APIContextType = {
   airQualityData: AirQualityStation[];
   transportStops: ITransportStops[];
   transportStopDelay: IStopDelay[];
+  transportLines: ITransportLine[];
   getWeatherData: () => void;
   getRoadData: () => void;
   getParkingsData: () => void;
@@ -32,6 +34,7 @@ type APIContextType = {
   getTransportStops: () => void;
   getTransportStopDelay: (stopId: string) => void;
   resetTransportStopDelay: () => void;
+  getTransportLines: () => void;
 };
 
 const initialContext = {
@@ -42,13 +45,15 @@ const initialContext = {
   airQualityData: [],
   transportStops: [],
   transportStopDelay: [],
+  transportLines: [],
   getWeatherData: () => null,
   getRoadData: () => null,
   getParkingsData: () => null,
   getAirQualityData: () => null,
   getTransportStops: () => null,
   getTransportStopDelay: () => null,
-  resetTransportStopDelay: () => null
+  resetTransportStopDelay: () => null,
+  getTransportLines: () => null
 };
 
 export const APIContext = createContext<APIContextType>(initialContext);
@@ -60,6 +65,7 @@ export const APIProvider: React.FC<any> = ({ children }) => {
   const [airQualityData, setAirQualityData] = useState<AirQualityStation[]>([]);
   const [transportStops, setTransportStops] = useState<ITransportStops[]>([]);
   const [transportStopDelay, setTransportStopDelay] = useState<IStopDelay[]>([]);
+  const [transportLines, setTransportLines] = useState<ITransportLine[]>([]);
   const [isLoading, setLoading] = useState(false);
 
   const getWeatherData = async () => {
@@ -146,6 +152,18 @@ export const APIProvider: React.FC<any> = ({ children }) => {
     });
   }, []);
 
+  const getTransportLines = useCallback(async () => {
+    setLoading(true);
+    const getAsyncData = async () => {
+      return requestData(APICalls.TRANSPORT_LINES);
+    };
+
+    getAsyncData().then(d => {
+      setTransportLines(d);
+      setLoading(false);
+    });
+  }, []);
+
   const resetTransportStopDelay = () => setTransportStopDelay([]);
 
   return (
@@ -164,7 +182,9 @@ export const APIProvider: React.FC<any> = ({ children }) => {
         getTransportStops,
         getTransportStopDelay,
         transportStopDelay,
-        resetTransportStopDelay
+        resetTransportStopDelay,
+        transportLines,
+        getTransportLines
       }}
     >
       {children}

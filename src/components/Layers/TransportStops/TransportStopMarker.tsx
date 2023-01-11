@@ -14,7 +14,7 @@ interface ITransportStopMarkerProps {
 }
 
 const TransportStopMarker: React.FC<ITransportStopMarkerProps> = ({ stopData, location }) => {
-  const { isLoading, transportStopDelay, getTransportStopDelay } = useAPI();
+  const { isLoading, transportStopDelay, getTransportStopDelay, transportLines } = useAPI();
 
   return (
     <Marker
@@ -49,7 +49,7 @@ const TransportStopMarker: React.FC<ITransportStopMarkerProps> = ({ stopData, lo
             {transportStopDelay.map(row => {
               return (
                 <div style={{ marginBottom: "7px" }} key={`${row.id}-${row.vehicleId}`}>
-                  <span>Linia: {getLineNumber(row.routeId)}, </span>
+                  <span>Linia: {getLineNumber(transportLines, row.routeId)}, </span>
                   <span>Czas przyjazdu: {row.estimatedTime}</span>
                 </div>
               );

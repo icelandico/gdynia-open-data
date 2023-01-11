@@ -22,6 +22,8 @@ const setRequestUrl = (type: string, param?: string): string => {
       return "http://api.zdiz.gdynia.pl/pt/stops";
     case APICalls.TRANSPORT_STOPS_DELAY:
       return `http://api.zdiz.gdynia.pl/pt/delays?stopId=${param}`;
+    case APICalls.TRANSPORT_LINES:
+      return "http://api.zdiz.gdynia.pl/pt/routes";
     default:
       return "";
   }
