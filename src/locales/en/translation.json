@@ -1,3 +1,10 @@
 {
-  "hello": "hello"
+  "hello": "hello",
+  "choose layer": "Choose layer",
+  "no layer": "No layers",
+  "weather data": "Weather data",
+  "parking data": "Parking lots",
+  "traffic data": "Traffic data",
+  "air quality": "Air quality",
+  "public transport data": "Public transport data"
 }

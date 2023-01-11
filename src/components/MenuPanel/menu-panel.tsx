@@ -1,5 +1,6 @@
 import React from "react";
 import "./menu-panel.scss";
+import { useT } from "talkr";
 import Header from "../Header/header";
 import Checkbox from "../../global/shared_components/Checkbox/checkbox";
 
@@ -8,6 +9,8 @@ interface IMenuPanel {
 }
 
 const MenuPanel: React.FC<IMenuPanel> = ({ handleLayerChange }) => {
+  const { T } = useT();
+
   const switchHandler = (value: string) => {
     handleLayerChange(value);
   };
@@ -15,10 +18,10 @@ const MenuPanel: React.FC<IMenuPanel> = ({ handleLayerChange }) => {
   return (
     <div className="menu__container">
       <Header />
-      <h2 className="menu__header">Wybierz warstwę</h2>
+      <h2 className="menu__header">{T("choose layer")}</h2>
       <div className="menu__content">
         <Checkbox
-          text="Brak warstw"
+          text={T("no layer")}
           id="none"
           handleChange={switchHandler}
           value=""
@@ -26,35 +29,35 @@ const MenuPanel: React.FC<IMenuPanel> = ({ handleLayerChange }) => {
           initialChecked
         />
         <Checkbox
-          text="Dane pogodowe"
+          text={T("weather data")}
           id="weather"
           handleChange={switchHandler}
           value="weather"
           name="chosen-layer"
         />
         <Checkbox
-          text="Miejsca parkingowe"
+          text={T("parking data")}
           id="parkings"
           handleChange={switchHandler}
           value="parkings"
           name="chosen-layer"
         />
         <Checkbox
-          text="Dane o ruchu"
+          text={T("traffic data")}
           id="traffic"
           handleChange={switchHandler}
           value="traffic"
           name="chosen-layer"
         />
         <Checkbox
-          text="Jakość powietrza"
+          text={T("air quality")}
           id="airQuality"
           handleChange={switchHandler}
           value="airQuality"
           name="chosen-layer"
         />
         <Checkbox
-          text="Przystanki komunikacji miejskiej"
+          text={T("public transport data")}
           id="transportStops"
           handleChange={switchHandler}
           value="transportStops"
