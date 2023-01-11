@@ -2,6 +2,8 @@ import React, { createContext, useState, useCallback } from "react";
 import {
   AirQualityStation,
   APICalls,
+  IRoadSegmentData,
+  IRoadSegmentRequest,
   IStopDelay,
   ITransportLine,
   ITransportStops,
@@ -31,10 +33,9 @@ type APIContextType = {
   getRoadData: () => void;
   getParkingsData: () => void;
   getAirQualityData: () => void;
-  getTransportStops: () => void;
   getTransportStopDelay: (stopId: string) => void;
   resetTransportStopDelay: () => void;
-  getTransportLines: () => void;
+  getTransportStopsData: () => void;
 };
 
 const initialContext = {
@@ -50,10 +51,9 @@ const initialContext = {
   getRoadData: () => null,
   getParkingsData: () => null,
   getAirQualityData: () => null,
-  getTransportStops: () => null,
-  getTransportStopDelay: () => null,
   resetTransportStopDelay: () => null,
-  getTransportLines: () => null
+  getTransportStopDelay: () => null,
+  getTransportStopsData: () => null
 };
 
 export const APIContext = createContext<APIContextType>(initialContext);
@@ -87,9 +87,12 @@ export const APIProvider: React.FC<any> = ({ children }) => {
     setLoading(true);
 
     const getAsyncData = async () => {
-      const allSegments = await requestData(APICalls.ROADS);
-      const segmentsData = await requestData(APICalls.ROADS_DATA);
-      return concatRoadData(allSegments.road_segments, segmentsData);
+      const segmentsPromises: [Promise<IRoadSegmentRequest>, Promise<IRoadSegmentData[]>] = [
+        requestData(APICalls.ROADS),
+        requestData(APICalls.ROADS_DATA)
+      ];
+      const allSegmentsResponse = await Promise.all(segmentsPromises);
+      return concatRoadData(allSegmentsResponse[0].road_segments, allSegmentsResponse[1]);
     };
 
     getAsyncData().then(d => {
@@ -127,19 +130,6 @@ export const APIProvider: React.FC<any> = ({ children }) => {
     });
   };
 
-  const getTransportStops = useCallback(async () => {
-    setLoading(true);
-
-    const getAsyncData = async () => {
-      return requestData(APICalls.TRANSPORT_STOPS);
-    };
-
-    getAsyncData().then(d => {
-      setTransportStops(d);
-      setLoading(false);
-    });
-  }, []);
-
   const getTransportStopDelay = useCallback(async (stopId: string) => {
     setLoading(true);
     const getAsyncData = async () => {
@@ -152,14 +142,21 @@ export const APIProvider: React.FC<any> = ({ children }) => {
     });
   }, []);
 
-  const getTransportLines = useCallback(async () => {
+  const getTransportStopsData = useCallback(async () => {
+    if (transportLines.length && transportStops.length) return;
     setLoading(true);
-    const getAsyncData = async () => {
-      return requestData(APICalls.TRANSPORT_LINES);
+
+    const getAsyncData = () => {
+      const transportDataPromises: [Promise<ITransportLine[]>, Promise<ITransportStops[]>] = [
+        requestData(APICalls.TRANSPORT_LINES),
+        requestData(APICalls.TRANSPORT_STOPS)
+      ];
+      return Promise.all(transportDataPromises);
     };
 
     getAsyncData().then(d => {
-      setTransportLines(d);
+      setTransportLines(d[0]);
+      setTransportStops(d[1]);
       setLoading(false);
     });
   }, []);
@@ -179,12 +176,11 @@ export const APIProvider: React.FC<any> = ({ children }) => {
         airQualityData,
         getAirQualityData,
         transportStops,
-        getTransportStops,
+        getTransportStopsData,
         getTransportStopDelay,
         transportStopDelay,
         resetTransportStopDelay,
-        transportLines,
-        getTransportLines
+        transportLines
       }}
     >
       {children}

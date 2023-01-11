@@ -37,6 +37,10 @@ export interface IRoadSegment {
   };
 }
 
+export interface IRoadSegmentRequest {
+  road_segments: IRoadSegment[];
+}
+
 export interface IRoadSegmentData {
   eventId: number;
   roadSegmentId: number;
