@@ -1,8 +1,9 @@
 import React, { useRef, useEffect } from "react";
 import { Popup } from "react-leaflet";
+import { LatLngExpression } from "leaflet";
+import { useT } from "talkr";
 import { IStopDelay } from "../../../types/api";
 import Loader from "../../Loader/loader";
-import { LatLngExpression } from "leaflet";
 
 interface ITransportPopupProps {
   stopName: string;
@@ -17,20 +18,28 @@ const TransportPopup: React.FC<ITransportPopupProps> = ({
   isLoading = false,
   coordinates
 }) => {
+  const { T } = useT();
+
   const valueDisplay = (val: string | number | undefined) =>
-    val !== undefined ? val : "Brak danych";
+    val !== undefined ? val : T("no data");
   return (
     <>
       <Popup position={coordinates}>
-        <p>Nazwa: {valueDisplay(stopName)} </p>
-        <p>Opóźnienia: </p>
+        <p>
+          {T("stop name")}: {valueDisplay(stopName)}{" "}
+        </p>
+        <p>{T("delay")}: </p>
         {delayData && (
           <div className="delay-data-container">
             {delayData.map(row => {
               return (
                 <>
-                  <p>Linia: {row.routeId}</p>
-                  <p>Czas przyjazdu: {row.estimatedTime}</p>
+                  <p>
+                    {T("line")}: {row.routeId}
+                  </p>
+                  <p>
+                    {T("estimated time")}: {row.estimatedTime}
+                  </p>
                 </>
               );
             })}

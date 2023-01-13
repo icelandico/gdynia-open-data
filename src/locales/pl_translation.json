@@ -20,5 +20,10 @@
   "last update": "Ostatnia aktualizacja",
   "station": "Stacja",
   "pm25": "PM2.5",
-  "pm10": "PM10"
+  "pm10": "PM10",
+  "delay": "Opóźnienia",
+  "stop name": "Nazwa przystanku",
+  "line": "Linia",
+  "estimated time": "Czas przyjazdu",
+  "no delays": "Brak opóźnień"
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import { Marker, Popup } from "react-leaflet";
 import L from "leaflet";
+import { useT } from "talkr";
 import { convertCoords } from "../../../utils/coords";
 import DotIndicator from "./DotIndicator";
 import Loader from "../../Loader/loader";
@@ -15,6 +16,7 @@ interface ITransportStopMarkerProps {
 
 const TransportStopMarker: React.FC<ITransportStopMarkerProps> = ({ stopData, location }) => {
   const { isLoading, transportStopDelay, getTransportStopDelay, transportLines } = useAPI();
+  const { T } = useT();
 
   return (
     <Marker
@@ -31,7 +33,9 @@ const TransportStopMarker: React.FC<ITransportStopMarkerProps> = ({ stopData, lo
       }
     >
       <Popup key={stopData.stopId}>
-        <p>Nazwa: {stopData.stopName} </p>
+        <p>
+          {T("stop name")} : {stopData.stopName}{" "}
+        </p>
         <div>
           <div
             style={{
@@ -42,15 +46,21 @@ const TransportStopMarker: React.FC<ITransportStopMarkerProps> = ({ stopData, lo
               minWidth: "130px"
             }}
           >
-            <span>Opóźnienia: {!transportStopDelay.length && <span>Brak</span>}</span>
+            <span>
+              {T("delay")}: {!transportStopDelay.length && <span>{T("no delays")}</span>}
+            </span>
             <DotIndicator type={transportStopDelay.length ? "negative" : "positive"} />
           </div>
           <div>
             {transportStopDelay.map(row => {
               return (
                 <div style={{ marginBottom: "7px" }} key={`${row.id}-${row.vehicleId}`}>
-                  <span>Linia: {getLineNumber(transportLines, row.routeId)}, </span>
-                  <span>Czas przyjazdu: {row.estimatedTime}</span>
+                  <span>
+                    {T("line")}: {getLineNumber(transportLines, row.routeId)},{" "}
+                  </span>
+                  <span>
+                    {T("estimated time")}: {row.estimatedTime}
+                  </span>
                 </div>
               );
             })}

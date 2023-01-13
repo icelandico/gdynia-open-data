@@ -20,5 +20,10 @@
   "last update": "Last update",
   "station": "Station",
   "pm25": "PM2.5",
-  "pm10": "PM10"
+  "pm10": "PM10",
+  "delay": "Delays",
+  "stop name": "Stop name",
+  "line": "Line",
+  "estimated time": "Estimated time",
+  "no delays": "No delays"
 }
