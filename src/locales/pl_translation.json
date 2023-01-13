@@ -1,0 +1,10 @@
+{
+  "hello": "witaj",
+  "choose layer": "Wybierz warstwę",
+  "no layer": "Brak warstw",
+  "weather data": "Dane pogodowe",
+  "parking data": "Dane o parkingach",
+  "traffic data": "Dane o ruchu",
+  "air quality": "Jakość powietrza",
+  "public transport data": "Transport publiczny"
+}
