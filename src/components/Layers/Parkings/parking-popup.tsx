@@ -1,5 +1,6 @@
 import React from "react";
 import { Popup } from "react-leaflet";
+import { useT } from "talkr";
 
 interface IParkingProps {
   address: string;
@@ -9,16 +10,26 @@ interface IParkingProps {
 }
 
 const ParkingPopup: React.FC<IParkingProps> = ({ address, capacity, freePlaces, update }) => {
+  const { T } = useT();
+
   const valueDisplay = (val: string | number | undefined) =>
     val !== undefined ? val : "Brak danych";
 
   return (
     <>
       <Popup>
-        <p>Adres: {valueDisplay(address)} </p>
-        <p>Ogółem miejsc: {valueDisplay(capacity)}</p>
-        <p>Wolnych miejsc: {valueDisplay(freePlaces)}</p>
-        <p>Ostatnia aktualizacja: {valueDisplay(update)}</p>
+        <p>
+          {T("address")}: {valueDisplay(address)}{" "}
+        </p>
+        <p>
+          {T("total slots")}: {valueDisplay(capacity)}
+        </p>
+        <p>
+          {T("free slots")}: {valueDisplay(freePlaces)}
+        </p>
+        <p>
+          {T("last update")}: {valueDisplay(update)}
+        </p>
       </Popup>
     </>
   );

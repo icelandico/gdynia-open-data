@@ -23,7 +23,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
   };
 
   return (
-    <label className="checkbox__label">
+    <label className="checkbox__label" id={id}>
       <span>{text}</span>
       <input
         name={name}

@@ -6,5 +6,19 @@
   "parking data": "Parking lots",
   "traffic data": "Traffic data",
   "air quality": "Air quality",
-  "public transport data": "Public transport data"
+  "public transport data": "Public transport data",
+  "author": "Author",
+  "no data": "No data",
+  "location": "Location",
+  "air temperature": "Air temperature",
+  "surface temperature": "Surface temperature",
+  "wind direction": "Wind direction",
+  "station id": "Station ID",
+  "address": "Address",
+  "total slots": "Total slots",
+  "free slots": "Free slots",
+  "last update": "Last update",
+  "station": "Station",
+  "pm25": "PM2.5",
+  "pm10": "PM10"
 }

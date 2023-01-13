@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Popup } from "react-leaflet";
+import { useT } from "talkr";
 import WindArrow from "./WindArrow/wind-arrow";
 
 interface IStationProps {
@@ -17,14 +18,25 @@ const WeatherPopup: React.FC<IStationProps> = ({
   surfaceTemperature,
   windDirection
 }) => {
+  const { T } = useT();
   return (
     <>
       <Popup>
-        <p>Identyfikator stacji: {id || "Brak danych"}</p>
-        <p>Lokalizacja: {street || "Brak danych"}</p>
-        <p>Temperatura powietrza: {airTemperature || "Brak danych"}</p>
-        <p>Temperatura powierzchni: {surfaceTemperature || "Brak danych"}</p>
-        <p>Kierunek wiatru: {<WindArrow direction={windDirection} /> || "Brak danych"}</p>
+        <p>
+          {T("station id")}: {id || T("no data")}
+        </p>
+        <p>
+          {T("location")}: {street || T("no data")}
+        </p>
+        <p>
+          {T("air temperature")}: {airTemperature || T("no data")}
+        </p>
+        <p>
+          {T("surface temperature")}: {surfaceTemperature || T("no data")}
+        </p>
+        <p>
+          {T("wind direction")}: {<WindArrow direction={windDirection} /> || T("no data")}
+        </p>
       </Popup>
     </>
   );
