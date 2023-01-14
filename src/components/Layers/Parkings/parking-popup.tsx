@@ -1,6 +1,6 @@
 import React from "react";
 import { Popup } from "react-leaflet";
-import { useT } from "talkr";
+import { useAutocompleteT } from "../../../translate";
 
 interface IParkingProps {
   address: string;
@@ -10,7 +10,7 @@ interface IParkingProps {
 }
 
 const ParkingPopup: React.FC<IParkingProps> = ({ address, capacity, freePlaces, update }) => {
-  const { T } = useT();
+  const { T } = useAutocompleteT();
 
   const valueDisplay = (val: string | number | undefined) =>
     val !== undefined ? val : "Brak danych";

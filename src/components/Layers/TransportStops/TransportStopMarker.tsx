@@ -1,13 +1,13 @@
 import React from "react";
 import { Marker, Popup } from "react-leaflet";
 import L from "leaflet";
-import { useT } from "talkr";
 import { convertCoords } from "../../../utils/coords";
 import DotIndicator from "./DotIndicator";
 import Loader from "../../Loader/loader";
 import { ITransportStops } from "../../../types/api";
 import { useAPI } from "../../../context/useAPI";
 import { getLineNumber } from "../../../utils/busLine";
+import { useAutocompleteT } from "../../../translate";
 
 interface ITransportStopMarkerProps {
   stopData: ITransportStops;
@@ -16,7 +16,7 @@ interface ITransportStopMarkerProps {
 
 const TransportStopMarker: React.FC<ITransportStopMarkerProps> = ({ stopData, location }) => {
   const { isLoading, transportStopDelay, getTransportStopDelay, transportLines } = useAPI();
-  const { T } = useT();
+  const { T } = useAutocompleteT();
 
   return (
     <Marker

@@ -1,15 +1,15 @@
 import React from "react";
 import "./menu-panel.scss";
-import { useT } from "talkr";
 import Header from "../Header/header";
 import Checkbox from "../../global/shared_components/Checkbox/checkbox";
+import { useAutocompleteT } from "../../translate";
 
 interface IMenuPanel {
   handleLayerChange: (layer: string) => void;
 }
 
 const MenuPanel: React.FC<IMenuPanel> = ({ handleLayerChange }) => {
-  const { T } = useT();
+  const { T } = useAutocompleteT();
 
   const switchHandler = (value: string) => {
     handleLayerChange(value);

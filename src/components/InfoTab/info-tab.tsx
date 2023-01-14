@@ -1,9 +1,9 @@
 import React from "react";
 import "./info-tab.scss";
-import { useT } from "talkr";
+import { useAutocompleteT } from "../../translate";
 
 const InfoTab = () => {
-  const { T } = useT();
+  const { T } = useAutocompleteT();
 
   return (
     <div className="info-tab__container">

@@ -1,6 +1,6 @@
 import React from "react";
 import { Popup } from "react-leaflet";
-import { useT } from "talkr";
+import { useAutocompleteT } from "../../../translate";
 
 interface IAirQualityProps {
   address: string;
@@ -11,7 +11,7 @@ interface IAirQualityProps {
 }
 
 const AirQualityPopup: React.FC<IAirQualityProps> = ({ address, station, state, PM25, PM10 }) => {
-  const { T } = useT();
+  const { T } = useAutocompleteT();
 
   const valueDisplay = (val: string | number | undefined) =>
     val !== undefined ? val : "Brak danych";

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Popup } from "react-leaflet";
-import { useT } from "talkr";
 import WindArrow from "./WindArrow/wind-arrow";
+import { useAutocompleteT } from "../../../../translate";
 
 interface IStationProps {
   id: number;
@@ -18,7 +18,8 @@ const WeatherPopup: React.FC<IStationProps> = ({
   surfaceTemperature,
   windDirection
 }) => {
-  const { T } = useT();
+  const { T } = useAutocompleteT();
+
   return (
     <>
       <Popup>

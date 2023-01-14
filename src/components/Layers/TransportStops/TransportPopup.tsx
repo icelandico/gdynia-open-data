@@ -4,6 +4,7 @@ import { LatLngExpression } from "leaflet";
 import { useT } from "talkr";
 import { IStopDelay } from "../../../types/api";
 import Loader from "../../Loader/loader";
+import { useAutocompleteT } from "../../../translate";
 
 interface ITransportPopupProps {
   stopName: string;
@@ -18,7 +19,7 @@ const TransportPopup: React.FC<ITransportPopupProps> = ({
   isLoading = false,
   coordinates
 }) => {
-  const { T } = useT();
+  const { T } = useAutocompleteT();
 
   const valueDisplay = (val: string | number | undefined) =>
     val !== undefined ? val : T("no data");
