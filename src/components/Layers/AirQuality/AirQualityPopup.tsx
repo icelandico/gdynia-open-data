@@ -14,7 +14,7 @@ const AirQualityPopup: React.FC<IAirQualityProps> = ({ address, station, state, 
   const { T } = useAutocompleteT();
 
   const valueDisplay = (val: string | number | undefined) =>
-    val !== undefined ? val : "Brak danych";
+    val !== undefined ? val : T("no data");
 
   return (
     <>

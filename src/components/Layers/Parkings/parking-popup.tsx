@@ -13,7 +13,7 @@ const ParkingPopup: React.FC<IParkingProps> = ({ address, capacity, freePlaces, 
   const { T } = useAutocompleteT();
 
   const valueDisplay = (val: string | number | undefined) =>
-    val !== undefined ? val : "Brak danych";
+    val !== undefined ? val : T("no data");
 
   return (
     <>
