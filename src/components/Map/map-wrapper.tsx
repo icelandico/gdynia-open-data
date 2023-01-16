@@ -9,15 +9,16 @@ import RoadSegmentsLayer from "../Layers/RoadSegments/road-segments-layer";
 import boundaries from "../../geojson/boundaries.json";
 import AirQualityLayer from "../Layers/AirQuality/air-quality-layer";
 import TransportStops from "../Layers/TransportStops/transportStops";
+import useMobileWidth from "../../utils/useMobileWidth";
 
 interface IMapContainer {
   activeLayer: string;
 }
 
 const MapWrapper: React.FC<IMapContainer> = ({ activeLayer }) => {
+  const [isMobile] = useMobileWidth();
   const [cityBoundaries, setBoundaries] = useState<number[][]>([]);
-  const [mapZoom] = useState<number>(12);
-
+  console.log("MAP IS MOBILE", isMobile ? 5 : 12);
   useEffect(() => {
     const cityPolygon = boundaries.features[0].geometry.coordinates[0];
     setBoundaries(cityPolygon);
@@ -47,7 +48,12 @@ const MapWrapper: React.FC<IMapContainer> = ({ activeLayer }) => {
 
   return (
     <div className="map__container">
-      <MapContainer center={position} zoom={mapZoom} className="map" style={{ height: "100vh" }}>
+      <MapContainer
+        center={position}
+        zoom={isMobile ? 11 : 12}
+        className="map"
+        style={{ height: "100vh" }}
+      >
         <TileLayer attribution={values.attribution} url={values.tileSource} />
         <Polygon
           positions={convertCoords(cityBoundaries)}

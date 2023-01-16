@@ -4,6 +4,7 @@ import MapWrapper from "../Map/map-wrapper";
 import MenuPanel from "../MenuPanel/menu-panel";
 import InfoTab from "../InfoTab/info-tab";
 import MenuSwitch from "../MenuSwitch/MenuSwitch";
+import useMobileWidth from "../../utils/useMobileWidth";
 
 const MainContainer: React.FC = () => {
   const [activeLayer, setLayer] = useState("");
