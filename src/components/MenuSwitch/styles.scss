@@ -1,0 +1,40 @@
+.menu__switch-container {
+  @media (min-width: 768px) {
+    display: none;
+  }
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 500;
+
+  .switch-line {
+    display: block;
+    width: 4rem;
+    height: 0.5rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    background: #797676;
+    z-index: 1;
+    transform-origin: 0.5rem 0px;
+    transition: transform 0.25s cubic-bezier(0.77,0.2,0.05,1.0),
+    background 0.25s cubic-bezier(0.77,0.2,0.05,1.0),
+    opacity 0.25s ease;
+  }
+
+  &.is-opened {
+    .switch-line {
+      opacity: 1;
+      transform: rotate(45deg) translate(-2px, -1px);
+      background: #232323;
+    }
+
+    .switch-line.line-2 {
+      opacity: 0;
+      transform: rotate(0deg) scale(0.2, 0.2);
+    }
+
+    .switch-line.line-3 {
+      transform: rotate(-45deg) translate(-3px, -3px);
+    }
+  }
+}
