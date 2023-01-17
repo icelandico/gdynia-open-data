@@ -6,11 +6,15 @@ const InfoTab = () => {
   const { T } = useAutocompleteT();
 
   return (
-    <div className="info-tab__container">
-      <a className="info-tab__author" href="https://geodev.me" target="_blank" rel="noreferrer">
-        {T("author")}
-      </a>
-    </div>
+    <a
+      role="button"
+      className="info-tab__author secondary"
+      href="https://geodev.me"
+      target="_blank"
+      rel="noreferrer"
+    >
+      {T("author")}
+    </a>
   );
 };
 

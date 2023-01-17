@@ -1,21 +1,23 @@
 .menu__container {
   position: absolute;
-  top: 0;
-  right: 0;
-  background-color: #797676;
-  color: #fff;
-  padding: 1rem 2rem;
+  top: 12px;
+  right: 12px;
+  padding: 10px 20px;
   z-index: 500;
-  box-shadow: -2px 2px 2px #000;
+  margin: 0;
 }
 
-.menu__header {
-  font-size: 1.5rem;
-  margin-top: 0;
-}
-
-.menu__content {
-  margin-top: 1rem;
+.header__lang-container {
   display: flex;
-  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.lang-switch {
+  margin-right: 1rem;
+  margin-bottom: 0;
+  cursor: pointer;
+
+  &.is-active {
+    text-decoration: underline;
+  }
 }

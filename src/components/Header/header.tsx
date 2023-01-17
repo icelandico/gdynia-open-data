@@ -1,28 +1,14 @@
 import React from "react";
-import "./header.scss";
-import { useT } from "talkr";
+import { useAutocompleteT } from "../../translate";
 
 const Header: React.FC = () => {
-  const { setLocale, locale } = useT();
+  const { T } = useAutocompleteT();
 
   return (
-    <div className="header">
-      <h1>Gdynia Open Data Viewer</h1>
-      <div className="header__lang-container">
-        <h3
-          className={`lang-switch ${locale === "pl" ? "is-active" : ""}`}
-          onClick={() => setLocale("pl")}
-        >
-          PL
-        </h3>
-        <h3
-          className={`lang-switch ${locale === "en" ? "is-active" : ""}`}
-          onClick={() => setLocale("en")}
-        >
-          EN
-        </h3>
-      </div>
-    </div>
+    <hgroup>
+      <h4>Gdynia Open Data Viewer</h4>
+      <h5>{T("choose layer")}</h5>
+    </hgroup>
   );
 };
 

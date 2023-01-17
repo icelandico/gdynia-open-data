@@ -9,17 +9,16 @@ interface IMenuPanel {
 }
 
 const MenuPanel: React.FC<IMenuPanel> = ({ handleLayerChange }) => {
-  const { T } = useAutocompleteT();
+  const { T, setLocale, locale } = useAutocompleteT();
 
   const switchHandler = (value: string) => {
     handleLayerChange(value);
   };
 
   return (
-    <div className="menu__container">
+    <article className="warning menu__container">
       <Header />
-      <h2 className="menu__header">{T("choose layer")}</h2>
-      <div className="menu__content">
+      <fieldset>
         <Checkbox
           text={T("no layer")}
           id="none"
@@ -63,8 +62,22 @@ const MenuPanel: React.FC<IMenuPanel> = ({ handleLayerChange }) => {
           value="transportStops"
           name="chosen-layer"
         />
+      </fieldset>
+      <div className="header__lang-container">
+        <h6
+          className={`lang-switch ${locale === "pl" ? "is-active" : ""}`}
+          onClick={() => setLocale("pl")}
+        >
+          PL
+        </h6>
+        <h6
+          className={`lang-switch ${locale === "en" ? "is-active" : ""}`}
+          onClick={() => setLocale("en")}
+        >
+          EN
+        </h6>
       </div>
-    </div>
+    </article>
   );
 };
 

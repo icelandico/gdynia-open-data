@@ -1,7 +1,3 @@
-html {
-  font-size: 10px;
-}
-
 body {
   margin: 0;
   padding: 0;
@@ -24,9 +20,10 @@ code {
   width: 100%;
 }
 
-.leaflet-popup-content-wrapper, .leaflet-popup-tip {
-  color: #fff;
-  background-color: #797676;
+.leaflet-marker-icon {
+  background-color: transparent;
+  padding: 0;
+  border: 0;
 }
 
 .leaflet-div-icon {

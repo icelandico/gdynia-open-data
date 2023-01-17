@@ -1,7 +1,6 @@
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import { Popup } from "react-leaflet";
 import { LatLngExpression } from "leaflet";
-import { useT } from "talkr";
 import { IStopDelay } from "../../../types/api";
 import Loader from "../../Loader/loader";
 import { useAutocompleteT } from "../../../translate";

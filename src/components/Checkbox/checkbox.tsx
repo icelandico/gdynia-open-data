@@ -1,5 +1,4 @@
 import React from "react";
-import "./checkbox.scss";
 
 interface CheckboxProps {
   text: string;
@@ -23,18 +22,17 @@ const Checkbox: React.FC<CheckboxProps> = ({
   };
 
   return (
-    <label className="checkbox__label" id={id}>
-      <span>{text}</span>
+    <label htmlFor={id} style={{ fontSize: "16px", marginBottom: "10px" }}>
       <input
+        style={{ width: "22px", height: "22px" }}
         name={name}
         type="radio"
-        className="checkbox__input"
         value={value}
         onChange={() => handleInputChange(value)}
         defaultChecked={initialChecked}
         id={id}
       />
-      <span className="checkbox__indicator" />
+      {text}
     </label>
   );
 };
