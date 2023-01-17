@@ -12,6 +12,7 @@ const MainContainer: React.FC = () => {
   const [menuOpened, setMenuOpened] = useState(false);
 
   const switchLayer = (layer: string) => {
+    setMenuOpened(false);
     setLayer(layer);
   };
 
