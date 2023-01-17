@@ -1,4 +1,5 @@
 import * as React from "react";
+import "./styles.scss";
 import { Talkr } from "talkr";
 import MainContainer from "../MainContainer/main-container-page";
 import { APIProvider } from "../../context/Provider";

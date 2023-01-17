@@ -19,21 +19,21 @@ const AirQualityPopup: React.FC<IAirQualityProps> = ({ address, station, state, 
   return (
     <>
       <Popup>
-        <p>
+        <strong className="popup__line">
           {T("address")}: {valueDisplay(address)}{" "}
-        </p>
-        <p>
+        </strong>
+        <strong className="popup__line">
           {T("station")}: {valueDisplay(station)}{" "}
-        </p>
-        <p>
+        </strong>
+        <strong className="popup__line">
           {T("air quality")}: {valueDisplay(state)}
-        </p>
-        <p>
+        </strong>
+        <strong className="popup__line">
           {T("pm25")}: {valueDisplay(PM25)} µg/m3
-        </p>
-        <p>
+        </strong>
+        <strong className="popup__line">
           {T("pm10")}: {valueDisplay(PM10)} µg/m3
-        </p>
+        </strong>
       </Popup>
     </>
   );
