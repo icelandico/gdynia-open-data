@@ -33,9 +33,9 @@ const TransportStopMarker: React.FC<ITransportStopMarkerProps> = ({ stopData, lo
       }
     >
       <Popup key={stopData.stopId}>
-        <p>
-          {T("stop name")} : {stopData.stopName}{" "}
-        </p>
+        <strong style={{ display: "inline-block", marginBottom: "16px" }}>
+          {T("stop name")}: {stopData.stopName}{" "}
+        </strong>
         <div>
           <div
             style={{

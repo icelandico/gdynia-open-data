@@ -26,6 +26,16 @@ code {
   border: 0;
 }
 
+.leaflet-marker-icon:focus {
+  box-shadow:  none;
+}
+
+.leaflet-control-zoom a {
+  padding: 0;
+  border-radius: 0;
+  border: 1px solid #ccc;
+}
+
 .leaflet-div-icon {
   background: none;
   border: none;

@@ -16,7 +16,7 @@ const MenuPanel: React.FC<IMenuPanel> = ({ handleLayerChange }) => {
   };
 
   return (
-    <article className="warning menu__container">
+    <article className="menu__container">
       <Header />
       <fieldset>
         <Checkbox

@@ -25,9 +25,9 @@ const TransportPopup: React.FC<ITransportPopupProps> = ({
   return (
     <>
       <Popup position={coordinates}>
-        <p>
+        <h6>
           {T("stop name")}: {valueDisplay(stopName)}{" "}
-        </p>
+        </h6>
         <p>{T("delay")}: </p>
         {delayData && (
           <div className="delay-data-container">
