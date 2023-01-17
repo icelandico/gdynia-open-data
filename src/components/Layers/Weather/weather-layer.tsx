@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useEffect } from "react";
 import { Marker } from "react-leaflet";
-import { MapMarker } from "../../../global/values";
+import { MapMarker } from "../../../global/mapMetadata";
 import WeatherPopup from "./WeatherPopup/weather-popup";
 import Loader from "../../Loader/loader";
 import { convertCoords } from "../../../utils/coords";

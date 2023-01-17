@@ -23,11 +23,11 @@ export const ParkingMarker = new L.Icon({
   popupAnchor: [3, -25]
 });
 
-const values: IValues = {
+const mapMetadata: IValues = {
   tileSource: "https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.png",
   ext: "png",
   attribution: `&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors`,
   centerCoordinates: [54.5, 18.47]
 };
 
-export default values;
+export default mapMetadata;

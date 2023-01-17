@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useEffect } from "react";
 import { Marker } from "react-leaflet";
-import { ParkingMarker } from "../../../global/values";
+import { ParkingMarker } from "../../../global/mapMetadata";
 import ParkingPopup from "./parking-popup";
 import Loader from "../../Loader/loader";
 import { convertCoords } from "../../../utils/coords";

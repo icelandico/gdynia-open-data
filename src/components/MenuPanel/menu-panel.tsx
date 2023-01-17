@@ -1,7 +1,7 @@
 import React from "react";
 import "./menu-panel.scss";
 import Header from "../Header/header";
-import Checkbox from "../../global/shared_components/Checkbox/checkbox";
+import Checkbox from "../Checkbox/checkbox";
 import { useAutocompleteT } from "../../translate";
 
 interface IMenuPanel {
