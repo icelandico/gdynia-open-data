@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import "./main-container.scss";
 import MapWrapper from "../Map/map-wrapper";
 import MenuPanel from "../MenuPanel/menu-panel";
@@ -7,12 +7,17 @@ import MenuSwitch from "../MenuSwitch/MenuSwitch";
 import useMobileWidth from "../../utils/useMobileWidth";
 
 const MainContainer: React.FC = () => {
+  const isMobile = useMobileWidth();
   const [activeLayer, setLayer] = useState("");
-  const [menuOpened, setMenuOpened] = useState(true);
+  const [menuOpened, setMenuOpened] = useState(false);
 
   const switchLayer = (layer: string) => {
     setLayer(layer);
   };
+
+  useEffect(() => {
+    setMenuOpened(!isMobile);
+  }, [isMobile]);
 
   const handleSwitchMenu = useCallback(() => {
     setMenuOpened(prev => !prev);
