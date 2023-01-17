@@ -1,5 +1,4 @@
 import React, { useState, useCallback, useEffect } from "react";
-import "./main-container.scss";
 import MapWrapper from "../Map/map-wrapper";
 import MenuPanel from "../MenuPanel/menu-panel";
 import InfoTab from "../InfoTab/info-tab";
@@ -25,7 +24,7 @@ const MainContainer: React.FC = () => {
   }, [menuOpened]);
 
   return (
-    <div className="main__container">
+    <div style={{ position: "relative" }}>
       <MenuSwitch isOpened={menuOpened} handleMenuClick={handleSwitchMenu} />
       {menuOpened ? <MenuPanel handleLayerChange={switchLayer} /> : null}
       <MapWrapper activeLayer={activeLayer} />

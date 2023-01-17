@@ -1,5 +1,4 @@
 import * as React from "react";
-import "./app.scss";
 import { Talkr } from "talkr";
 import MainContainer from "../MainContainer/main-container-page";
 import { APIProvider } from "../../context/Provider";
@@ -10,7 +9,7 @@ const App: React.FC = () => {
   return (
     <Talkr languages={{ en, pl }} defaultLanguage="pl">
       <APIProvider>
-        <div className="app__container">
+        <div className="container-fluid" style={{ padding: 0 }}>
           <MainContainer />
         </div>
       </APIProvider>

@@ -66,7 +66,7 @@ const TransportStopMarker: React.FC<ITransportStopMarkerProps> = ({ stopData, lo
             })}
           </div>
         </div>
-        {isLoading && <Loader />}
+        {isLoading && <Loader opaque />}
       </Popup>
     </Marker>
   );
