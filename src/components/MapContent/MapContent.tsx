@@ -7,6 +7,7 @@ import RoadSegmentsLayer from "../Layers/RoadSegments/road-segments-layer";
 import AirQualityLayer from "../Layers/AirQuality/air-quality-layer";
 import TransportStops from "../Layers/TransportStops/transportStops";
 import { getCityBoundaries } from "../../constants/cityBoundaries";
+import CamerasLayer from "../Layers/PublicCameras/cameras-layer";
 
 const MapContent: React.FC<{ activeLayer: string }> = ({ activeLayer }) => {
   const map = useMap();
@@ -32,6 +33,8 @@ const MapContent: React.FC<{ activeLayer: string }> = ({ activeLayer }) => {
         return <AirQualityLayer />;
       case "transportStops":
         return <TransportStops />;
+      case "cameras":
+        return <CamerasLayer />;
       default:
         return <></>;
     }

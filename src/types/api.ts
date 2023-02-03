@@ -19,7 +19,8 @@ export enum APICalls {
   AIR_QUALITY_STATIONS = "airQualityStations",
   TRANSPORT_STOPS = "transportStops",
   TRANSPORT_STOPS_DELAY = "transportStopsDelay",
-  TRANSPORT_LINES = "transportLines"
+  TRANSPORT_LINES = "transportLines",
+  CAMERAS = "cameras"
 }
 
 export interface IRoadSegment {
@@ -164,4 +165,11 @@ export interface ITransportLine {
   routeColor: unknown;
   routeTextColor: unknown;
   routeSortOrder: unknown;
+}
+
+export interface ICamera {
+  id: number;
+  name: string;
+  location: Location;
+  lastUpdate: string;
 }

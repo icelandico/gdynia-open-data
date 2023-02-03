@@ -1,6 +1,7 @@
 import L from "leaflet";
 import marker from "../static/img/marker.svg";
 import parkingMarker from "../static/img/parking-marker.svg";
+import cameraMarker from "../static/img/camera-marker.svg";
 
 interface IValues {
   tileSource: string;
@@ -18,6 +19,13 @@ export const MapMarker = new L.Icon({
 
 export const ParkingMarker = new L.Icon({
   iconUrl: parkingMarker,
+  iconSize: [30, 30],
+  iconAnchor: [12, 36],
+  popupAnchor: [3, -25]
+});
+
+export const CameraMarker = new L.Icon({
+  iconUrl: cameraMarker,
   iconSize: [30, 30],
   iconAnchor: [12, 36],
   popupAnchor: [3, -25]

@@ -25,5 +25,7 @@
   "stop name": "Nazwa przystanku",
   "line": "Linia",
   "estimated time": "Czas przyjazdu",
-  "no delays": "Brak opóźnień"
+  "no delays": "Brak opóźnień",
+  "cameras": "Kamery",
+  "id": "Id"
 }

@@ -25,5 +25,7 @@
   "stop name": "Stop name",
   "line": "Line",
   "estimated time": "Estimated time",
-  "no delays": "No delays"
+  "no delays": "No delays",
+  "cameras": "Cameras",
+  "id": "Id"
 }

@@ -62,6 +62,13 @@ const MenuPanel: React.FC<IMenuPanel> = ({ handleLayerChange }) => {
           value="transportStops"
           name="chosen-layer"
         />
+        <Checkbox
+          text={T("cameras")}
+          id="cameras"
+          handleChange={switchHandler}
+          value="cameras"
+          name="chosen-layer"
+        />
       </fieldset>
       <div className="header__lang-container">
         <h6
