@@ -1,6 +1,6 @@
 import { APICalls } from "../types/api";
 
-const proxyUrl = "https://api.allorigins.win/raw?url=";
+const proxyUrl = "https://api.allorigins.win/get?url=";
 
 const setRequestUrl = (type: string, param?: string): string => {
   switch (type) {
@@ -33,5 +33,6 @@ const setRequestUrl = (type: string, param?: string): string => {
 
 export const requestData = async (requestType: string, param?: string): Promise<any> => {
   const res = await fetch(`${proxyUrl}${setRequestUrl(requestType, param)}`);
-  return res.json();
+  const responseParsed = await res.json();
+  return JSON.parse(responseParsed.contents);
 };
