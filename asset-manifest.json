@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/gdynia-open-data/static/css/main.4b790ca0.css",
-    "main.js": "/gdynia-open-data/static/js/main.864abe92.js",
+    "main.css": "/gdynia-open-data/static/css/main.070ebb8a.css",
+    "main.js": "/gdynia-open-data/static/js/main.309604ff.js",
     "static/media/parking-marker.svg": "/gdynia-open-data/static/media/parking-marker.efa003d351bdbb3e96a765bfe6f6cca5.svg",
     "index.html": "/gdynia-open-data/index.html",
     "static/media/marker.svg": "/gdynia-open-data/static/media/marker.8858c9671c0bdc6a5e6b641a347ab396.svg",
     "static/media/navigation.svg": "/gdynia-open-data/static/media/navigation.0a3229a4eee98d5f98a33924d302390f.svg",
     "static/media/camera-marker.svg": "/gdynia-open-data/static/media/camera-marker.fcb1fdb53a6e7e42efb1f8109ea3db65.svg",
-    "main.4b790ca0.css.map": "/gdynia-open-data/static/css/main.4b790ca0.css.map",
-    "main.864abe92.js.map": "/gdynia-open-data/static/js/main.864abe92.js.map"
+    "main.070ebb8a.css.map": "/gdynia-open-data/static/css/main.070ebb8a.css.map",
+    "main.309604ff.js.map": "/gdynia-open-data/static/js/main.309604ff.js.map"
   },
   "entrypoints": [
-    "static/css/main.4b790ca0.css",
-    "static/js/main.864abe92.js"
+    "static/css/main.070ebb8a.css",
+    "static/js/main.309604ff.js"
   ]
 }
