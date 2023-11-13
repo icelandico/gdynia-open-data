@@ -27,5 +27,6 @@
   "estimated time": "Estimated time",
   "no delays": "No delays",
   "cameras": "Cameras",
-  "id": "Id"
+  "id": "Id",
+  "api error": "API Error. Try again."
 }

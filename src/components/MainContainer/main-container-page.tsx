@@ -5,6 +5,8 @@ import InfoTab from "../InfoTab/info-tab";
 import MenuSwitch from "../MenuSwitch/MenuSwitch";
 import useMobileWidth from "../../utils/useMobileWidth";
 import { APIContext } from "../../context/Provider";
+import ErrorTab from "../ErrorTab/errorTab";
+import "./mainContainerPage.scss";
 
 const MainContainer: React.FC = () => {
   const isMobile = useMobileWidth();
@@ -27,6 +29,7 @@ const MainContainer: React.FC = () => {
   return (
     <div style={{ position: "relative" }}>
       <MenuSwitch isOpened={menuOpened} handleMenuClick={handleSwitchMenu} />
+      {isError && <ErrorTab styles="error-api" />}
       {menuOpened ? <MenuPanel handleLayerChange={switchLayer} /> : null}
       <MapWrapper activeLayer={activeLayer} />
       <InfoTab />

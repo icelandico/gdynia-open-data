@@ -82,8 +82,13 @@ export const APIProvider: React.FC<any> = ({ children }) => {
     setError(true);
   };
 
-  const getWeatherData = async () => {
+  const startFetching = () => {
     setLoading(true);
+    setError(false);
+  };
+
+  const getWeatherData = async () => {
+    startFetching();
 
     const getAsyncData = async () => {
       const stationsResponse = await requestData(APICalls.WEATHER_STATIONS);
@@ -91,15 +96,17 @@ export const APIProvider: React.FC<any> = ({ children }) => {
       return concatWeatherData(stationsResponse.weatherStations, stationsData);
     };
 
-    getAsyncData().then(d => {
-      setWeatherData(d);
-      setLoading(false);
-    });
+    getAsyncData()
+      .then(d => {
+        setWeatherData(d);
+        setLoading(false);
+      })
+      .catch(_ => handleError());
   };
 
   const getRoadData = async () => {
     if (roadData.length) return;
-    setLoading(true);
+    startFetching();
 
     const getAsyncData = async () => {
       const segmentsPromises: [Promise<IRoadSegmentRequest>, Promise<IRoadSegmentData[]>] = [
@@ -110,14 +117,16 @@ export const APIProvider: React.FC<any> = ({ children }) => {
       return concatRoadData(allSegmentsResponse[0].road_segments, allSegmentsResponse[1]);
     };
 
-    getAsyncData().then(d => {
-      setRoadData(d);
-      setLoading(false);
-    });
+    getAsyncData()
+      .then(d => {
+        setRoadData(d);
+        setLoading(false);
+      })
+      .catch(_ => handleError());
   };
 
   const getParkingsData = async () => {
-    setLoading(true);
+    startFetching();
 
     const getAsyncData = async () => {
       const parkingsResponse = await requestData(APICalls.PARKINGS);
@@ -125,14 +134,16 @@ export const APIProvider: React.FC<any> = ({ children }) => {
       return concatParkingData(parkingsResponse.parkings, parkingCollectionData);
     };
 
-    getAsyncData().then(d => {
-      setParkingsData(d);
-      setLoading(false);
-    });
+    getAsyncData()
+      .then(d => {
+        setParkingsData(d);
+        setLoading(false);
+      })
+      .catch(_ => handleError());
   };
 
   const getAirQualityData = async () => {
-    setLoading(true);
+    startFetching();
 
     const getAsyncData = async () => {
       const airQualityStationsResponse = await requestData(APICalls.AIR_QUALITY_STATIONS);
@@ -148,22 +159,24 @@ export const APIProvider: React.FC<any> = ({ children }) => {
   };
 
   const getTransportStopDelay = useCallback(async (stopId: string) => {
-    setLoading(true);
+    startFetching();
     const getAsyncData = async () => {
       return requestData(APICalls.TRANSPORT_STOPS_DELAY, stopId);
     };
 
-    getAsyncData().then(d => {
-      setTransportStopDelay(d.delay);
-      setLoading(false);
-    });
+    getAsyncData()
+      .then(d => {
+        setTransportStopDelay(d.delay);
+        setLoading(false);
+      })
+      .catch(_ => handleError());
   }, []);
 
   const getTransportStopsData = useCallback(async () => {
     if (transportLines.length && transportStops.length) {
       return;
     }
-    setLoading(true);
+    startFetching();
 
     const getAsyncData = () => {
       const transportDataPromises: [Promise<ITransportLine[]>, Promise<ITransportStops[]>] = [
@@ -173,24 +186,28 @@ export const APIProvider: React.FC<any> = ({ children }) => {
       return Promise.all(transportDataPromises);
     };
 
-    getAsyncData().then(d => {
-      setTransportLines(d[0]);
-      setTransportStops(d[1]);
-      setLoading(false);
-    });
+    getAsyncData()
+      .then(d => {
+        setTransportLines(d[0]);
+        setTransportStops(d[1]);
+        setLoading(false);
+      })
+      .catch(_ => handleError());
   }, []);
 
   const getCamerasData = async () => {
-    setLoading(true);
+    startFetching();
 
     const getAsyncData = async () => {
       return requestData(APICalls.CAMERAS);
     };
 
-    getAsyncData().then(d => {
-      setCameras(d.cameras);
-      setLoading(false);
-    });
+    getAsyncData()
+      .then(d => {
+        setCameras(d.cameras);
+        setLoading(false);
+      })
+      .catch(_ => handleError());
   };
 
   const resetTransportStopDelay = () => setTransportStopDelay([]);

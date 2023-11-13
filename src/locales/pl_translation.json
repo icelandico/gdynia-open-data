@@ -27,5 +27,6 @@
   "estimated time": "Czas przyjazdu",
   "no delays": "Brak opóźnień",
   "cameras": "Kamery",
-  "id": "Id"
+  "id": "Id",
+  "api error": "Błąd połączenia. Spróbuj ponownie."
 }
