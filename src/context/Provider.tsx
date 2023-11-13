@@ -23,6 +23,7 @@ import { AIR_QUALITY_STATIONS } from "../constants/airQualityStations";
 
 type APIContextType = {
   isLoading: boolean;
+  isError: boolean;
   weatherData: WeatherStation[];
   roadData: SegmentData[];
   parkingsData: Parking[];
@@ -43,6 +44,7 @@ type APIContextType = {
 
 const initialContext = {
   isLoading: false,
+  isError: false,
   weatherData: [],
   roadData: [],
   parkingsData: [],
@@ -73,6 +75,12 @@ export const APIProvider: React.FC<any> = ({ children }) => {
   const [transportLines, setTransportLines] = useState<ITransportLine[]>([]);
   const [camerasData, setCameras] = useState<ICamera[]>([]);
   const [isLoading, setLoading] = useState(false);
+  const [isError, setError] = useState(false);
+
+  const handleError = () => {
+    setLoading(false);
+    setError(true);
+  };
 
   const getWeatherData = async () => {
     setLoading(true);
@@ -131,10 +139,12 @@ export const APIProvider: React.FC<any> = ({ children }) => {
       return concatAirQualityData(airQualityStationsResponse.stations, AIR_QUALITY_STATIONS);
     };
 
-    getAsyncData().then(d => {
-      setAirQualityData(d);
-      setLoading(false);
-    });
+    getAsyncData()
+      .then(d => {
+        setAirQualityData(d);
+        setLoading(false);
+      })
+      .catch(_ => handleError());
   };
 
   const getTransportStopDelay = useCallback(async (stopId: string) => {
@@ -189,6 +199,7 @@ export const APIProvider: React.FC<any> = ({ children }) => {
     <APIContext.Provider
       value={{
         isLoading,
+        isError,
         weatherData,
         getWeatherData,
         roadData,

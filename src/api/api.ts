@@ -1,3 +1,4 @@
+import { AnyRecord } from "dns";
 import { APICalls } from "../types/api";
 
 const proxyUrl = "https://api.allorigins.win/get?url=";
@@ -32,7 +33,15 @@ const setRequestUrl = (type: string, param?: string): string => {
 };
 
 export const requestData = async (requestType: string, param?: string): Promise<any> => {
-  const res = await fetch(`${proxyUrl}${setRequestUrl(requestType, param)}`);
-  const responseParsed = await res.json();
-  return JSON.parse(responseParsed.contents);
+  try {
+    const res = await fetch(`${proxyUrl}${setRequestUrl(requestType, param)}`);
+    const responseParsed = await res.json();
+    const responseStatus = responseParsed.status.http_code;
+    if (responseStatus >= 400) {
+      throw new Error("API ERROR");
+    }
+    return JSON.parse(responseParsed.contents);
+  } catch (err: any) {
+    throw new Error("API ERROR", err);
+  }
 };
