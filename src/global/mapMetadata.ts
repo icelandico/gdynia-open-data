@@ -32,9 +32,9 @@ export const CameraMarker = new L.Icon({
 });
 
 const mapMetadata: IValues = {
-  tileSource: "https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png",
+  tileSource: "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png",
   ext: "png",
-  attribution: `&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors`,
+  attribution: `© ESA WorldCover project 2021 / Contains modified Copernicus Sentinel data (2021) processed by ESA WorldCover consortium`,
   centerCoordinates: [54.5, 18.47]
 };
 
