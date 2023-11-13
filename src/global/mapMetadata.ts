@@ -32,7 +32,7 @@ export const CameraMarker = new L.Icon({
 });
 
 const mapMetadata: IValues = {
-  tileSource: "https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.png",
+  tileSource: "https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png",
   ext: "png",
   attribution: `&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors`,
   centerCoordinates: [54.5, 18.47]
