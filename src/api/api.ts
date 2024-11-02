@@ -1,4 +1,3 @@
-import { AnyRecord } from "dns";
 import { APICalls } from "../types/api";
 
 const proxyUrl = "https://corsproxy.io/?";
@@ -36,12 +35,11 @@ export const requestData = async (requestType: string, param?: string): Promise<
   try {
     const res = await fetch(`${proxyUrl}${encodeURIComponent(setRequestUrl(requestType, param))}`);
     const responseParsed = await res.json();
-    const responseStatus = responseParsed.status.http_code;
-    if (responseStatus >= 400) {
+    if (res.status >= 400) {
       throw new Error("API ERROR");
     }
-    return JSON.parse(responseParsed.contents);
-  } catch (err: any) {
-    throw new Error("API ERROR", err);
+    return responseParsed;
+  } catch (err) {
+    throw new Error("API ERROR");
   }
 };
