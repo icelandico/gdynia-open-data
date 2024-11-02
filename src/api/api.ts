@@ -1,7 +1,7 @@
 import { AnyRecord } from "dns";
 import { APICalls } from "../types/api";
 
-const proxyUrl = "https://api.allorigins.win/get?url=";
+const proxyUrl = "https://corsproxy.io/?";
 
 const setRequestUrl = (type: string, param?: string): string => {
   switch (type) {
