@@ -34,7 +34,7 @@ const setRequestUrl = (type: string, param?: string): string => {
 
 export const requestData = async (requestType: string, param?: string): Promise<any> => {
   try {
-    const res = await fetch(`${proxyUrl}${encodeURI(setRequestUrl(requestType, param))}`);
+    const res = await fetch(`${proxyUrl}${encodeURIComponent(setRequestUrl(requestType, param))}`);
     const responseParsed = await res.json();
     const responseStatus = responseParsed.status.http_code;
     if (responseStatus >= 400) {
