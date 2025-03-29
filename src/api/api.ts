@@ -1,6 +1,6 @@
 import { APICalls } from "../types/api";
 
-const proxyUrl = "https://crossorigin.me/";
+const proxyUrl = "https://corsproxy.github.io/";
 
 const setRequestUrl = (type: string, param?: string): string => {
   switch (type) {
