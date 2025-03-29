@@ -133,7 +133,9 @@ export const APIProvider: React.FC<any> = ({ children }) => {
     const getAsyncData = async () => {
       const parkingsResponse = await requestData(APICalls.PARKINGS);
       const parkingCollectionData = await requestData(APICalls.PARKINGS_DATA);
-      return concatParkingData(parkingsResponse.parkings, parkingCollectionData);
+      const parsedParkings = JSON.parse(parkingsResponse.contents);
+      const parsedWeatherData = JSON.parse(parkingCollectionData.contents);
+      return concatParkingData(parsedParkings.parkings, parsedWeatherData);
     };
 
     getAsyncData()
@@ -149,7 +151,8 @@ export const APIProvider: React.FC<any> = ({ children }) => {
 
     const getAsyncData = async () => {
       const airQualityStationsResponse = await requestData(APICalls.AIR_QUALITY_STATIONS);
-      return concatAirQualityData(airQualityStationsResponse.stations, AIR_QUALITY_STATIONS);
+      const parsedData = JSON.parse(airQualityStationsResponse.contents);
+      return concatAirQualityData(parsedData.stations, AIR_QUALITY_STATIONS);
     };
 
     getAsyncData()
@@ -201,7 +204,9 @@ export const APIProvider: React.FC<any> = ({ children }) => {
     startFetching();
 
     const getAsyncData = async () => {
-      return requestData(APICalls.CAMERAS);
+      const data = await requestData(APICalls.CAMERAS);
+      const parsed = JSON.parse(data.contents);
+      return parsed;
     };
 
     getAsyncData()
