@@ -93,7 +93,9 @@ export const APIProvider: React.FC<any> = ({ children }) => {
     const getAsyncData = async () => {
       const stationsResponse = await requestData(APICalls.WEATHER_STATIONS);
       const stationsData = await requestData(APICalls.WEATHER_STATIONS_DATA);
-      return concatWeatherData(stationsResponse.weatherStations, stationsData);
+      const parsedStations = JSON.parse(stationsResponse.contents);
+      const parsedWeatherData = JSON.parse(stationsData.contents);
+      return concatWeatherData(parsedStations.weatherStations, parsedWeatherData);
     };
 
     getAsyncData()

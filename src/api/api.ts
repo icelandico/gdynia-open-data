@@ -1,6 +1,6 @@
 import { APICalls } from "../types/api";
 
-const proxyUrl = "https://corsproxy.github.io/";
+const proxyUrl = "https://api.allorigins.win/get?url=";
 
 const setRequestUrl = (type: string, param?: string): string => {
   switch (type) {
@@ -31,14 +31,9 @@ const setRequestUrl = (type: string, param?: string): string => {
   }
 };
 
-export const requestData = async (
-  requestType: string,
-  param?: string
-): Promise<any> => {
+export const requestData = async (requestType: string, param?: string): Promise<any> => {
   try {
-    const res = await fetch(
-      `${proxyUrl}${encodeURIComponent(setRequestUrl(requestType, param))}`
-    );
+    const res = await fetch(`${proxyUrl}${encodeURIComponent(setRequestUrl(requestType, param))}`);
     const responseParsed = await res.json();
     if (res.status >= 400) {
       throw new Error("API ERROR");
