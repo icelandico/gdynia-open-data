@@ -170,7 +170,9 @@ export const APIProvider: React.FC<any> = ({ children }) => {
 
     getAsyncData()
       .then(d => {
-        setTransportStopDelay(d.delay);
+        const parsedDelay = JSON.parse(d.contents);
+
+        setTransportStopDelay(parsedDelay.delay);
         setLoading(false);
       })
       .catch(_ => handleError());
@@ -183,7 +185,7 @@ export const APIProvider: React.FC<any> = ({ children }) => {
     startFetching();
 
     const getAsyncData = () => {
-      const transportDataPromises: [Promise<ITransportLine[]>, Promise<ITransportStops[]>] = [
+      const transportDataPromises = [
         requestData(APICalls.TRANSPORT_LINES),
         requestData(APICalls.TRANSPORT_STOPS)
       ];
@@ -192,8 +194,10 @@ export const APIProvider: React.FC<any> = ({ children }) => {
 
     getAsyncData()
       .then(d => {
-        setTransportLines(d[0]);
-        setTransportStops(d[1]);
+        const parsedLines = JSON.parse(d[0].contents);
+        const parsedStops = JSON.parse(d[1].contents);
+        setTransportLines(parsedLines);
+        setTransportStops(parsedStops);
         setLoading(false);
       })
       .catch(_ => handleError());
