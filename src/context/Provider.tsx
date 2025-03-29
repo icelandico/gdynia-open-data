@@ -111,12 +111,11 @@ export const APIProvider: React.FC<any> = ({ children }) => {
     startFetching();
 
     const getAsyncData = async () => {
-      const segmentsPromises: [Promise<IRoadSegmentRequest>, Promise<IRoadSegmentData[]>] = [
-        requestData(APICalls.ROADS),
-        requestData(APICalls.ROADS_DATA)
-      ];
+      const segmentsPromises = [requestData(APICalls.ROADS), requestData(APICalls.ROADS_DATA)];
       const allSegmentsResponse = await Promise.all(segmentsPromises);
-      return concatRoadData(allSegmentsResponse[0].road_segments, allSegmentsResponse[1]);
+      const parsedRoadSegments = JSON.parse(allSegmentsResponse[0].contents);
+      const parsedAllRoadSegments = JSON.parse(allSegmentsResponse[1].contents);
+      return concatRoadData(parsedRoadSegments.road_segments, parsedAllRoadSegments);
     };
 
     getAsyncData()

@@ -9,6 +9,7 @@ type Location = {
   coordinates: [number, number];
 };
 
+// eslint-disable-next-line no-shadow
 export enum APICalls {
   WEATHER_STATIONS = "weatherStations",
   WEATHER_STATIONS_DATA = "weatherStationsData",
